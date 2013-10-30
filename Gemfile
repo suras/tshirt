@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
 gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+
 
 gem 'devise'
 
@@ -17,6 +18,12 @@ group :development do
 	gem "binding_of_caller"
 	gem 'quiet_assets'
 	gem "nifty-generators"
+	gem 'mysql2'
+end
+
+group :production do
+  gem "pg"
+  gem 'rails_12factor'
 end
 
 gem 'omniauth-twitter'
