@@ -20,8 +20,8 @@ class AuthenticationsController < ApplicationController
       sign_in_and_redirect current_user
     else
       user = User.new
-      user.provider = omni.provider
-      user.uid = omni.uid
+      # user.provider = omni.provider
+      # user.uid = omni.uid
         
       user.apply_omniauth(omni)
       
