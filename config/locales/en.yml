@@ -25,4 +25,7 @@ en:
             password: 
               blank: "Password Can't be blank"
   coupon_generate_error: "Please Enter a numeric value less than 500"
-  coupon_generate_success: "Generated Successfully "
+  coupon_generate_success: "Generated Successfully"
+  logging_successful: "Logged in successfully"
+  authentication_successful: "Authentication Successful"
+  logged_in: "Logged in"

@@ -9,14 +9,14 @@ class AuthenticationsController < ApplicationController
     #raise omni.to_yaml
     
     if authentication
-      flash[:notice] = "Logged in Successfully"
+      flash[:notice] =  t(:logging_successful) 
       sign_in_and_redirect User.find(authentication.user_id)
     elsif current_user
       token = omni['credentials'].token
       token_secret = omni['credentials'].secret
       
       current_user.authentications.create!(:provider => omni['provider'], :uid => omni['uid'], :token => token, :token_secret => token_secret)
-      flash[:notice] = "Authentication successful."
+      flash[:notice] = t(:authentication_successful)
       sign_in_and_redirect current_user
     else
       user = User.new
@@ -26,7 +26,8 @@ class AuthenticationsController < ApplicationController
       user.apply_omniauth(omni)
       
       if user.save
-        flash[:notice] = "Logged in."
+       
+        flash[:notice] =  t(:logged_in)
         sign_in_and_redirect User.find(user.id)             
       else
         session[:omniauth] = omni.except('extra')
@@ -40,7 +41,7 @@ class AuthenticationsController < ApplicationController
     authentication = Authentication.find_by_provider_and_uid(omni['provider'], omni['uid'])
 
     if authentication
-      flash[:notice] = "Logged in Successfully"
+      flash[:notice] =  t(:logging_successful) 
       sign_in_and_redirect User.find(authentication.user_id)
     elsif current_user
       token = omni['credentials'].token
@@ -48,7 +49,7 @@ class AuthenticationsController < ApplicationController
       
       current_user.authentications.create!(:provider => omni['provider'], :uid => omni['uid'], :token => token, :token_secret => token_secret)
       
-      flash[:notice] = "Authentication successful."
+      flash[:notice] = t(:authentication_successful)
       sign_in_and_redirect current_user
     else
       user = User.new
@@ -59,7 +60,7 @@ class AuthenticationsController < ApplicationController
       user.apply_omniauth(omni)
 
       if user.save
-        flash[:notice] = "Logged in."
+        flash[:notice] =  t(:logged_in)
         sign_in_and_redirect User.find(user.id)             
       else
         session[:omniauth] = omni.except('extra')

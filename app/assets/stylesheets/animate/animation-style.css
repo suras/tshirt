@@ -1,0 +1,46 @@
+@import url("animation-webkit-style.css");
+@import url("animation-moz-style.css");
+@import url("animation-ms-style.css");
+@import url("animation-o-style.css");
+
+
+
+/* Animation Effect Variables */
+
+/*  */
+
+@keyframes move-right-center {
+	0% {
+		transform: translateX(150px)translateY(-450px);
+	}
+	100% {
+		transform: translateX(0px)translateY(0px);
+	}
+}
+
+@keyframes down-element {
+	0% {
+		transform: translateY(-450px);
+	}
+	100% {
+		transform: translateY(0px);
+		position: absolute; 
+	}
+}
+@keyframes move-up-element {
+	0% {
+		transform: translateY(450px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
+
+@keyframes rotate-full {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

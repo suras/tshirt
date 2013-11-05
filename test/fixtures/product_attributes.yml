@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  product_id: 1
+  attribute_name: MyString
+  price: 1
+  currency: MyString
+  status: false
+
+two:
+  product_id: 1
+  attribute_name: MyString
+  price: 1
+  currency: MyString
+  status: false

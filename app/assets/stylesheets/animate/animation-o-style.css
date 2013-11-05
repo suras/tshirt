@@ -1,0 +1,41 @@
+
+
+/* Animation Effect Variables */
+
+/*  o  */
+
+@-o-keyframes move-right-center {
+	0% {
+		-o-transform: translateX(150px)translateY(-450px);
+	}
+	100% {
+		-o-transform: translateX(0px)translateY(0px);
+	}
+}
+
+@-o-keyframes down-element {
+	0% {
+		-o-transform: translateY(-450px);
+	}
+	100% {
+		-o-transform: translateY(0px);
+		position: absolute; 
+	}
+}
+@-o-keyframes move-up-element {
+	0% {
+		-o-transform: translateY(450px);
+	}
+	100% {
+		-o-transform: translateY(0px);
+	}
+}
+
+@-o-keyframes rotate-full {
+	0% {
+		-o-transform: rotate(0deg);
+	}
+	100% {
+		-o-transform: rotate(360deg);
+	}
+}

@@ -4,11 +4,11 @@ Tshirt::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   resources :authentications
+  # get "/sign_in", :to => "home#sign_in", :as => "sign_in"
 
 
 
-
-  root to: 'authentications#home'
+  root to: 'home#index'
  
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
   controllers: {omniauth_callbacks: "authentications", registrations: "registrations"}

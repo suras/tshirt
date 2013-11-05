@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131105085147) do
+ActiveRecord::Schema.define(:version => 20131105103547) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -91,6 +91,16 @@ ActiveRecord::Schema.define(:version => 20131105085147) do
     t.string   "currency"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "product_attributes", :force => true do |t|
+    t.integer  "product_id"
+    t.string   "attribute_name"
+    t.integer  "price"
+    t.string   "currency"
+    t.boolean  "status",         :default => true
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   create_table "products", :force => true do |t|
