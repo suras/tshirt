@@ -1,6 +1,33 @@
 # RailsAdmin config file. Generated on October 16, 2013 11:33
 # See github.com/sferik/rails_admin for more informations
+require Rails.root.join('lib', 'rails_admin_add_coupon.rb')
 RailsAdmin.config do |config|
+   module RailsAdmin
+    module Config
+      module Actions
+         class AddCoupon < RailsAdmin::Config::Actions::Base
+          RailsAdmin::Config::Actions.register(self)
+        end
+       end
+    end
+  end
+
+
+
+  config.actions do
+    dashboard
+    index
+    new
+    show
+    edit
+    delete
+    add_coupon do
+      visible do
+        bindings[:abstract_model].model.to_s == "Coupon"
+      end
+    end
+  end
+
    
   # Set the admin name here (optional second array element will appear in red). For example:
   config.main_app_name = ['Tshirt', 'Admin']

@@ -1,11 +1,28 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+# en: 
+#   invalid_coupon_error_message: "Please Enter a numeric value less than 500" 
+#   activerecord:
+#     errors:
+#      format: "%{message}"
+#       models:
+#         user:
+#           attributes:
+#             email: 
+#               blank: "Email is needed for signup"
+#             password:
+#               blank: "Password Can't be blank"
 en: 
-  activerecord:
-    errors:
-      models:
-        user:
-          attributes:
+  errors:
+    format: "%{message}"
+  activerecord: 
+    errors: 
+      models: 
+        user: 
+          attributes: 
             email: 
-              blank: "is needed for signup"
-      
+              blank: "Email is needed for signup"
+            password: 
+              blank: "Password Can't be blank"
+  coupon_generate_error: "Please Enter a numeric value less than 500"
+  coupon_generate_success: "Generated Successfully "

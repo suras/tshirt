@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  code: MyString
+  status: false
+  valid_to: 2013-11-05
+
+two:
+  code: MyString
+  status: false
+  valid_to: 2013-11-05

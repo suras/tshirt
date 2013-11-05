@@ -1,0 +1,9 @@
+en:
+  admin:
+    actions:
+      add_coupon: 
+        title: "Add Coupon"
+        menu: "Add Coupon"
+        breadcrumb: "Add Coupon"
+        link: "Add Coupon"
+      
