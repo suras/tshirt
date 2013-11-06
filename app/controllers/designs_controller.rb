@@ -32,11 +32,11 @@ class DesignsController < ApplicationController
     @image = current_user.images.new(:image => params[:image])
     respond_to do |format|
       if(@image.save)
-        
-        format.js {render :text => @image.image.url}
+        format.json {render :json => {:status=>"success", :url=>@image.image.url}  }
+        #format.json {render :json => @image.image.url}
 
-        else
-         format.js {render :text => "Error Uploading"}
+      else
+        format.json {render :text => "Error Uploading"}
       end
     end
   end

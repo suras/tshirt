@@ -454,7 +454,7 @@
 				  onrendered: function(canvas) {
 				    //document.body.appendChild(canvas);
 				    window.open(canvas.toDataURL("image/png"));
-    
+    				
 				  }
 				});
       			window.open(canvas.toDataURL('png'));
@@ -493,7 +493,20 @@
 		                        processData: false,
 		                        contentType: false,
 		                        success: function (data) {
-		                            //$('#profile_pic').attr('src',data.url)
+		                            
+		                            fabric.Image.fromURL(data.url, function(image) {
+		                            	console.log(image)
+									    image.set({
+								          left: 120,
+								          top: 150,
+								          cornersize: 10
+								        });
+								        image.scale(0.2).setCoords();
+										canvas.add(image);
+									});
+									$("#overlay").remove();
+									$(".custom-popup").removeClass("down-popup");
+									$(".custom-popup").hide();
 		                        },
 		                        error: function (data) {
 		                            //console.log(data)
