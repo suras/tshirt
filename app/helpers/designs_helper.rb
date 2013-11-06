@@ -3,18 +3,39 @@ module DesignsHelper
         output = ""
 		categories = DesignCategory.all
 		categories.each do |category|
-        output << link_to(category.name, category_path(:category_id => category.id), :remote => true)
+        output << link_to(category.name, design_category_path(:category_id => category.id), :remote => true)
         end
         return output.html_safe
 		
 	end
 
 
-	def get_category()
+	def get_default_category_images()
 		return " " unless DesignCategory.first.present?
        design_category = DesignCategory.first
        design_images = design_category.designs
        images = generate_image_links(design_images)
+
+
+	end
+
+
+    def get_product_categories()
+        output = ""
+		product_categories = Category.all
+		product_categories.each do |category|
+        output << link_to(category.name, category_path(:id => category.id), :remote => true)
+        end
+        return output.html_safe
+		
+	end
+
+
+	def get_default_product_category_images()
+	   return " " unless Category.first.present?
+       product_category = Category.first
+       product_images = product_category.products
+       images = generate_image_links(product_images)
 
 
 	end

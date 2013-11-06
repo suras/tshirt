@@ -1,6 +1,4 @@
-<%= stylesheet_link_tag  "editor", :media => "all" %>
-<%= javascript_include_tag  "jquery.min","canvas/all","canvas/html2canvas"   %>
-
+  <%= stylesheet_link_tag  "editor", :media => "all" %>
 <section class="editor">
 		<div class="container">
 			<div class="editor-box">
@@ -18,8 +16,7 @@
 						</div>
 					</div>
 					<div class="main-canvas">
-						<canvas id="pcanvas" width="350" height="420"></canvas>
-						<img class="hide" src="<%= @default_image %>" id="main_image">
+						<canvas></canvas>
 					</div>
 					<div class="canvas-operation">
 						<a href="#" class="rotate">
@@ -36,7 +33,7 @@
 							<div>CALCULATE PRICE &amp;</div>
 							<div>ADD TO CART</div>
 						</a>
-						<a href="#" id="clear_canvas" class="pull-right clear">
+						<a href="#" class="pull-right clear">
 							<div class="img-icon">
 							</div>
 							<div>Clear</div>
@@ -68,7 +65,7 @@
 										<div class="clip-art-category">
 										<%= get_categories()%>
 										</div>
-										<div id="clip_art" class="clip-art-list">
+										<div class="clip-art-list">
 										    <%= get_default_category_images()%>
 										</div>
 									</div>
@@ -80,16 +77,18 @@
 								</div>
 							</div>
 
-							<div class="single-panel add-product hide">
-		 						<div class="product-category">
-		 							<div class="product-art-category">
-		 								<%= get_product_categories()%>
-		 							</div>
-		 							<div class="product-art-list">
-		 								<%= get_default_product_category_images%>
-		 							</div>
-		 						</div>
-		 					</div>
+                                <div class="single-panel add-product hide">
+									<div class="product-category">
+										<div class="product-art-category">
+										<%= get_product_categories()%>
+										</div>
+										<div class="product-art-list">
+										    <%= get_default_product_category_images%>
+										</div>
+									</div>
+								</div>
+
+
 
 							<div class="single-panel add-text hide">
 								<div class="new-text-panel hide">
@@ -124,7 +123,7 @@
 										</div>
 									</div>
 									<div class="details">
-										<textarea class="text-input" id="text_value" name="text_input">Old Text</textarea>
+										<textarea class="text-input" id="text_input" name="text_input">Old Text</textarea>
 										<div class="title">
 											<span>Font </span> 
 											<select name="">
@@ -170,10 +169,13 @@
 									<div class="title">
 										<span>EDIT </span>YOUR PRODUCT
 									</div>
-									<a href="#" class="p-image" data-show="add-product">
-		 								
-		 								<div class="find-product">find a different product</div>
-		 							</a>
+									
+                                       	<a href="#" class="p-image" data-show="add-product">
+							
+							   <div class="find-product">find a different product</div>
+						        </a>
+									
+									
 								</div>
 								<div class="details">
 									<div class="name">Ultra Cotton Tee</div>
@@ -187,30 +189,10 @@
 										<span>CHANGE </span>YOUR PRODUCT
 									</div>
 									<p>Colors for digital printing (no minimum order)</p>
-									<ul class="nav">
-										<li style="background-color:#ffffff;" title="White" class="color-preview"></li>
-										<li style="background-color:#616161;" title="Dark Heather" class="color-preview"></li>
-										<li style="background-color:#f0f0f0;" title="Gray" class="color-preview"></li>
-										<li style="background-color:#5b5b5b;" title="Charcoal" class="color-preview"></li>
-										<li style="background-color:#222222;" title="Black" class="color-preview"></li>
-										<li style="background-color:#fc8d74;" title="Heather Orange" class="color-preview"></li>
-										<li style="background-color:#432d26;" title="Heather Dark Chocolate" class="color-preview"></li>
-										<li style="background-color:#eead91;" title="Salmon" class="color-preview"></li>
-										<li style="background-color:#806355;" title="Chesnut" class="color-preview"></li>
-										<li style="background-color:#382d21;" title="Dark Chocolate" class="color-preview"></li>
-										<li style="background-color:#faef93;" title="Citrus Yellow" class="color-preview"></li>
-										<li style="background-color:#aeba5e;" title="Avocado" class="color-preview"></li>
-										<li style="background-color:#8aa140;" title="Kiwi" class="color-preview"></li>
-										<li style="background-color:#1f6522;" title="Irish Green" class="color-preview"></li>
-										<li style="background-color:#13afa2;" title="Scrub Green" class="color-preview"></li>
-										<li style="background-color:#b8d5d7;" title="Teal Ice" class="color-preview"></li>
-										<li style="background-color:#15aeda;" title="Heather Sapphire" class="color-preview"></li>
-										<li style="background-color:#a5def8;" title="Sky" class="color-preview"></li>
-										<li style="background-color:#0f77c0;" title="Antique Sapphire" class="color-preview"></li>
-										<li style="background-color:#3469b7;" title="Heather Navy" class="color-preview"></li>							
-										<li style="background-color:#c50404;" title="Cherry Red" class="color-preview"></li>
-									</ul>
+									<button class="btn">Click to Select</button>
 
+									<p>Colors for screen printing (12 pieces minimum)</p>
+									<button class="btn">Click to Select</button>
 								</div>
 							</div>
 							<div class="single-panel load-design hide">
@@ -281,82 +263,6 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-
-			var canvas,imgElement,imgInstance,zoomIn;
-			canvas = new fabric.Canvas('pcanvas');
-			imgElement = document.getElementById('main_image');
-			zoomIn= false;
-			imgInstance = new fabric.Image(imgElement, {
-			  left: 175,
-			  top: 210,
-			  opacity: 0.85,
-			  width:355,
-			  height:425
-			});
-			canvas.add(imgInstance);
-			canvas.item(0).lockMovementX = true;
-			canvas.item(0).lockMovementY = true;
-
-
-			$(document).on("click",".zoom",function(e){
-				e.preventDefault();
-				var scaleX = zoomIn ? canvas.item(0).scaleX-1 : canvas.item(0).scaleX+1;
-				var scaleY = zoomIn ? canvas.item(0).scaleY-1 : canvas.item(0).scaleY+1;
-				canvas.item(0).lockMovementX = false;
-				canvas.item(0).lockMovementY = false;
-				canvas.item(0).scaleX = scaleX;
-				canvas.item(0).scaleY = scaleY;
-				canvas.item(0).setCoords();
-				
-				canvas.item(0).lockMovementX = true;
-				canvas.item(0).lockMovementY = true;
-				canvas.renderAll();
-				zoomIn = !zoomIn;	
-			});
-
-			$(document).on("click",".color-preview",function(e){
-				var color = $(this).css('background-color')
-				console.log(color)
-				$('#pcanvas').css({'background':color})	
-			});
-
-
-			$(document).on("click","#clear_canvas",function(e){
-			    e.preventDefault();
-			    canvas.clear()
-			    $('#pcanvas').css({'background':''})	
-			    var imgInstance = new fabric.Image(imgElement, {
-				  left: 175,
-				  top: 210,
-				  opacity: 0.85,
-				  width:355,
-				  height:425
-				});
-				canvas.add(imgInstance);
-				canvas.item(0).lockMovementX = true;
-				canvas.item(0).lockMovementY = true;
-			});
-
-			$(document).on("click","#clip_art img",function(e){
-				var url = $(this).attr('src')
-			    fabric.Image.fromURL(url, function(image) {
-				    image.set({
-			          left: 120,
-			          top: 150,
-			          cornersize: 10
-			        });
-			        image.scale(0.2).setCoords();
-					canvas.add(image);
-				});
-			});
-
-			$(document).on("click",".add-new-text",function(e){
-				var text = $('#text_value').val()
-				console.log(text)
-				var addText = new fabric.Text(text, { left: 120, top: 150 });
-  				canvas.add(addText);
-			});
-
 			$(document).on("click",".operations a,.p-image",function(){
 				var current = this;
 				single_panel = "."+$(current).data("show");
