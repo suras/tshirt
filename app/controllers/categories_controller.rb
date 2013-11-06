@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+	before_filter :authenticate_user!
 	def show
 	    @product_category = Category.find(params[:id])
 	    @product_images = @product_category.products
