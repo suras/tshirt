@@ -1,7 +1,8 @@
 class DesignsController < ApplicationController
   before_filter :authenticate_user!
   def index
-    @default_image = Product.first.image.url
+    @default_image = Product.first.try(:image).try(:url)
+
 
   end
 
