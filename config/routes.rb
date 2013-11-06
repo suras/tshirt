@@ -9,7 +9,9 @@ Tshirt::Application.routes.draw do
 
 
   root to: 'home#index'
- 
+  get "/designs", :to => "designs#index", :as => "designs"
+  get "/design_categories", :to => "designs#category", :as => "category"
+  resources :categories
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
   controllers: {omniauth_callbacks: "authentications", registrations: "registrations"}
 

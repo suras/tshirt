@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag  "index", "slider/style", :media => "all" %>
+<%= javascript_include_tag  "slider/jquery-1.6.2.min", "slider/jquery.easing.1.3", "slider/style", "slider/jquery.mousewheel", "slider/jquery.contentcarousel"  %>
 <section class="banner">
 		<div class="container">
 			<div class="slider">
@@ -89,3 +91,11 @@
 			</div>
 		</div>
 	</section>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		if($('#ca-container .ca-item').length>4)
+			$('#ca-container').contentcarousel();
+	});
+
+</script>

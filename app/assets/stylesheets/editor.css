@@ -6,6 +6,11 @@
 }
 .editor-box{
 	box-shadow: 0px 0px 10px #97d1dc;
+	-moz-box-shadow: 0px 0px 10px #97d1dc;
+	-webkit-box-shadow: 0px 0px 10px #97d1dc;
+	-ms-box-shadow: 0px 0px 10px #97d1dc;
+	-o-box-shadow: 0px 0px 10px #97d1dc;
+	
 	border-radius: 10px;
 	padding: 5px;
 
@@ -79,7 +84,7 @@
 .canvas-operation a .img-icon{
 	padding: 26px;
 	margin-bottom: 10px;
-	background: url(../img/bellow-canvas-icons.png);
+	background: url(/assets/bellow-canvas-icons.png);
 }
 .canvas-operation a:hover .img-icon{
 	
@@ -149,7 +154,7 @@
 	margin-top: -10px;
 }
 
-.edit-product-box{
+.tab-content-box{
 	margin: 15px 0px;
 	margin-left: 15px;
 	background: #e5e5e5;
@@ -157,13 +162,15 @@
 	position: relative;
 	border-radius: 10px;
 }
-.edit-product{
+.single-content-box{
 	background: #f5f3f2;
 	padding: 10px;
 	color: #797979;
+	height: 488px;
+	overflow-y: auto;
 }
 
-.edit-product-box:after {
+.tab-content-box:after {
 	right: 100%;
 	border: solid transparent;
 	content: " ";
@@ -173,7 +180,7 @@
 	pointer-events: none;
 }
 
-.edit-product-box:after {
+.tab-content-box:after {
 	border-color: rgba(229, 229, 229, 0);
 	border-right-color: #e5e5e5;
 	border-width: 15px;
@@ -193,12 +200,15 @@
 .edit-product .header:last-child{
 	margin-top: 10px;
 }
-.edit-product .header .title{
+.title{
 	font-size: 16px;
 	font-weight: bold;
 	display: inline-block;
+	width: 100%;
+	padding: 5px 0px;
+	text-transform: uppercase;
 }
-.edit-product .header .title span{
+.title span{
 	color: #ee5b38;
 }
 .find-product{
@@ -233,6 +243,7 @@
 
 .operations{
 }
+
 .operations a{
 	display: inline-block;
 	text-align: center;
@@ -244,6 +255,10 @@
 	text-transform: uppercase;
 	max-width: 66px;
 }	
+
+.operations .current{
+	color: #ee5b38;
+}
 .operations a.text .img-icon{
 	background-position: -72px 0px;
 }
@@ -264,10 +279,114 @@
 .operations a .img-icon{
 	padding: 31px;
 	margin-bottom: 10px;
-	background: url(../img/operations-icons.png);
+	background: url(/assets/operations-icons.png);
 	display: inline-block;
 	margin-left: 3px;
 }
 .operations a:hover .img-icon{
 	
+}
+
+
+/* Add Image Content */ 
+
+.inner-tabs{
+	
+}
+.inner-tabs a{
+	width: 30%;
+	color: #ee5b38;
+	text-align: center;
+	display: inline-block;
+	border: 1px #000 solid;
+	padding: 10px 0px;
+	margin-right: 10px;
+	border-radius: 26px;
+	text-decoration: none;
+}
+.inner-tabs a:hover,.inner-tabs a.current{
+	background: #FF9076;
+	color: #fff;
+}
+.inner-tab-content{
+	padding-top: 10px;
+}
+.clip-arts{
+
+}
+.clip-art-category{
+	height: 100px;
+	overflow-y: auto;
+}
+.clip-art-category a{
+	display: inline-block;
+	width: 30%;
+}
+.clip-art-category a.current{
+	color: #ee5b38;
+}
+.clip-art-list{
+	height: 245px;
+	overflow-y: auto;
+	background: #fff;
+	outline: 1px dashed #ddd;
+}
+.clip-art-list img{
+	border: 1px solid #000;
+	height: 50px;
+	width: 50px;
+	margin: 10px;
+	cursor: pointer;
+}
+.clip-art-list img:hover{
+	box-shadow: 0px 0px 25px -3px #000;
+}
+
+.my-image-list{
+	height: 345px;
+	overflow-y: auto;
+	background: #fff;
+	outline: 1px dashed #ddd;
+}
+.my-image-list img{
+	border: 1px solid #000;
+	height: 70px;
+	width: 70px;
+	margin: 10px;
+	cursor: pointer;
+}
+.my-image-list img:hover{
+	box-shadow: 0px 0px 25px -3px #000;
+}
+
+.text-input{
+	width: 100%;
+	height: 100px;
+	resize: none;
+}
+.edit-text-panel{
+	position: relative;
+}
+.add-remove-btn{
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+.add-remove-btn .btn{
+	font-size: 12px;
+}
+.layer-order{
+	
+}
+.layer-order .btn{
+	font-size: 12px;
+	display: block;
+	margin: 10px;
+}
+
+/* design notes */
+.text-design-notes{
+	width: 100%;
+	height: 315px;
+	resize: none;
 }

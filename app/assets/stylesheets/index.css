@@ -6,7 +6,7 @@
 	text-align: center;
 }
 .slider{
-	background: url(../img/mac-book.png) center no-repeat; 
+	background: url(/assets/mac-book.png) center no-repeat; 
 	width: 100%;
 	height: 440px;
 	position: relative;
@@ -29,7 +29,7 @@
 }
 .desc i{
 	padding: 0px 18px;
-	background: url(../img/banner-icons.png) no-repeat top left;
+	background: url(/assets/banner-icons.png) no-repeat top left;
 }
 .templates i{
 	background-position: -36px 0px;
@@ -169,11 +169,11 @@
 }
 
 .choose-design .icons{
-	background: url(../img/design-icon.png);
+	background: url(/assets/design-icon.png);
 }
 .add-photo .icons{
-	background: url(../img/photo-icon.png);
+	background: url(/assets/photo-icon.png);
 }
 .save-icon .icons{
-	background: url(../img/save-icon.png);
+	background: url(/assets/save-icon.png);
 }

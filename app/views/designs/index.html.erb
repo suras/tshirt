@@ -1,0 +1,341 @@
+  <%= stylesheet_link_tag  "editor", :media => "all" %>
+<section class="editor">
+		<div class="container">
+			<div class="editor-box">
+				<div class="left-side">
+					<div class="about-product">
+						<div class="product">
+							<div class="title">Product :</div>
+							<div class="desc">Cotton tshirt xxl</div>
+							<a class="edit-link" href="#">edit</a>
+						</div>
+						<div class="decoration">
+							<div class="title">Decoration :</div>
+							<div class="desc">Screen Print :0 color front, 0 color back</div>
+							<a class="edit-link" href="#">edit</a>
+						</div>
+					</div>
+					<div class="main-canvas">
+						<canvas></canvas>
+					</div>
+					<div class="canvas-operation">
+						<a href="#" class="rotate">
+							<div class="img-icon">
+							</div>
+							<div>Rotate</div>
+						</a>
+						<a href="#" class="zoom">
+							<div class="img-icon">
+							</div>
+							<div>Zoom</div>
+						</a>
+						<a href="#" class="calculate">
+							<div>CALCULATE PRICE &amp;</div>
+							<div>ADD TO CART</div>
+						</a>
+						<a href="#" class="pull-right clear">
+							<div class="img-icon">
+							</div>
+							<div>Clear</div>
+						</a>
+					</div>
+				</div>
+				<div class="right-side">
+					<div class="welcome-msg">
+						<p>Welcome to the <i>Mobby</i>art design tool</p>
+						<p>Get started designing! choose your option below</p>
+					</div>
+
+					<div class="tab-content-box">
+						<div class="single-content-box">
+							<div class="single-panel add-image hide">
+								<div class="inner-tabs">
+									<a href="" class="clip-art current" data-show="clip-arts">
+										Clip arts
+									</a>
+									<a href="" class="upload-image" data-show="upload-image">
+										Upload Images
+									</a>
+									<a href="" class="my-images" data-show="my-images">
+										My Images
+									</a>
+								</div>
+								<div class="inner-tab-content">
+									<div class="clip-arts">
+										<div class="clip-art-category">
+										<%= get_categories()%>
+											<!-- <a href="" class="current">Banners</a>
+											<a href="">Banners</a>
+											<a href="">Banners</a>
+											<a href="">Banners</a>
+											<a href="">Banners</a>
+											<a href="">Banners</a>
+											<a href="">Banners</a>
+											<a href="">Banners</a>
+											<a href="">Banners</a>
+											<a href="">Banners</a> -->
+										</div>
+										<div class="clip-art-list">
+										    <%= get_category()%>
+											<!-- <img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt=""> -->
+										</div>
+									</div>
+									<div class="my-images hide">
+										<div class="my-image-list">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+											<img src="assets/logo.png" alt="">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="single-panel add-text hide">
+								<div class="new-text-panel hide">
+									<div class="title"><span>ENTER </span>YOUR TEXT</div>
+									<div class="details">
+										<textarea class="text-input" id="text_input" name="text_input"></textarea>
+										<div class="title">
+											<span>Font </span> 
+											<select name="">
+												<option value="">Font style</option>
+												<option value="">Font style</option>
+												<option value="">Font style</option>
+												<option value="">Font style</option>
+												<option value="">Font style</option>
+												<option value="">Font style</option>
+											</select>
+											<button id="create-text" class="btn btn-danger pull-right">Create</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="edit-text-panel">
+									<div class="title"><span>EDIT </span>YOUR TEXT</div>
+									<div class="add-remove-btn">
+										<div class="add-new-text btn btn-info">
+											<i class="icon-plus"></i>
+											Add New Text
+										</div>
+										<div class="delete-new-text btn btn-warning">
+											<i class="icon-remove"></i>
+											Delete Text
+										</div>
+									</div>
+									<div class="details">
+										<textarea class="text-input" id="text_input" name="text_input">Old Text</textarea>
+										<div class="title">
+											<span>Font </span> 
+											<select name="">
+												<option value="">Font style</option>
+												<option value="">Font style</option>
+												<option value="">Font style</option>
+												<option selected="selected" value="">selected style</option>
+												<option value="">Font style</option>
+												<option value="">Font style</option>
+											</select>
+											<button id="create-text" class="btn btn-danger pull-right">Create</button>
+										</div>
+										<div class="title">
+											<span>color </span> <button id="text-color" class="btn ">Select Color</button>
+										</div>
+										<div class="title">
+											<span>layer </span> order
+										</div>
+										<div class="layer-order">
+											<button id="bring-to-front" class="btn">bring to front</button>
+											<button id="bring-forward" class="btn">bring forward</button>
+											<button id="send-backward" class="btn">send backward</button>
+											<button id="send-to-back" class="btn">send to back</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="single-panel design-notes">
+								<div class="title">
+									<span>Add </span>design notes
+								</div>
+								<div class="details">
+									Use the field bellow to enter the design notes, or special instructions to printing your order and etc.
+								</div>
+								<textarea name="text-design-notes" class="text-design-notes" id="text-design-notes"></textarea>
+								<div class="text-center">
+									<button class="btn">Continue Designing</button>
+									<button class="btn">Add &amp; Save Design</button>
+								</div>
+							</div>
+							<div class="single-panel edit-product hide">
+								<div class="header">
+									<div class="title">
+										<span>EDIT </span>YOUR PRODUCT
+									</div>
+									<div class="find-product">find a different product</div>
+								</div>
+								<div class="details">
+									<div class="name">Ultra Cotton Tee</div>
+									<div class="author">by Gildan</div>
+									<div class="sizes"><span>SIZES </span>YXS - 3XL <a href="#">size chart</a></div>
+									<div class="fabric"><span>Fabric </span>100 % cotton</div>
+									<div class="desc"><span>description </span>Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. </a></div>
+								</div>
+								<div class="header">
+									<div class="title">
+										<span>CHANGE </span>YOUR PRODUCT
+									</div>
+									<p>Colors for digital printing (no minimum order)</p>
+									<button class="btn">Click to Select</button>
+
+									<p>Colors for screen printing (12 pieces minimum)</p>
+									<button class="btn">Click to Select</button>
+								</div>
+							</div>
+							<div class="single-panel load-design hide">
+								<div class="header">
+									<div class="title">
+										<span>EDIT </span>YOUR PRODUCT
+									</div>
+									<div class="find-product">find a different product</div>
+								</div>
+								<div class="details">
+									<div class="name">Ultra Cotton Tee</div>
+									<div class="author">by Gildan</div>
+									<div class="sizes"><span>SIZES </span>YXS - 3XL <a href="#">size chart</a></div>
+									<div class="fabric"><span>Fabric </span>100 % cotton</div>
+									<div class="desc"><span>description </span>Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. </a></div>
+								</div>
+								<div class="header">
+									<div class="title">
+										<span>CHANGE </span>YOUR PRODUCT
+									</div>
+									<p>Colors for digital printing (no minimum order)</p>
+									<button class="btn">Click to Select</button>
+
+									<p>Colors for screen printing (12 pieces minimum)</p>
+									<button class="btn">Click to Select</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="operations">
+						<a href="#" class="image" data-show="add-image">
+							<div class="img-icon">
+							</div>
+							<div>Add Image</div>
+						</a>
+						<a href="#" class="text current" data-show="add-text">
+							<div class="img-icon">
+							</div>
+							<div>Add Text</div>
+						</a>
+						<a href="#" class="notes" data-show="design-notes">
+							<div class="img-icon">
+							</div>
+							<div>Design Notes</div>
+						</a>
+						<a href="#" class="edit" data-show="edit-product">
+							<div class="img-icon">
+							</div>
+							<div>Edit Product</div>
+						</a>
+						<a href="#" class="save" data-show="save-design">
+							<div class="img-icon">
+							</div>
+							<div>Save Design</div>
+						</a>
+						<a href="#" class="load" data-show="load-design">
+							<div class="img-icon">
+							</div>
+							<div>Load Design</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(document).on("click",".operations a",function(){
+				var current = this;
+				single_panel = "."+$(current).data("show");
+				if(single_panel != ".save-design"){
+					$(".operations").find(".current").removeClass("current");
+					$(this).addClass("current");
+
+					$(".single-panel").each(function(){
+						$(this).hide();
+					});
+					$(single_panel).show();
+				}
+				return false;
+			});
+
+			$(document).on("click",".clip-art-category a",function(){
+				var current = this;
+				$(".clip-art-category").find(".current").removeClass("current");
+				$(this).addClass("current");
+				return false;
+			});
+
+			$(document).on("click",".inner-tabs a",function(){
+				var current = this;
+				inner_tab = "."+$(current).data("show");
+				if(inner_tab != ".upload-image"){
+					$(".inner-tabs").find(".current").removeClass("current");
+					$(this).addClass("current");
+
+					$(".inner-tab-content>div").each(function(){
+						$(this).hide();
+					});
+					$(inner_tab).show();
+				}
+				return false;
+			});
+
+		});
+</script>
