@@ -27,7 +27,7 @@ RailsAdmin.config do |config|
       end
     end
   end
-
+  
    
   # Set the admin name here (optional second array element will appear in red). For example:
   config.main_app_name = ['Tshirt', 'Admin']
@@ -37,6 +37,17 @@ RailsAdmin.config do |config|
   # RailsAdmin may need a way to know who the current user is]
   config.current_user_method { current_user } # auto-generated
   config.authorize_with :cancan
+
+
+
+
+   config.model Coupon do
+    list do 
+      field :code
+      field :discount
+    end
+   
+  end
 
 
    
