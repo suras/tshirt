@@ -7,7 +7,7 @@ class Ability
     can :access, :rails_admin
     can :dashboard 
 
-    can :manage, [User, Design, DesignCategory, Price, ProductAttribute, Order, OrderDetail, Product, Coupon, Category]
+    can :manage, [User, Image ,Design, DesignCategory, Price, ProductAttribute, Order, OrderDetail, Product, Coupon, Category]
     # if(user.user_type == "admin")
     #     can :manage, :all
      

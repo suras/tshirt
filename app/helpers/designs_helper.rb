@@ -11,6 +11,7 @@ module DesignsHelper
 
 
 	def get_category()
+		return " " unless DesignCategory.first.present?
        design_category = DesignCategory.first
        design_images = design_category.designs
        images = generate_image_links(design_images)
@@ -19,12 +20,22 @@ module DesignsHelper
 	end
 
 
-	def generate_image_links(design_images) 
+
+	def get_my_images()
+		my_images = current_user.images
+       images = generate_image_links(my_images)
+   end
+
+
+	def generate_image_links(images) 
     img_src = ""
-    design_images.each do |design_image|
+    images.each do |design_image|
       img_src << "<img src="+design_image.image.url+ "/>"
     end
     img_src.html_safe
     
   end
+
+
+
 end

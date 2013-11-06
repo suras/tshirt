@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_many :authentications
+  has_many :images, :as => :thing
 
   #validates :email, presence: { message: "Please enter your email" }
 
