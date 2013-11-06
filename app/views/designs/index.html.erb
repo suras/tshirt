@@ -1,4 +1,6 @@
   <%= stylesheet_link_tag  "editor", :media => "all" %>
+<%= javascript_include_tag  "jquery.min","canvas/all","canvas/html2canvas"   %>
+
 <section class="editor">
 		<div class="container">
 			<div class="editor-box">
@@ -16,7 +18,8 @@
 						</div>
 					</div>
 					<div class="main-canvas">
-						<canvas></canvas>
+						<canvas id="pcanvas" width="350" height="420"></canvas>
+						<img class="hide" src="<%= @default_image %>" id="main_image">
 					</div>
 					<div class="canvas-operation">
 						<a href="#" class="rotate">
@@ -33,7 +36,7 @@
 							<div>CALCULATE PRICE &amp;</div>
 							<div>ADD TO CART</div>
 						</a>
-						<a href="#" class="pull-right clear">
+						<a href="#" id="clear_canvas" class="pull-right clear">
 							<div class="img-icon">
 							</div>
 							<div>Clear</div>
@@ -50,13 +53,13 @@
 						<div class="single-content-box">
 							<div class="single-panel add-image hide">
 								<div class="inner-tabs">
-									<a href="" class="clip-art current" data-show="clip-arts">
+									<a href="" class="open-popup clip-art current" data-show="clip-arts">
 										Clip arts
 									</a>
-									<a href="" class="upload-image" data-show="upload-image">
+									<a href="" class="open-popup upload-image" data-show="upload-image">
 										Upload Images
 									</a>
-									<a href="" class="my-images" data-show="my-images">
+									<a href="" class="open-popup my-images" data-show="my-images" data-popup="checkout">
 										My Images
 									</a>
 								</div>
@@ -64,76 +67,30 @@
 									<div class="clip-arts">
 										<div class="clip-art-category">
 										<%= get_categories()%>
-											<!-- <a href="" class="current">Banners</a>
-											<a href="">Banners</a>
-											<a href="">Banners</a>
-											<a href="">Banners</a>
-											<a href="">Banners</a>
-											<a href="">Banners</a>
-											<a href="">Banners</a>
-											<a href="">Banners</a>
-											<a href="">Banners</a>
-											<a href="">Banners</a> -->
 										</div>
-										<div class="clip-art-list">
+										<div id="clip_art" class="clip-art-list">
 										    <%= get_category()%>
-											<!-- <img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt=""> -->
 										</div>
 									</div>
 									<div class="my-images hide">
 										<div class="my-image-list">
 										<%= get_my_images()%>
-											<!-- <img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt="">
-											<img src="assets/logo.png" alt=""> -->
 										</div>
 									</div>
 								</div>
 							</div>
+
+							<div class="single-panel add-product hide">
+		 						<div class="product-category">
+		 							<div class="product-art-category">
+		 								<%= get_product_categories()%>
+		 							</div>
+		 							<div class="product-art-list">
+		 								<%= get_default_product_category_images%>
+		 							</div>
+		 						</div>
+		 					</div>
+
 							<div class="single-panel add-text hide">
 								<div class="new-text-panel hide">
 									<div class="title"><span>ENTER </span>YOUR TEXT</div>
@@ -167,7 +124,7 @@
 										</div>
 									</div>
 									<div class="details">
-										<textarea class="text-input" id="text_input" name="text_input">Old Text</textarea>
+										<textarea class="text-input" id="text_value" name="text_input">Old Text</textarea>
 										<div class="title">
 											<span>Font </span> 
 											<select name="">
@@ -213,7 +170,10 @@
 									<div class="title">
 										<span>EDIT </span>YOUR PRODUCT
 									</div>
-									<div class="find-product">find a different product</div>
+									<a href="#" class="p-image" data-show="add-product">
+		 								
+		 								<div class="find-product">find a different product</div>
+		 							</a>
 								</div>
 								<div class="details">
 									<div class="name">Ultra Cotton Tee</div>
@@ -227,10 +187,30 @@
 										<span>CHANGE </span>YOUR PRODUCT
 									</div>
 									<p>Colors for digital printing (no minimum order)</p>
-									<button class="btn">Click to Select</button>
+									<ul class="nav">
+										<li style="background-color:#ffffff;" title="White" class="color-preview"></li>
+										<li style="background-color:#616161;" title="Dark Heather" class="color-preview"></li>
+										<li style="background-color:#f0f0f0;" title="Gray" class="color-preview"></li>
+										<li style="background-color:#5b5b5b;" title="Charcoal" class="color-preview"></li>
+										<li style="background-color:#222222;" title="Black" class="color-preview"></li>
+										<li style="background-color:#fc8d74;" title="Heather Orange" class="color-preview"></li>
+										<li style="background-color:#432d26;" title="Heather Dark Chocolate" class="color-preview"></li>
+										<li style="background-color:#eead91;" title="Salmon" class="color-preview"></li>
+										<li style="background-color:#806355;" title="Chesnut" class="color-preview"></li>
+										<li style="background-color:#382d21;" title="Dark Chocolate" class="color-preview"></li>
+										<li style="background-color:#faef93;" title="Citrus Yellow" class="color-preview"></li>
+										<li style="background-color:#aeba5e;" title="Avocado" class="color-preview"></li>
+										<li style="background-color:#8aa140;" title="Kiwi" class="color-preview"></li>
+										<li style="background-color:#1f6522;" title="Irish Green" class="color-preview"></li>
+										<li style="background-color:#13afa2;" title="Scrub Green" class="color-preview"></li>
+										<li style="background-color:#b8d5d7;" title="Teal Ice" class="color-preview"></li>
+										<li style="background-color:#15aeda;" title="Heather Sapphire" class="color-preview"></li>
+										<li style="background-color:#a5def8;" title="Sky" class="color-preview"></li>
+										<li style="background-color:#0f77c0;" title="Antique Sapphire" class="color-preview"></li>
+										<li style="background-color:#3469b7;" title="Heather Navy" class="color-preview"></li>							
+										<li style="background-color:#c50404;" title="Cherry Red" class="color-preview"></li>
+									</ul>
 
-									<p>Colors for screen printing (12 pieces minimum)</p>
-									<button class="btn">Click to Select</button>
 								</div>
 							</div>
 							<div class="single-panel load-design hide">
@@ -297,15 +277,202 @@
 			</div>
 		</div>
 	</section>
-	
+
+	<!-- popup contents -->
+	<div class="custom-popup hide">
+		<div class="popup-header">
+			<div class="title">Save Design</div>
+			<img class="close" src="img/close-popup.png">
+		</div>
+		<div class="popup-content">
+		</div>
+	</div>
+
+	<div class="save-design hide">
+		<div class="notice">
+			<i class="icon-ok"></i> Your design has been saved! What would u like to do next?
+		</div>
+		<div class="popup-btns">
+			<img src="img/save-design/continue-designing.png">
+			<img src="img/save-design/checkout.png">
+		</div>
+	</div>
+
+	<div class="upload-image hide">
+		<div>
+			<input type="file" name="own_image_upload" id="own_image_upload" class="own_image_upload">
+		</div>
+		<div>
+			<input type="checkbox" name="agree" id="agree" class="agree">
+			I acknowledge that I own the copyright to this image or that  i have obtained written permission from the copyright holder to reproduce this image.
+		</div>
+		<button class="btn">Upload File</button>
+		<div class="popup-info">
+			<p><b>Allowed file types : </b> jpg, gif, png, pdf, eps</p>
+			<p><b>Maximum File Size: </b> 5MB</p>
+		</div>
+		<hr>
+		<img class="trigger-close pull-right" src="img/upload-img/cancel-btn.png">
+		<div class="clearfix"></div>
+	</div>
+	<div class="checkout hide">
+		
+		<div class="quantities">
+			<div class="head">Quantities</div>
+			<div class="sizes">
+				<div class="single-size">
+					<label>YXS</label>
+					<input type="number" name="size_yxs" id="size_yxs" class="size_yxs">
+				</div>
+				<div class="single-size">
+					<label>ys</label>
+					<input type="number" name="size_ys" id="size_ys" class="size_ys">
+				</div>
+				<div class="single-size">
+					<label>ym</label>
+					<input type="number" name="size_ym" id="size_ym" class="size_ym">
+				</div>
+				<div class="single-size">
+					<label>yl</label>
+					<input type="number" name="size_yl" id="size_yl" class="size_yxs">
+				</div>
+				<div class="single-size">
+					<label>yxl</label>
+					<input type="number" name="size_yxl" id="size_yxl" class="size_yxl">
+				</div>
+				<div class="single-size">
+					<label>s</label>
+					<input type="number" name="size_s" id="size_s" class="size_s">
+				</div>
+				<div class="single-size">
+					<label>m</label>
+					<input type="number" name="size_m" id="size_m" class="size_m">
+				</div>
+				<div class="single-size">
+					<label>l</label>
+					<input type="number" name="size_l" id="size_l" class="size_l">
+				</div>
+				<div class="single-size">
+					<label>xl</label>
+					<input type="number" name="size_xl" id="size_xl" class="size_xl">
+				</div>
+				<div class="single-size">
+					<label>xxl</label>
+					<input type="number" name="size_xxl" id="size_xxl" class="size_xxl">
+				</div>
+				<div class="single-size">
+					<label>3xl</label>
+					<input type="number" name="size_3xl" id="size_3xl" class="size_3xl">
+				</div>
+				<div class="single-size">
+					<label>4xl</label>
+					<input type="number" name="size_4xl" id="size_4xl" class="size_4xl">
+				</div>
+				<div class="single-size">
+					<label>5xl</label>
+					<input type="number" name="size_5xl" id="size_5xl" class="size_5xl">
+				</div>
+			</div>
+		</div>
+		<div class="refer-code">
+			<div class="head">Reference code (leave empty if not)</div>
+			<input type="text" class="ref-code" name="ref-code" id="ref-code">
+			<div class="hint">if you have discount or coupon code, enter it here.</div>
+		</div>
+		<img src="img/checkout/re-calculate.png" class="re-calculate">
+		<div class="notice-success">
+			<div class="sub-title">Final Review</div>
+			<div class=""><b>Shipping : </b>Rs. 213</div>
+			<div class=""><b>Coupon : </b>Rs. 213</div>
+			<div class=""><b>Order Total : </b>Rs. 213</div>
+			<img src="img/checkout/checkout-btn.png" class="checkout-btn">
+		</div>
+		<div class="clearfix"></div>
+	</div>
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$(document).on("click",".operations a",function(){
+
+			var canvas,imgElement,imgInstance,zoomIn;
+			canvas = new fabric.Canvas('pcanvas');
+			imgElement = document.getElementById('main_image');
+			zoomIn= false;
+			imgInstance = new fabric.Image(imgElement, {
+			  left: 175,
+			  top: 210,
+			  opacity: 0.85,
+			  width:355,
+			  height:425
+			});
+			canvas.add(imgInstance);
+			canvas.item(0).lockMovementX = true;
+			canvas.item(0).lockMovementY = true;
+
+
+			$(document).on("click",".zoom",function(e){
+				e.preventDefault();
+				var scaleX = zoomIn ? canvas.item(0).scaleX-1 : canvas.item(0).scaleX+1;
+				var scaleY = zoomIn ? canvas.item(0).scaleY-1 : canvas.item(0).scaleY+1;
+				canvas.item(0).lockMovementX = false;
+				canvas.item(0).lockMovementY = false;
+				canvas.item(0).scaleX = scaleX;
+				canvas.item(0).scaleY = scaleY;
+				canvas.item(0).setCoords();
+				
+				canvas.item(0).lockMovementX = true;
+				canvas.item(0).lockMovementY = true;
+				canvas.renderAll();
+				zoomIn = !zoomIn;	
+			});
+
+			$(document).on("click",".color-preview",function(e){
+				var color = $(this).css('background-color')
+				console.log(color)
+				$('#pcanvas').css({'background':color})	
+			});
+
+
+			$(document).on("click","#clear_canvas",function(e){
+			    e.preventDefault();
+			    canvas.clear()
+			    $('#pcanvas').css({'background':''})	
+			    var imgInstance = new fabric.Image(imgElement, {
+				  left: 175,
+				  top: 210,
+				  opacity: 0.85,
+				  width:355,
+				  height:425
+				});
+				canvas.add(imgInstance);
+				canvas.item(0).lockMovementX = true;
+				canvas.item(0).lockMovementY = true;
+			});
+
+			$(document).on("click","#clip_art img",function(e){
+				var url = $(this).attr('src')
+			    fabric.Image.fromURL(url, function(image) {
+				    image.set({
+			          left: 120,
+			          top: 150,
+			          cornersize: 10
+			        });
+			        image.scale(0.2).setCoords();
+					canvas.add(image);
+				});
+			});
+
+			$(document).on("click",".add-new-text",function(e){
+				var text = $('#text_value').val()
+				var addText = new fabric.Text(text, { left: 120, top: 150 });
+  				canvas.add(addText);
+			});
+
+			$(document).on("click",".operations a,.p-image",function(){
 				var current = this;
 				single_panel = "."+$(current).data("show");
 				if(single_panel != ".save-design"){
 					$(".operations").find(".current").removeClass("current");
+					$(".p-image").removeClass("current");
 					$(this).addClass("current");
 
 					$(".single-panel").each(function(){
@@ -337,6 +504,46 @@
 				}
 				return false;
 			});
+
+			$(document).on("click",".open-popup",function(){
+				var popup_content = "." + $(this).data("popup");
+				var popup_title = $(this).data("title");
+				append_overlay();
+				$(".custom-popup").find(".popup-header .title").html(popup_title);
+				$(".custom-popup").find(".popup-content").html($(popup_content).html());
+				$(".custom-popup").show();
+				$(".custom-popup").addClass("down-popup");
+			});
+
+			function append_overlay () {
+				var docHeight = $(document).height();
+
+				$("body").append("<div id='overlay'></div>");
+
+				$("#overlay")
+				.height(docHeight)
+				.css({
+					'opacity' : 0.4,
+					'position': 'absolute',
+					'top': 0,
+					'left': 0,
+					'background-color': 'black',
+					'width': '100%',
+					'z-index': 1000
+				});
+			}
+
+			$(document).on("click","#overlay,.trigger-close",function(){
+				$(".custom-popup .close").trigger("click");
+			});
+
+			$(document).on("click",".custom-popup .close",function(){
+				var current_obj = this;
+				$("#overlay").remove();
+				$(".custom-popup").removeClass("down-popup");
+				$(".custom-popup").hide();
+			});
+		
 
 		});
 </script>

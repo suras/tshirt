@@ -1,6 +1,6 @@
 class DesignsController < ApplicationController
   def index
-
+    @default_image = Product.first.image.url
 
   end
 
