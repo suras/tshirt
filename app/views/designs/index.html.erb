@@ -55,13 +55,13 @@
 						<div class="single-content-box">
 							<div class="single-panel add-image hide">
 								<div class="inner-tabs">
-									<a href="" class="open-popup clip-art current" data-show="clip-arts">
+									<a href="" class="clip-art current" data-show="clip-arts">
 										Clip arts
 									</a>
-									<a href="" class="open-popup upload-image" data-show="upload-image">
+									<a href="" data-title="Upload My Own Image" data-popup="upload-image-popup" class="open-popup upload-image" data-show="upload-image">
 										Upload Images
 									</a>
-									<a href="" class="open-popup my-images" data-show="my-images" data-popup="checkout">
+									<a href="" class="my-images" data-show="my-images" >
 										My Images
 									</a>
 								</div>
@@ -286,7 +286,7 @@
 	<div class="custom-popup hide">
 		<div class="popup-header">
 			<div class="title">Save Design</div>
-			<img class="close" src="img/close-popup.png">
+			<img class="close" src="/assets/close-popup.png">
 		</div>
 		<div class="popup-content">
 		</div>
@@ -297,26 +297,26 @@
 			<i class="icon-ok"></i> Your design has been saved! What would u like to do next?
 		</div>
 		<div class="popup-btns">
-			<img src="img/save-design/continue-designing.png">
-			<img src="img/save-design/checkout.png">
+			<img src="/assets/save-design/continue-designing.png">
+			<img src="/assets/save-design/checkout.png">
 		</div>
 	</div>
 
-	<div class="upload-image hide">
-		<div>
-			<input type="file" name="own_image_upload" id="own_image_upload" class="own_image_upload">
-		</div>
+	<div class="upload-image-popup hide">
+		
+			<input type="file" name="own_image_upload" id="own_image_upload" class="own_image_upload hide">
+		
 		<div>
 			<input type="checkbox" name="agree" id="agree" class="agree">
-			I acknowledge that I own the copyright to this image or that  i have obtained written permission from the copyright holder to reproduce this image.
+			<span id="agree_text">I acknowledge that I own the copyright to this image or that  i have obtained written permission from the copyright holder to reproduce this image.</span>
 		</div>
-		<button class="btn">Upload File</button>
+		<button id="upload_img" class="btn">Upload File</button>
 		<div class="popup-info">
 			<p><b>Allowed file types : </b> jpg, gif, png, pdf, eps</p>
 			<p><b>Maximum File Size: </b> 5MB</p>
 		</div>
 		<hr>
-		<img class="trigger-close pull-right" src="img/upload-img/cancel-btn.png">
+		<img class="trigger-close pull-right" src="/assets/upload-img/cancel-btn.png">
 		<div class="clearfix"></div>
 	</div>
 	<div class="checkout hide">
@@ -383,13 +383,13 @@
 			<input type="text" class="ref-code" name="ref-code" id="ref-code">
 			<div class="hint">if you have discount or coupon code, enter it here.</div>
 		</div>
-		<img src="img/checkout/re-calculate.png" class="re-calculate">
+		<img src="/assets/checkout/re-calculate.png" class="re-calculate">
 		<div class="notice-success">
 			<div class="sub-title">Final Review</div>
 			<div class=""><b>Shipping : </b>Rs. 213</div>
 			<div class=""><b>Coupon : </b>Rs. 213</div>
 			<div class=""><b>Order Total : </b>Rs. 213</div>
-			<img src="img/checkout/checkout-btn.png" class="checkout-btn">
+			<img src="/assets/checkout/checkout-btn.png" class="checkout-btn">
 		</div>
 		<div class="clearfix"></div>
 	</div>
@@ -435,6 +435,44 @@
 				$('#pcanvas').css({'background':color})	
 			});
 
+
+			$(document).on("click","#upload_img",function(e){
+				if(!$('#agree').is(':checked')){
+					$('#agree_text').css({'color':'red'});
+					return false;
+				}
+				$('#agree_text').css({'color':''});
+				$('#own_image_upload').trigger('click')
+        
+		        
+
+		    
+			});
+
+		$(document).on("change","#own_image_upload",function(e){
+
+			var file = evt.target.files[0]
+		        // Mercury.uploader(evt.target.files[0])
+		        var formData = new FormData()
+		        
+		        if(typeof formData=="object"){
+		            formData.append('image[image]',file)
+		            $.ajax({
+		                        type: "POST",
+		                        url: '/save_user_images',
+		                        data: formData,
+		                        processData: false,
+		                        contentType: false,
+		                        success: function (data) {
+		                            //$('#profile_pic').attr('src',data.url)
+		                        },
+		                        error: function (data) {
+		                            //console.log(data)
+		                        }
+		            });
+		        }
+
+		    });
 
 			$(document).on("click","#clear_canvas",function(e){
 			    e.preventDefault();
