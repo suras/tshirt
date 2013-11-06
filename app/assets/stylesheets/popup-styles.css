@@ -92,6 +92,8 @@
 .popup-btns{
 	margin-top: 10px;
 }
+
+
 .popup-info{
 	background: #eee;
 	padding: 10px !important;
@@ -100,10 +102,11 @@
 .popup-info p{
 	margin: 0px;
 }
-.trigger-close{
-	box-shadow: 0px 0px 5px #000;
+.trigger-close,.popup-btns img{
 	cursor: pointer;
 }
+
+
 .overlay{
 	position: absolute;
 }
