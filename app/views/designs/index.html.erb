@@ -1,5 +1,6 @@
 
   <%= stylesheet_link_tag  "editor", :media => "all" %>
+  <%= stylesheet_link_tag  "popup-styles", :media => "all" %>
 
 <%= javascript_include_tag  "jquery.min","canvas/all","canvas/html2canvas"   %>
 
@@ -266,7 +267,7 @@
 							</div>
 							<div>Edit Product</div>
 						</a>
-						<a href="#" class="save" data-show="save-design">
+						<a href="#" class="save open-popup" data-popup="save-design" data-title="Save Design" data-show="save-design">
 							<div class="img-icon">
 							</div>
 							<div>Save Design</div>
@@ -297,8 +298,8 @@
 			<i class="icon-ok"></i> Your design has been saved! What would u like to do next?
 		</div>
 		<div class="popup-btns">
-			<img src="/assets/save-design/continue-designing.png">
-			<img src="/assets/save-design/checkout.png">
+			<img id="continue" src="/assets/save-design/continue-designing.png">
+			<img id="checkout" src="/assets/save-design/checkout.png">
 		</div>
 	</div>
 
@@ -446,15 +447,41 @@
 				$('#agree_text').css({'color':''});
 				$('#own_image_upload').trigger('click')
         
-		        
+		    });
 
-		    
+		    $(document).on("click",".save",function(e){
+				html2canvas(document.getElementById('pcanvas'), {
+				  onrendered: function(canvas) {
+				    //document.body.appendChild(canvas);
+				    window.open(canvas.toDataURL("image/png"));
+    
+				  }
+				});
+      			window.open(canvas.toDataURL('png'));
+    
+		    });
+
+
+			$(document).on("click",".delete-new-text",function(evt){
+
+			    var activeObject = canvas.getActiveObject(),
+			    activeGroup = canvas.getActiveGroup();
+			    if (activeGroup) {
+			      var objectsInGroup = activeGroup.getObjects();
+			      canvas.discardActiveGroup();
+			      objectsInGroup.forEach(function(object) {
+			        canvas.remove(object);
+			      });
+			    }
+			    else if (activeObject) {
+			      canvas.remove(activeObject);
+			    }
 			});
 
-		$(document).on("change","#own_image_upload",function(evt){
+			$(document).on("change","#own_image_upload",function(evt){
 
-			var file = evt.target.files[0]
-		        // Mercury.uploader(evt.target.files[0])
+				var file = evt.target.files[0]
+		        
 		        var formData = new FormData()
 		        
 		        if(typeof formData=="object"){
@@ -578,9 +605,11 @@
 				});
 			}
 
-			$(document).on("click","#overlay,.trigger-close",function(){
+			$(document).on("click","#overlay,.trigger-close,#continue",function(){
 				$(".custom-popup .close").trigger("click");
 			});
+
+
 
 			$(document).on("click",".custom-popup .close",function(){
 				var current_obj = this;
@@ -588,7 +617,8 @@
 				$(".custom-popup").removeClass("down-popup");
 				$(".custom-popup").hide();
 			});
-		
+
+				
 
 		});
 </script>
