@@ -1,5 +1,5 @@
 class DesignsController < ApplicationController
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
   def index
     @default_image = Product.first.image.url
 
@@ -28,9 +28,11 @@ class DesignsController < ApplicationController
 
 
   def save_user_images
-    @image = current_user.images.new(:image => params[:image])
+    #@image = Image.create(:image => params[:image])
+    #@image = current_user.images.new(:image => params[:image])
     respond_to do |format|
-      if(@image.save)
+      if(@image = Image.create(:image => params[:image]))
+        current_user.images << @image
         format.js {render :text => @image.image.url}
 
         else

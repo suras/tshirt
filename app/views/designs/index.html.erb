@@ -451,14 +451,14 @@
 		    
 			});
 
-		$(document).on("change","#own_image_upload",function(e){
+		$(document).on("change","#own_image_upload",function(evt){
 
 			var file = evt.target.files[0]
 		        // Mercury.uploader(evt.target.files[0])
 		        var formData = new FormData()
 		        
 		        if(typeof formData=="object"){
-		            formData.append('image[image]',file)
+		            formData.append('image',file)
 		            $.ajax({
 		                        type: "POST",
 		                        url: '/save_user_images',
