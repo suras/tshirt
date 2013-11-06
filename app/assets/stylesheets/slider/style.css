@@ -34,7 +34,7 @@
 	position:absolute;
 	top:10px;
 	right:10px;
-	background:#fff url(../img/cross.png) no-repeat center center;
+	background:#fff url(../assets/cross.png) no-repeat center center;
 	width:27px;
 	height:27px;
 	text-indent:-9000px;
@@ -65,7 +65,7 @@
 	height:189px;
 	position:relative;
 	margin:0 auto;
-	background:transparent url(../img/animal1.png) no-repeat center center;
+	background:transparent url(../assets/animal1.png) no-repeat center center;
 }
 
 .ca-item h3{
@@ -160,7 +160,7 @@
 .ca-nav span{
 	width:25px;
 	height:38px;
-	background:transparent url(../../img/arrows.png) no-repeat top left;
+	background:transparent url(../../assets/arrows.png) no-repeat top left;
 	position:absolute;
 	top:50%;
 	margin-top:-19px;

@@ -1,4 +1,5 @@
 class DesignsController < ApplicationController
+  before_filter :authenticate_user!
   def index
     @default_image = Product.first.image.url
 
@@ -22,6 +23,20 @@ class DesignsController < ApplicationController
       img_src << "<img src="+design_image.image.url+ "/>"
     end
     img_src.html_safe
+  end
+
+
+
+  def save_user_images
+    @image = current_user.images.new(:image => params[:image])
+    respond_to do |format|
+      if(@image.save)
+        format.js {render :text => @image.image.url}
+
+        else
+         format.js {render :text => "Error Uploading"}
+      end
+    end
   end
 
 end
