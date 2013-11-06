@@ -28,11 +28,12 @@ module RailsAdmin
         register_instance_option :controller do
           Proc.new do 
             nos = params[:nos].to_i
+            discount = params[:discount].to_i
             if(nos > 0 && nos < 501)  
                 
                 nos.times do |n|
                   code = rand(5999999)
-                 Coupon.create(:code => code)
+                 Coupon.create(:code => code, :discount => discount)
                  
 
                 end

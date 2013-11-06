@@ -314,34 +314,34 @@
 .inner-tab-content{
 	padding-top: 10px;
 }
-.clip-arts{
+.clip-arts, .product-arts{
 
 }
-.clip-art-category{
+.clip-art-category, .product-art-category{
 	height: 100px;
 	overflow-y: auto;
 }
-.clip-art-category a{
+.clip-art-category a, .product-art-category a{
 	display: inline-block;
 	width: 30%;
 }
-.clip-art-category a.current{
+.clip-art-category a.current, .product-art-category a.current{
 	color: #ee5b38;
 }
-.clip-art-list{
-	height: 245px;
+.clip-art-list, .product-art-list{
+	height: 300px;
 	overflow-y: auto;
 	background: #fff;
 	outline: 1px dashed #ddd;
 }
-.clip-art-list img{
+.clip-art-list img, .product-art-list img{
 	border: 1px solid #000;
 	height: 50px;
 	width: 50px;
 	margin: 10px;
 	cursor: pointer;
 }
-.clip-art-list img:hover{
+.clip-art-list img:hover, .product-art-list img:hover{
 	box-shadow: 0px 0px 25px -3px #000;
 }
 

@@ -1,4 +1,6 @@
+
   <%= stylesheet_link_tag  "editor", :media => "all" %>
+
 <%= javascript_include_tag  "jquery.min","canvas/all","canvas/html2canvas"   %>
 
 <section class="editor">
@@ -69,7 +71,9 @@
 										<%= get_categories()%>
 										</div>
 										<div id="clip_art" class="clip-art-list">
-										    <%= get_category()%>
+
+										    <%= get_default_category_images()%>
+
 										</div>
 									</div>
 									<div class="my-images hide">
@@ -463,6 +467,7 @@
 
 			$(document).on("click",".add-new-text",function(e){
 				var text = $('#text_value').val()
+
 				var addText = new fabric.Text(text, { left: 120, top: 150 });
   				canvas.add(addText);
 			});

@@ -1,5 +1,7 @@
 <%= form_tag(@object, :url => '', :method => :post) do %>
  <p>How Many Coupon Codes Needs To Be Generated</p>
  <p><%= text_field_tag 'nos' %></p>
+ <p>Discount For The Coupon</p>
+ <p><%= text_field_tag 'discount' %></p>
   <br><%= submit_tag "Genetate" %>
   <% end %>

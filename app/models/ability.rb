@@ -2,12 +2,13 @@ class Ability
   include CanCan::Ability
    
   def initialize(user)
-    #alias_action :create, :read, :update, :to => :permission1
+    alias_action :edit, :add_coupon,:read, :update, :view, :show, :to => :permission1
     
     can :access, :rails_admin
     can :dashboard 
 
-    can :manage, [User, Image ,Design, DesignCategory, Price, ProductAttribute, Order, OrderDetail, Product, Coupon, Category]
+    can :manage, [User, Image, Design, DesignCategory, Price, ProductAttribute, Order, OrderDetail, Product,  Category]
+    can :permission1, [Coupon]
     # if(user.user_type == "admin")
     #     can :manage, :all
      
