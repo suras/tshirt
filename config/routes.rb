@@ -19,6 +19,7 @@ Tshirt::Application.routes.draw do
   get "/partners", :to => "home#partners", :as => "partners"
   get "/checkout", :to => "orders#new_checkout", :as => "checkout"
   get "/get_product", :to => "products#get_product", :as => "get_product"
+  #get "/products/:category_id", :to => "products#products", :as => "product"
   get "/products", :to => "products#products", :as => "product"
   get "/calculation", :to => "products#calculation"
   get "/save_item", :to => "orders#save_item"
