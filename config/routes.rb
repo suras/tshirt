@@ -9,6 +9,7 @@ Tshirt::Application.routes.draw do
 
 
   root to: 'home#index'
+  get "/designs/:product_id", :to => "designs#index", :as => "designs"
   get "/designs", :to => "designs#index", :as => "designs"
   get "/design_categories", :to => "designs#category", :as => "design_category"
   post "/save_user_images", :to => "designs#save_user_images"
@@ -20,6 +21,7 @@ Tshirt::Application.routes.draw do
   get "/get_product", :to => "products#get_product", :as => "get_product"
   get "/products", :to => "products#products", :as => "product"
   get "/calculation", :to => "products#calculation"
+  get "/save_item", :to => "orders#save_item"
   resources :categories
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
   controllers: {omniauth_callbacks: "authentications", registrations: "registrations"}
