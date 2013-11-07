@@ -46,13 +46,17 @@
 	line-height: 25px;
 }
 .desc-value{
-	margin-left: 35px;
+	margin-left: 25px;
+	width: 250px;
+	text-align: center;
+
 }
 .pointer{
 	position: absolute;
 }
 
 .gallery{
+	width: 275px;
 	left: -60px;
 	top: 30px;
 	-webkit-animation: down-element 2s ease-in-out 1 forwards;
@@ -79,7 +83,7 @@
 	bottom: 90px;
 }
 .interface{
-	right: -50px;
+	right: -70px;
 	bottom: 100px;
 	-webkit-animation: move-right-center 2s ease-in-out 1 forwards;
 	-moz-animation: move-right-center 2s ease-in-out 1 forwards;
@@ -100,6 +104,9 @@
 	line-height: 40px;
 	text-align: center;
 	padding: 20px;
+	font-weight: bolder;
+	letter-spacing: 1px;
+	color: #5ac1d7;
 }
 /* Testimonial */
 

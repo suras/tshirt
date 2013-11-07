@@ -6,7 +6,7 @@
 
 @-o-keyframes move-right-center {
 	0% {
-		-o-transform: translateX(120px)translateY(-450px);
+		-o-transform: translateX(100px)translateY(-450px);
 	}
 	100% {
 		-o-transform: translateX(0px)translateY(0px);

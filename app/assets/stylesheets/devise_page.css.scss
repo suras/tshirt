@@ -1,0 +1,44 @@
+#flash_alert{
+	text-align: center;
+	color: #eb623f;
+}
+.login-page{
+	#error_explanation{
+		margin: 25px 0px;
+		color: red;
+	}
+	.field_with_errors{
+		display: inline-block;
+	}
+	margin: 25px 0px;
+	h2{
+		text-align: center;
+		padding: 10px 0px;
+	}
+	.container{
+		width: 500px;
+	}
+	form{
+		position: relative;
+		label{
+			display: inline-block;
+			width: 150px;
+		}
+		input{
+			height: 30px;
+		}
+		.btn{
+			position: absolute;
+			left: 290px;
+			top: 85px;
+		}
+		.sign-up{
+			left: 285px;
+			top: 120px;
+		}
+		.forget{
+			left: 100px;
+			top: 40px;
+		}
+	}
+}
