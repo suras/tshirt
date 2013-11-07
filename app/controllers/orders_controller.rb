@@ -19,4 +19,10 @@ before_filter :authenticate_user!
         
         session[:order_id] = ""
 	end
+
+
+	def checkout
+
+
+	end
 end
