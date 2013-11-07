@@ -18,6 +18,7 @@ Tshirt::Application.routes.draw do
   get "/checkout", :to => "orders#checkout", :as => "checkout"
   get "/get_product", :to => "products#get_product", :as => "get_product"
   get "/products", :to => "products#products", :as => "product"
+  get "/calculation", :to => "products#calculation"
   resources :categories
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
   controllers: {omniauth_callbacks: "authentications", registrations: "registrations"}
