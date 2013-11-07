@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 	before_filter :authenticate_user!
 	def products
+    @category = Category.all
     if(params[:category_id].present?)
         @products = Product.where(:category_id => params[:category_id])
     else
@@ -9,6 +10,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
      format.json {render :json => {:products => @products}}
      format.js
+     format.html
     end
 	end
 
