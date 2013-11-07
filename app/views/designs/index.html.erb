@@ -100,13 +100,7 @@
 							<div class="edit-text-panel">
 								<div class="text-panel-options">
 									<div class="title"><span>ADD </span>YOUR TEXT</div>
-									<div class="add-remove-btn">
-										<div class="add-new-text btn btn-info">
-											<i class="icon-plus"></i>
-											Add Text
-										</div>
-
-									</div>
+									
 								</div>
 								<div class="details">
 									<div class="text-panel-options">
@@ -130,6 +124,13 @@
 												<option value="plaster">Plaster</option>
 												<option value="engagement">Engagement</option>
 											</select>
+
+										</div>
+										<div class="add-remove-btn">
+											<div class="add-new-text btn btn-info">
+												<i class="icon-plus"></i>
+												Add Text
+											</div>
 
 										</div>
 										<div class="title">
@@ -455,8 +456,9 @@
 		});
 
 		$(document).on("click",".product-art-list img",function(e){
-			//canvas.clear()
+			canvas.clear()
 			$('#main_image').attr('src',$(this).attr('src'))
+			$('#pcanvas').parent().eq(0).show()
 			$('#pcanvas').css({'background':'#ffffff'})	
 			var imgUrl = $('.main-canvas').attr('data-active')=='main' ? $('#main_image').attr('src') : $('#main_image-back').attr('src');
 			fabric.Image.fromURL(imgUrl, function(image) {
@@ -473,6 +475,8 @@
 				canvas.item(0).lockMovementX = true;
 				canvas.item(0).lockMovementY = true;
 			});
+
+
 		});
 
 		$(document).on("click","#clear_canvas",function(e){
@@ -516,7 +520,14 @@
 
 		$(document).on("click",".color-preview",function(e){
 			var color = $(this).css('background-color')
-			$('#pcanvas').css({'background':color})	
+			 if($('.main-canvas').attr('data-active')=='main'){
+				$('#pcanvas').css({'background':color})	
+
+			 }else{
+				$('#pcanvas-back').css({'background':color})	
+
+			 }
+			
 		});
 
 
@@ -535,38 +546,66 @@
 		    if($('.main-canvas').attr('data-active')=='main'){
 		    	html2canvas(document.getElementById('pcanvas'), {
 					onrendered: function(canvas) {
-						canvas.toBlob(function(blob) {
-							saveAs(blob, "front.png");
+						var dataUrl = canvas.toDataURL('image/png');
+						$.ajax({
+						  type: "POST",
+						  url: "/",
+						  data: {image: dataURL,front:JSON.stringify(canvas_front)}
+						}).done(function( respond ) {
+						 	console.log(respond);
 						});
+						
 					}
 				});
+
 				$('#pcanvas-back').parent().eq(0).show();
-				console.log(document.getElementById('pcanvas-back'))
 				html2canvas(document.getElementById('pcanvas-back'), {
 					onrendered: function(canvas) {
-						canvas.toBlob(function(blob) {
-							saveAs(blob, "back.png");
-							$('#pcanvas-back').parent().eq(0).hide();
+						var dataUrl = canvas.toDataURL('image/png');
+						$('#pcanvas-back').parent().eq(0).hide();
+						$.ajax({
+						  type: "POST",
+						  url: "/",
+						  data: {image: dataURL,front:JSON.stringify(canvas_back)}
+						}).done(function( respond ) {
+						 	console.log(respond);
 						});
+						
+						
 					}
 				});
-				//
+				
 
 		    }else{
 		    	html2canvas(document.getElementById('pcanvas-back'), {
 					onrendered: function(canvas) {
-						canvas.toBlob(function(blob) {
-							saveAs(blob, "front.png");
+						$.ajax({
+						  type: "POST",
+						  url: "/",
+						  data: {image: dataURL,front:JSON.stringify(canvas_back)}
+						}).done(function( respond ) {
+						 	console.log(respond);
 						});
+						console.log(JSON.stringify(canvas_back))
 					}
 				});
+
 				$('#pcanvas').parent().eq(0).show();
 				html2canvas(document.getElementById('pcanvas'), {
 					onrendered: function(canvas) {
-						canvas.toBlob(function(blob) {
+						/*canvas.toBlob(function(blob) {
 							saveAs(blob, "back.png");
 							$('#pcanvas').parent().eq(0).hide();
+						});*/
+						var dataUrl = canvas.toDataURL('image/png');
+						$.ajax({
+						  type: "POST",
+						  url: "/",
+						  data: {image: dataURL,front:JSON.stringify(canvas_front)}
+						}).done(function( respond ) {
+						 	console.log(respond);
 						});
+						console.log(JSON.stringify(canvas_front))
 					}
 				});
 				//
