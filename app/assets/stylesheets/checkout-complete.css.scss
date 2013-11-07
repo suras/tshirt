@@ -1,0 +1,66 @@
+.checkout-page{
+	margin-top: 50px;
+}
+.page-title{
+	color: #000;
+	font-size: 25px;
+	line-height: 30px;
+	padding: 10px 0px;
+}
+fieldset{
+	padding: 20px;
+	border: 1px #ddd solid;
+	border-radius: 10px;
+	margin: 15px 0px;
+	position: relative;
+}
+fieldset .title{
+	font-size: 16px;
+	font-weight: bolder;
+	font-style: italic;
+	position: absolute;
+	top: -15px;
+	background: #fff;
+	padding: 0px 5px;
+}
+.field{
+	padding: 5px 0px;
+	padding-left: 30px;
+}
+.field label{
+	display: inline-block;
+	width: 175px;
+}
+.field input{
+	height: 30px;
+	width: 250px;
+}
+.show-shipping-address{
+	margin-left: 183px;
+}
+.show-shipping-address label{
+	display: inline-block;
+}
+.show-shipping-address input{
+	margin: -2px 5px 0px 30px;
+}
+
+.payment-types{
+	
+}
+.payment-types img{
+	width: 150px;
+	border-radius: 5px;
+	margin: 0px 10px;
+	cursor: pointer;
+}
+.payment-types img:hover,.payment-types img.selected{
+	box-shadow: 0px 0px 25px -3px #1F6F83;
+	-webkit-box-shadow: 0px 0px 25px -3px #1F6F83;
+	-moz-box-shadow: 0px 0px 25px -3px #1F6F83;
+	-ms-box-shadow: 0px 0px 25px -3px #1F6F83;
+	-o-box-shadow: 0px 0px 25px -3px #1F6F83;
+}
+.checkout-page .btn{
+	margin-bottom: 20px;
+}

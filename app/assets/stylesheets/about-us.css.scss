@@ -34,6 +34,11 @@
 	max-width: 315px;
 	margin-top: -25px;
 	-webkit-animation: zoom-inner-front 2s ease-in 1 forwards;
+	-moz-animation: zoom-inner-front 2s ease-in 1 forwards;
+	-ms-animation: zoom-inner-front 2s ease-in 1 forwards;
+	-o-animation: zoom-inner-front 2s ease-in 1 forwards;
+	animation: zoom-inner-front 2s ease-in 1 forwards;
+
 }
 .about-man{
 	width: 200px;
@@ -41,6 +46,11 @@
 }
 .walking-man{
 	-webkit-animation: walking-man 2s ease-in 1 forwards;
+	-moz-animation: walking-man 2s ease-in 1 forwards;
+	-ms-animation: walking-man 2s ease-in 1 forwards;
+	-o-animation: walking-man 2s ease-in 1 forwards;
+	animation: walking-man 2s ease-in 1 forwards;
+
 }
 .content{
 	text-align: justify;

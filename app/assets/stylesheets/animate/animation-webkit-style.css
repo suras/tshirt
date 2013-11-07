@@ -6,7 +6,7 @@
 
 @-webkit-keyframes move-right-center {
 	0% {
-		-webkit-transform: translateX(120px)translateY(-450px);
+		-webkit-transform: translateX(100px)translateY(-450px);
 	}
 	100% {
 		-webkit-transform: translateX(0px)translateY(0px);

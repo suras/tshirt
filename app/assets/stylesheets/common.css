@@ -19,6 +19,14 @@ body{
 	position: relative;
 }
 
+#flash_alert,#flash_notice{
+	text-align: center;
+	color: #eb623f;
+}
+
+
+
+
 /* Home Page */
 /* Header */
 header{
@@ -180,6 +188,6 @@ nav a{
 }
 .bottom-links a{
 	color: #8adcf0;
-	padding-left: 30px;
+	padding-left: 25px;
 }
 
