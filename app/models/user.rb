@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   has_many :authentications
   has_many :images, :as => :thing
+  has_one :billing_address
+  has_one :shipping_address
 
   #validates :email, presence: { message: "Please enter your email" }
 

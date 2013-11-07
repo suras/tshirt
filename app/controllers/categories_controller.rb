@@ -13,7 +13,7 @@ class CategoriesController < ApplicationController
   def generate_image_links(images) 
     img_src = ""
     images.each do |design_image|
-      img_src << "<img src="+design_image.image.url+ "/>"
+      img_src << "<img id=#{design_image.id} src="+design_image.image.url+ "/>"
     end
     img_src.html_safe
   end

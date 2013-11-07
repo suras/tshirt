@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+	before_filter :authenticate_user!
 	def products
         @products = Product.where(:category_id => params[:category_id])
         respond_to do |format|
