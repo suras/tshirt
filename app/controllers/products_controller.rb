@@ -4,11 +4,9 @@ class ProductsController < ApplicationController
         respond_to do |format|
          format.json {render :json => {:products => @products}}
          format.js
+         format.html
         end
-
 	end
-
-
 
 	def get_product
         @product = Product.where(:id => params[:id])
