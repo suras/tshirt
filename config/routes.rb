@@ -12,7 +12,7 @@ Tshirt::Application.routes.draw do
   get "/designs", :to => "designs#index", :as => "designs"
   get "/design_categories", :to => "designs#category", :as => "design_category"
   post "/save_user_images", :to => "designs#save_user_images"
-  get "/contact", :to => "home#new_contact", :as => "contact_us"
+  get "/contact_us", :to => "home#new_contact", :as => "contact_us"
   get "/about_us", :to => "home#about_us", :as => "about"
   get "/checkout", :to => "orders#checkout", :as => "checkout"
   resources :categories

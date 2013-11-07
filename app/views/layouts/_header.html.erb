@@ -2,17 +2,20 @@
 <body>
 	<header>
 		<div class="container">
-			<img src="/assets/logo.png">
+		<a href="/" class="home-link" title="">
+				<img src="/assets/logoa.png">
+				<span class="logo-name">Mobby<span>art</span></span>
+			</a>
 			<nav class="cl-effect-21">
-				<a href="#">Home</a>
-				<a href="#">About</a>
-				<a href="#">Create</a>
+				<a href="/">Home</a>
+				<a href="/about_us">About</a>
+				<a href="/designs">Create</a>
+				<a href="/contact_us">Contact</a>
 				<% if user_signed_in? %>
-				 <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-				 <% else %>
-				 <%= link_to "Login", new_user_session_path %>
-                 <% end %>
-				<a href="#">Contact</a>
+				<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+				<% else %>
+				<%= link_to "Login", new_user_session_path %>
+				<% end %>
 			</nav>
 		</div>
 	</header>

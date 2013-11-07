@@ -1,0 +1,74 @@
+<%= stylesheet_link_tag  "about-us", :media => "all" %>
+
+<section class="about-us-page">
+	<!-- <div class="page-title">About us</div> -->
+	<div class="about-part1">
+		<div class="container">
+			<div class="row">
+				<div class="span8 content">
+					<div class="head">Hello, I am Mobby,</div>
+					<p>We are a startup full of creative talent and we love marketing</p>
+					<p>We truly believe that marketing and design is the fuel that drives your brand, business or concept</p>
+					<div class="title">Mobby's secret is:  </div>
+					<ul class="tick-list-black">
+						<li>make it interactive</li>
+						<li>make it fun</li>
+						<li>make it intuitive</li>
+						<li>make that people want to come back to us</li>
+					</ul>
+					<a href="/designs" class="btn btn-large btn-danger pull-right" title="Start Desinging">Start Designing Now!</a>
+				</div>
+				<div class="span4 text-center">
+					<img class="about-logo" src="/assets/logoa.png">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="about-part2">
+		<div class="container">
+			<div class="row">
+				<div class="span4 text-center">
+					<img class="about-man" src="/assets/about-us.png">
+				</div>
+				<div class="span8 content">
+					<div class="head">Powered by Mobby</div>
+					<div class="title">Some of our platforms: </div>
+					<p>
+						<b>Mobbynet:</b> Social network around shopping, events and deals HTML5 and webapps
+					</p>
+					<p>
+						<b>Mobby2go:</b> Mobile loyalty program for smartphones Android and Blackberry
+					</p>
+					<p>
+						<b>Chat4:</b> chat app with rewards Android and Blackberry
+					</p>
+					<p>
+						<b>Drink4:</b> Mobile ordering with rewards and loyalty program for the hospitality. Android and Apple
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var block_scr = true;
+		setTimeout(function(){
+			block_scr = false;
+		},2000);
+		$(window).scroll(function(){
+			if(block_scr)
+					$(window).scrollTop(0);
+			var scr = $(window).scrollTop();
+			console.log(scr>=106,scr)
+			if(scr>=106){
+				if(!$(".about-man").hasClass("walking-man")){
+					$(window).scrollTop(656);
+					$(".about-man").addClass("walking-man");
+				}
+			}
+		});
+	});
+</script>
