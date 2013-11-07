@@ -12,9 +12,12 @@ Tshirt::Application.routes.draw do
   get "/designs", :to => "designs#index", :as => "designs"
   get "/design_categories", :to => "designs#category", :as => "design_category"
   post "/save_user_images", :to => "designs#save_user_images"
-  get "/contact", :to => "home#new_contact", :as => "contact_us"
+  get "/contact", :to => "home#new_contact", :as => "contact"
+  post "/contact", :to => "home#create_contact", :as => "contact_us"
   get "/about_us", :to => "home#about_us", :as => "about"
   get "/checkout", :to => "orders#checkout", :as => "checkout"
+  get "/get_product", :to => "products#get_product", :as => "get_product"
+  get "/products", :to => "products#products", :as => "product"
   resources :categories
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
   controllers: {omniauth_callbacks: "authentications", registrations: "registrations"}
