@@ -52,7 +52,7 @@
 								<img src="<%=product.try(:image).try(:url)%>">
 							</div>
 							<div class="right-side">
-								<div class="name">Product 1</div>
+								<div class="name"><%=product.name%></div>
 								<div class="images">
 									<img src="<%=product.try(:image).try(:url)%>">
 									<img src="<%=product.try(:images).try(:first).try(:image).try(:url)%>">
@@ -118,7 +118,7 @@
 		});
 
 		$(document).on("click",".full-details .images img",function(){
-			$(".left-side img").attr("src",$(this).attr("src"));
+			$(this).closest(".full-details").siblings(".left-side").find(img).attr("src",$(this).attr("src"));
 			
 		});
 	});
