@@ -14,11 +14,7 @@
 							<div class="desc">Cotton tshirt xxl</div>
 							<a class="edit-link" href="#">edit</a>
 						</div>
-						<div class="decoration">
-							<div class="title">Decoration :</div>
-							<div class="desc">Screen Print :0 color front, 0 color back</div>
-							<a class="edit-link" href="#">edit</a>
-						</div>
+						
 					</div>
 					<div class="main-canvas">
 						<canvas id="pcanvas" width="350" height="420"></canvas>
@@ -97,56 +93,73 @@
 		 					</div>
 
 							<div class="single-panel add-text hide">
-								<div class="new-text-panel hide">
-									<div class="title"><span>ENTER </span>YOUR TEXT</div>
-									<div class="details">
-										<textarea class="text-input" id="text_input" name="text_input"></textarea>
-										<div class="title">
-											<span>Font </span> 
-											<select name="">
-												<option value="">Font style</option>
-												<option value="">Font style</option>
-												<option value="">Font style</option>
-												<option value="">Font style</option>
-												<option value="">Font style</option>
-												<option value="">Font style</option>
-											</select>
-											<button id="create-text" class="btn btn-danger pull-right">Create</button>
-										</div>
-									</div>
-								</div>
+								
 
 								<div class="edit-text-panel">
-									<div class="title"><span>EDIT </span>YOUR TEXT</div>
-									<div class="add-remove-btn">
-										<div class="add-new-text btn btn-info">
-											<i class="icon-plus"></i>
-											Add New Text
-										</div>
-										<div class="delete-new-text btn btn-warning">
-											<i class="icon-remove"></i>
-											Delete Text
+								    <div class="text-panel-options">
+										<div class="title"><span>ADD </span>YOUR TEXT</div>
+										<div class="add-remove-btn">
+											<div class="add-new-text btn btn-info">
+												<i class="icon-plus"></i>
+												Add Text
+											</div>
+											
 										</div>
 									</div>
-									<div class="details">
-										<textarea class="text-input" id="text_value" name="text_input">Old Text</textarea>
-										<div class="title">
-											<span>Font </span> 
-											<select name="">
-												<option value="">Font style</option>
-												<option value="">Font style</option>
-												<option value="">Font style</option>
-												<option selected="selected" value="">selected style</option>
-												<option value="">Font style</option>
-												<option value="">Font style</option>
-											</select>
-											<button id="create-text" class="btn btn-danger pull-right">Create</button>
-										</div>
-										<div class="title">
-											<span>color </span> <button id="text-color" class="btn ">Select Color</button>
-										</div>
+										<div class="details">
+								    	<div class="text-panel-options">
+
+											<textarea class="text-input" id="text_value" data-source='option' name="text_input">Old Text</textarea>
+											<div class="title">
+												<span>Font </span> 
+												<select id="font-family">
+											        <option value="arial">Arial</option>
+											        <option selected="" value="helvetica">Helvetica</option>
+											        <option value="myriad pro">Myriad Pro</option>
+											        <option value="delicious">Delicious</option>
+											        <option value="verdana">Verdana</option>
+											        <option value="georgia">Georgia</option>
+											        <option value="courier">Courier</option>
+											        <option value="comic sans ms">Comic Sans MS</option>
+											        <option value="impact">Impact</option>
+											        <option value="monaco">Monaco</option>
+											        <option value="optima">Optima</option>
+											        <option value="hoefler text">Hoefler Text</option>
+											        <option value="plaster">Plaster</option>
+											        <option value="engagement">Engagement</option>
+											      </select>
+												
+											</div>
+											<div class="title">
+												<span>color </span> 
+												<ul class="nav">
+													<li style="background-color:#ffffff;" title="White" class="color-font"></li>
+													<li style="background-color:#616161;" title="Dark Heather" class="color-font"></li>
+													<li style="background-color:#f0f0f0;" title="Gray" class="color-font"></li>
+													<li style="background-color:#5b5b5b;" title="Charcoal" class="color-font"></li>
+													<li style="background-color:#222222;" title="Black" class="color-font"></li>
+													<li style="background-color:#fc8d74;" title="Heather Orange" class="color-font"></li>
+													<li style="background-color:#432d26;" title="Heather Dark Chocolate" class="color-font"></li>
+													<li style="background-color:#eead91;" title="Salmon" class="color-font"></li>
+													<li style="background-color:#806355;" title="Chesnut" class="color-font"></li>
+													<li style="background-color:#382d21;" title="Dark Chocolate" class="color-font"></li>
+													<li style="background-color:#faef93;" title="Citrus Yellow" class="color-font"></li>
+													<li style="background-color:#aeba5e;" title="Avocado" class="color-font"></li>
+													<li style="background-color:#8aa140;" title="Kiwi" class="color-font"></li>
+													<li style="background-color:#1f6522;" title="Irish Green" class="color-font"></li>
+													<li style="background-color:#13afa2;" title="Scrub Green" class="color-font"></li>
+													<li style="background-color:#b8d5d7;" title="Teal Ice" class="color-font"></li>
+													<li style="background-color:#15aeda;" title="Heather Sapphire" class="color-font"></li>
+													<li style="background-color:#a5def8;" title="Sky" class="color-font"></li>
+													<li style="background-color:#0f77c0;" title="Antique Sapphire" class="color-font"></li>
+													<li style="background-color:#3469b7;" title="Heather Navy" class="color-font"></li>							
+													<li style="background-color:#c50404;" title="Cherry Red" class="color-font"></li>
+												</ul>
+											</div>
+									  		</div>
 										<div class="title">
 											<span>layer </span> order
+											<button id="delete-obj" class="btn btn-danger pull-right">Delete Selected</button>
 										</div>
 										<div class="layer-order">
 											<button id="bring-to-front" class="btn">bring to front</button>
@@ -415,6 +428,21 @@
 			canvas.item(0).lockMovementX = true;
 			canvas.item(0).lockMovementY = true;
 
+			canvas.on('mouse:down', function(options) {
+			    var activeObject = canvas.getActiveObject();
+				var pointerIndex =canvas.getObjects().indexOf(activeObject);
+				  if (pointerIndex>0 && options.target && (options.target.type=='text' || options.target.type=='image' )) {
+					  $(".operations .text").trigger("click");
+				      if(options.target.type=='text'){
+				      	 $('.text-panel-options').show()
+				      	 $('#text_value').val(options.target.getText())
+				      	 $('#text_value').attr('data-source','object')
+				      }else{
+				      	 $('.text-panel-options').hide()
+				      }
+				  }
+			});
+
 
 			$(document).on("click",".zoom",function(e){
 				e.preventDefault();
@@ -462,7 +490,7 @@
 		    });
 
 
-			$(document).on("click",".delete-new-text",function(evt){
+			$(document).on("click","#delete-obj",function(evt){
 
 			    var activeObject = canvas.getActiveObject(),
 			    activeGroup = canvas.getActiveGroup();
@@ -478,6 +506,46 @@
 			    }
 			});
 
+			$(document).on("click",".color-font",function(e){
+				var color = $(this).css('background-color')
+				console.log(color)
+				var activeObject = canvas.getActiveObject();
+				if (activeObject) {
+				console.log(color,'1')
+
+					activeObject.set("fill", color);
+					canvas.renderAll()
+				}
+			});
+
+			$(document).on("click","#bring-to-front",function(e){
+				var activeObject = canvas.getActiveObject();
+				if (activeObject) {
+					canvas.bringToFront(activeObject);
+				}
+			});
+
+			$(document).on("click","#bring-forward",function(e){
+				var activeObject = canvas.getActiveObject();
+				if (activeObject) {
+					canvas.bringForward(activeObject);
+				}
+			});
+
+			$(document).on("click","#send-to-back",function(e){
+				var activeObject = canvas.getActiveObject();
+				if (activeObject) {
+					 canvas.sendToBack(activeObject);
+				}
+			});
+
+			$(document).on("click","#send-backward",function(e){
+				var activeObject = canvas.getActiveObject();
+				if (activeObject) {
+					canvas.sendBackwards(activeObject);
+				}
+			});
+
 			$(document).on("change","#own_image_upload",function(evt){
 
 				var file = evt.target.files[0]
@@ -486,6 +554,11 @@
 		        
 		        if(typeof formData=="object"){
 		            formData.append('image',file)
+		            $.ajaxSetup({
+					  headers: {
+					    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+					  }
+					});
 		            $.ajax({
 		                        type: "POST",
 		                        url: '/save_user_images',
@@ -551,11 +624,32 @@
 				var addText = new fabric.Text(text, { left: 120, top: 150 });
   				canvas.add(addText);
 			});
+			$(document).on("keyup","#text_value",function(e){
+				var text = $('#text_value').val()
+				var activeObject = canvas.getActiveObject();
+
+				if (activeObject && /text/.test(activeObject.type)) {
+					console.log(text)
+			        activeObject.setText(text)
+			        canvas.renderAll();
+			      }
+
+			});
+			$(document).on("change","#font-family",function(e){
+				  var activeObject = canvas.getActiveObject();
+			      if (activeObject && /text/.test(activeObject.type)) {
+			        //canvas.setStyle(activeObject, 'fontFamily', this.value.toLowerCase());
+			        canvas.getActiveObject().set("fontFamily", this.value.toLowerCase());
+			        canvas.renderAll();
+			      }
+			    
+			});
 
 			$(document).on("click",".operations a,.p-image",function(){
 				var current = this;
 				single_panel = "."+$(current).data("show");
 				if(single_panel != ".save-design"){
+					
 					$(".operations").find(".current").removeClass("current");
 					$(".p-image").removeClass("current");
 					$(this).addClass("current");
@@ -564,6 +658,16 @@
 						$(this).hide();
 					});
 					$(single_panel).show();
+				}
+
+				if(single_panel=='.add-text'){
+					if($('#text_value').attr('data-source')=='option'){
+						$('#text_value').val('')
+					}
+					$('.text-panel-options').show()
+					
+					$('#text_value').attr('data-source','option')
+
 				}
 				return false;
 			});
@@ -589,6 +693,9 @@
 				}
 				return false;
 			});
+
+
+
 
 			$(document).on("click",".open-popup",function(){
 				var popup_content = "." + $(this).data("popup");

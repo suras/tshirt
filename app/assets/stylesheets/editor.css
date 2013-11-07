@@ -59,7 +59,7 @@
 
 
 .main-canvas {
-    height: 500px;
+    height: 580px;
     overflow: hidden;
     padding: 10%;
     width: 450px;
@@ -394,7 +394,7 @@
 	resize: none;
 }
 
-.color-preview {
+.color-preview,.color-font {
     border: 1px solid #CCCCCC;
     cursor: pointer;
     display: inline-block;
