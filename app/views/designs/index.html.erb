@@ -31,7 +31,7 @@
 							</div>
 							<div>Zoom</div>
 						</a>
-						<a href="#" class="calculate">
+						<a href="#" class="calculate open-popup" data-popup="checkout" data-title="CALCULATE PRICE">
 							<div>CALCULATE PRICE &amp;</div>
 							<div>ADD TO CART</div>
 						</a>
@@ -413,6 +413,7 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 
+		
 			var canvas,imgElement,imgInstance,zoomIn;
 			canvas = new fabric.Canvas('pcanvas');
 			imgElement = document.getElementById('main_image');
@@ -425,8 +426,11 @@
 			  height:425
 			});
 			canvas.add(imgInstance);
+			canvas.item(0).selectable = false;
+			canvas.item(0).hasControls = false;
 			canvas.item(0).lockMovementX = true;
 			canvas.item(0).lockMovementY = true;
+		
 
 			canvas.on('mouse:down', function(options) {
 			    var activeObject = canvas.getActiveObject();
@@ -443,6 +447,41 @@
 				  }
 			});
 
+			$(document).on("click",".product-art-list img",function(e){
+				canvas.clear()
+				$('#main_image').attr('src',$(this).attr('src'))
+			    $('#pcanvas').css({'background':''})	
+			    var imgInstance = new fabric.Image(imgElement, {
+				  left: 175,
+				  top: 210,
+				  opacity: 0.85,
+				  width:355,
+				  height:425
+				});
+				canvas.add(imgInstance);
+				canvas.item(0).selectable = false;
+				canvas.item(0).hasControls = false;
+				canvas.item(0).lockMovementX = true;
+				canvas.item(0).lockMovementY = true;
+			});
+
+			$(document).on("click","#clear_canvas",function(e){
+			    e.preventDefault();
+			    canvas.clear()
+			    $('#pcanvas').css({'background':''})	
+			    var imgInstance = new fabric.Image(imgElement, {
+				  left: 175,
+				  top: 210,
+				  opacity: 0.85,
+				  width:355,
+				  height:425
+				});
+				canvas.add(imgInstance);
+				canvas.item(0).selectable = false;
+				canvas.item(0).hasControls = false;
+				canvas.item(0).lockMovementX = true;
+				canvas.item(0).lockMovementY = true;
+			});
 
 			$(document).on("click",".zoom",function(e){
 				e.preventDefault();
@@ -492,16 +531,9 @@
 
 			$(document).on("click","#delete-obj",function(evt){
 
-			    var activeObject = canvas.getActiveObject(),
-			    activeGroup = canvas.getActiveGroup();
-			    if (activeGroup) {
-			      var objectsInGroup = activeGroup.getObjects();
-			      canvas.discardActiveGroup();
-			      objectsInGroup.forEach(function(object) {
-			        canvas.remove(object);
-			      });
-			    }
-			    else if (activeObject) {
+			    var activeObject = canvas.getActiveObject();
+			    var pointerIndex =canvas.getObjects().indexOf(activeObject);
+				if (activeObject && pointerIndex>0) {
 			      canvas.remove(activeObject);
 			    }
 			});
@@ -589,23 +621,30 @@
 
 		    });
 
-			$(document).on("click","#clear_canvas",function(e){
-			    e.preventDefault();
-			    canvas.clear()
-			    $('#pcanvas').css({'background':''})	
-			    var imgInstance = new fabric.Image(imgElement, {
-				  left: 175,
-				  top: 210,
-				  opacity: 0.85,
-				  width:355,
-				  height:425
-				});
-				canvas.add(imgInstance);
-				canvas.item(0).lockMovementX = true;
-				canvas.item(0).lockMovementY = true;
+
+			$(document).on("click",".re-calculate",function(e){
+				$.ajax({
+                    type: "POST",
+                    url: '/save_user_images',
+                    data: formData,
+                    success: function (data) {
+                        
+                    },
+                    error: function (data) {
+                        //console.log(data)
+                    }
+		        });
+
 			});
 
-			$(document).on("click","#clip_art img",function(e){
+			$(document).on("keydown",".single-size input",function(e){
+				if($(this)){
+
+				}
+			});
+			
+
+			$(document).on("click","#clip_art img,.my-image-list img",function(e){
 				var url = $(this).attr('src')
 			    fabric.Image.fromURL(url, function(image) {
 				    image.set({
@@ -617,6 +656,8 @@
 					canvas.add(image);
 				});
 			});
+
+
 
 			$(document).on("click",".add-new-text",function(e){
 				var text = $('#text_value').val()
