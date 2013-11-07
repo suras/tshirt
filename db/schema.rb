@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131107130509) do
+ActiveRecord::Schema.define(:version => 20131107162417) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -150,9 +150,11 @@ ActiveRecord::Schema.define(:version => 20131107130509) do
     t.integer  "category_id"
     t.string   "image"
     t.text     "description"
-    t.boolean  "status",      :default => true
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "status",                :default => true
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+    t.integer  "shipping_and_handling"
+    t.integer  "tax"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
