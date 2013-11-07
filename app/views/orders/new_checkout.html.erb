@@ -131,9 +131,9 @@
 			<fieldset class="payment-types">
 				<div class="title">Shipping & Subtotal</div>
 				<div class="field">
-					<img src="img/logo-visa.png">
-					<img src="img/logo-master-card.png">
-					<img src="img/logo-paypal.png">
+					<img src="/assets/logo-visa.png">
+					<img src="/assets/logo-master-card.png">
+					<img src="/assets/logo-paypal.png">
 				</div>
 			</fieldset>
 			<div class="clearfix"></div>
@@ -141,3 +141,18 @@
 			<div class="clearfix"></div>
 		</div>
 	</section>
+
+
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(document).on("change",".show-shipping-address input",function(){
+					$(".shipping-address").toggle();
+			});
+
+			$(document).on("click",".payment-types img",function(){
+					$(".payment-types img").each(function(){$(this).removeClass("selected")});;
+					$(this).addClass("selected");
+			});
+		});
+</script>
