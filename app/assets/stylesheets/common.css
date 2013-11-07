@@ -1,14 +1,15 @@
 @font-face {
 	font-family: 'MyriadProRegular';
-	src: url('/assets/fonts/mp/mr.eot');
-	src: url('/assets/fonts/mp/mr.eot') format('embedded-opentype'),
-	url('/assets/fonts/mp/mr.woff') format('woff'),
-	url('/assets/fonts/mp/mr.ttf') format('truetype'),
-	url('/assets/fonts/mp/mr.svg#MyriadProRegular') format('svg');
+	src: url('fonts/mp/mr.eot');
+	src: url('fonts/mp/mr.eot') format('embedded-opentype'),
+	url('fonts/mp/mr.woff') format('woff'),
+	url('fonts/mp/mr.ttf') format('truetype'),
+	url('fonts/mp/mr.svg#MyriadProRegular') format('svg');
 }
 
 body{
 	line-height: 25px;
+	font-family: 'MyriadProRegular';
 	/*margin-bottom: 50px;*/
 }
 .bold{
@@ -26,8 +27,23 @@ header{
 	height: 100px;
 	background: #5ac1d7;
 }
+
+.home-link,.home-link:hover,.home-link:focus,.home-link:visited{
+	text-decoration: none;
+}
+
+
 header img{
 	width: 138px;
+}
+.logo-name{
+	font-size: 42px;
+	color: #fff;
+	margin-left: -15px;
+	font-style: italic;
+}
+.logo-name span{
+	color: #eb623f;
 }
 .cl-effect-21{
 	display: inline-block;
@@ -56,12 +72,15 @@ header img{
 	padding: 10px;
 	font-size: 25px;
 	line-height: 30px;
-	color: #fff;
+	color: #fff !important;
 	text-decoration: none;
 }
 .nav-menu a:hover{
 	background: #643a79;
 	border-radius: 5px;
+}
+nav a{
+	color: #fff !important;
 }
 /* Header */
 
