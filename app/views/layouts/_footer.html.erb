@@ -13,7 +13,7 @@
 								<li><a href="#">Mugs</a></li>
 								<li><a href="#">Cases</a></li>
 								<li><a href="#">and more</a></li> -->
-								<% Category.all.each do |cat|%>
+								<% Category.all.try(:each) do |cat|%>
                                     <li><a href="#"><%= link_to cat.name, product_path(:category_id => cat.id)%></a></li>  
 
                                   <%  end %>
