@@ -1,0 +1,106 @@
+.contact-us-page{
+	margin-top: 50px;
+}
+.page-title{
+	color: #eb3506;
+	font-size: 35px;
+	line-height: 40px;
+	padding: 10px 0px;
+	font-weight: bolder;
+	text-align: center;
+}
+.contact-part1,.contact-part2{
+	margin-top: 40px;
+	padding: 40px 0px;
+	text-align: left;
+}
+.contact-part2{
+	background: #f6f4f3;
+}
+.marked{
+	color: #eb3506;
+	font-size: 16px; 
+	text-shadow: 0px 0px 1px #eb3506;
+	-webkit-text-shadow: 0px 0px 1px #eb3506;
+	-moz-text-shadow: 0px 0px 1px #eb3506;
+	-ms-text-shadow: 0px 0px 1px #eb3506;
+	-o-text-shadow: 0px 0px 1px #eb3506;
+
+}
+.contact-part1 .span6,.contact-part2 .span6{
+	margin-left: 23%;
+	text-align: center;
+}
+.contact-us-page ul{
+	list-style: none;
+	
+}
+.contact-us-page ul li{
+	padding: 5px 0px;	
+}
+
+.content{
+	padding: 20px;
+	border-radius: 15px;
+	border: 2px dashed #5ac1d7;
+	position: relative;
+	text-shadow: 0px 0px 1px #000;
+	-webkit-text-shadow: 0px 0px 1px #000;
+	-moz-text-shadow: 0px 0px 1px #000;
+	-ms-text-shadow: 0px 0px 1px #000;
+	-o-text-shadow: 0px 0px 1px #000;
+	width: 500px;
+	margin: 0 auto;
+text-align: center;
+}
+.arrow-orange{
+	position: absolute;
+	top: -60px;
+	left: -50px;
+}
+.contact-box{
+	position: relative;
+	border-image: url(/assets/contact-border.png) 19% repeat repeat;
+	border-width: 10px;
+	min-height: 200px;
+	padding: 20px;
+	box-shadow: 0px 0px 10px 5px #ddd;
+	-webkit-box-shadow: 0px 0px 10px 5px #ddd;
+	-moz-box-shadow: 0px 0px 10px 5px #ddd;
+	-ms-box-shadow: 0px 0px 10px 5px #ddd;
+	-o-box-shadow: 0px 0px 10px 5px #ddd;
+	width: 500px;
+	margin: 0 auto;
+}
+.contact-box .corner{
+	position: absolute;
+	top: -20px;
+	right: -50px;	
+}
+.contact-box .title{
+	font-size: 20px;
+	font-weight: bolder;
+	padding: 10px 0px;
+	text-align: left;
+}
+.contact-box .underline{
+	height: 4px;
+	border: 1px solid #d6d6d6;
+	margin-bottom: 20px;
+	border-top-width: 2px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	width: 82%;
+}
+.contact-box input{
+	height: 30px;
+	width: 49%;
+}
+.contact-box input.name{
+	margin-right: 4px;
+}
+.contact-box textarea{
+	width: 100%;
+	height: 100px;
+	resize: none;
+}

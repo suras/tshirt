@@ -1,0 +1,81 @@
+.about-us-page{
+	margin-top: 50px;
+}
+.page-title{
+	color: #eb3506;
+	font-size: 35px;
+	line-height: 40px;
+	padding: 10px 0px;
+	font-weight: bolder;
+	text-align: center;
+}
+.about-part1,.about-part2{
+	margin-bottom: 0px;
+	padding: 40px 0px;
+	padding-bottom: 80px;
+	border-radius: 10px;
+	// border-image: url(/assets/contact-border.png) 19% repeat repeat;
+	text-align: left;
+	// border-width: 10px;
+	/*border: 3px dashed #4ac3f1;*/
+	/*box-shadow: 0px 0px 5px 5px #5ac1d7;*/
+}
+.about-part2 {
+	background: #f6f4f3;
+}
+.about-part1 .span8,.about-part2 .span8{
+	width: 615px;
+	padding: 20px;
+}
+.about-part1 .span4,.about-part2 .span4{
+	width: 300px;
+}
+.about-logo{
+	max-width: 315px;
+	margin-top: -25px;
+	-webkit-animation: zoom-inner-front 2s ease-in 1 forwards;
+}
+.about-man{
+	width: 200px;
+	margin-top: 25px;
+}
+.walking-man{
+	-webkit-animation: walking-man 2s ease-in 1 forwards;
+}
+.content{
+	text-align: justify;
+	border: 2px dashed #5ac1d7;
+	border-radius: 10px;
+}
+.content .head{
+	font-size: 25px;
+	line-height: 30px;	
+	padding: 10px 0px;
+	font-weight: bolder;
+	color: #eb3506;
+	font-style: italic;
+}
+.content .title{
+	font-size: 18px;
+	line-height: 25px;	
+	padding: 7px 0px;
+	font-weight: bolder;
+	color: #eb3506;
+}
+.content b{
+	font-size: 16px;
+	font-weight: normal;
+}
+.content .btn{
+	font-size: 16px;
+	font-weight: normal;
+}
+
+.tick-list-black{
+	list-style: none;
+	margin-left: 0px;
+}
+.tick-list-black li{
+	padding-left: 25px;
+	background: url(/assets/list-tick-black.png) no-repeat left center ;
+}
