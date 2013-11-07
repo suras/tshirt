@@ -6,7 +6,16 @@
 			<div class="span3 category-list">
 				<div class="title">Categories</div>
 				<ul>
-					<li class="category">
+				   <% @category.each do |category| %>
+                    
+                     <li class="category">
+						<input type="checkbox" value="<%=category.id %>" data-id="1" id="category-1">
+						<label for="category-1"><%=category.name %></label>
+					</li>
+
+
+				   <% end %>
+					<!-- <li class="category">
 						<input type="checkbox" data-id="1" id="category-1">
 						<label for="category-1">Catagory 1</label>
 					</li>
@@ -21,37 +30,41 @@
 					<li class="category">
 						<input type="checkbox" data-id="4" id="category-4">
 						<label for="category-4">Catagory 4</label>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 			<div class="span9 product-list">
 				<div class="result-no">5 Results found</div>
 				<div class="all-products">
-					<% for i in 1..8 %>
+					<% @products.each do |product| %>
 					<div class="product-list-item">
 						<div class="close-full hide">x</div>
 						<div class="thumb">
 							<div class="show-full">
 								<div class="hide-show-img"></div>
-								<img src="/assets/ts4.png">
-								<div class="name">Product <%=i%></div>
+								<img src="<%=product.try(:image).try(:url)%>">
+								<div class="name"><%=product.name%></div>
 							</div>
 							<a href="/designs/1" class="choose-btn" title="">Choose</a>
 						</div>
 						<div class="full-details hide	">
 							<div class="left-side">
-								<img src="/assets/ts4.png">
+								<img src="<%=product.try(:image).try(:url)%>">
 							</div>
 							<div class="right-side">
-								<div class="name">Product 1</div>
+								<div class="name"><%=product.name%></div>
 								<div class="images">
-									<img src="/assets/ts3.png">
-									<img src="/assets/ts4.png">
+									<img src="<%=product.try(:image).try(:url)%>">
+									<img src="<%=product.try(:images).try(:first).try(:image).try(:url)%>">
 								</div>
 								<div class="price-by-size">
 									<div class="title">Various Price</div>
 									<div class="list-size">
-										<label><span>YXS</span> - $15</label>
+									     <%=product.try(:product_attributes).try(:each) do |attribute| %>
+                                            <label><span><%=attribute.attribute_name%></span> -<%=attribute.price%></label>
+
+									     <% end %>
+										<!-- <label><span>YXS</span> - $15</label>
 										<label><span>ys</span> - $15</label>
 										<label><span>ym</span> - $15</label>
 										<label><span>yl</span> - $15</label>
@@ -63,15 +76,15 @@
 										<label><span>xxl</span> - $15</label>
 										<label><span>3xl</span> - $15</label>
 										<label><span>4xl</span> - $15</label>
-										<label><span>5xl</span> - $15</label>
+										<label><span>5xl</span> - $15</label> -->
 									</div>
 								</div>
 							</div>
 							<div class="desc">
 								<div class="title">Description</div>
-								<p>asdf sadf fsdjh dighren vusig asdf sadf fsdjh dighren vusig asdf sadf fsdjh dighren vusig asdf sadf fsdjh dighren vusig asdf sadf fsdjh dighren vusig rgks gdsflkgjsdfgokjf sdfih gosfdgkjdf</p>
+								<p><%=product.description%></p>
 								<div class="title">Category</div>
-								<p>Category Name 1</p>
+								<p><%=product.try(:category).try(:name)%></p>
 								<a href="/designs/1" class="choose-btn" title="">Choose</a>
 							</div>
 						</div>
@@ -105,7 +118,7 @@
 		});
 
 		$(document).on("click",".full-details .images img",function(){
-			$(".left-side img").attr("src",$(this).attr("src"));
+			$(this).closest(".full-details").siblings(".left-side").find(img).attr("src",$(this).attr("src"));
 			
 		});
 	});
