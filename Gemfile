@@ -46,6 +46,9 @@ gem 'jquery-rails'
 gem 'carrierwave'
 
 
+gem 'simple_form'
+
+
 gem 'rails_admin'
 
 # To use ActiveModel has_secure_password

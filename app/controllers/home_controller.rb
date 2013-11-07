@@ -9,4 +9,15 @@ class HomeController < ApplicationController
    
 
 	end
+
+
+	def new_contact
+
+
+	end
+
+	def create_contact
+
+
+	end
 end
