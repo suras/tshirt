@@ -1,0 +1,74 @@
+.contact-us-page{
+	margin-top: 50px;
+}
+.page-title{
+	color: #eb3506;
+	font-size: 35px;
+	line-height: 40px;
+	padding: 10px 0px;
+	font-weight: bolder;
+	text-align: center;
+}
+.contact-part1,.contact-part2{
+	margin-top: 40px;
+	padding: 40px 0px;
+	text-align: left;
+}
+p{
+	padding: 10px 0px;
+
+}
+.sub-head{
+	font-size: 20px; 
+	padding: 10px 0px;
+}
+.marked{
+	padding: 10px 0px;
+	color: #eb3506;
+	font-size: 25px; 
+	text-shadow: 0px 0px 1px #eb3506;
+	-webkit-text-shadow: 0px 0px 1px #eb3506;
+	-moz-text-shadow: 0px 0px 1px #eb3506;
+	-ms-text-shadow: 0px 0px 1px #eb3506;
+	-o-text-shadow: 0px 0px 1px #eb3506;
+
+}
+.contact-part1 .span6,.contact-part2 .span6{
+	margin-left: 23%;
+	text-align: center;
+}
+.contact-us-page ul{
+	list-style: none;
+	
+}
+.contact-us-page ul li{
+	padding: 5px 0px;	
+}
+
+.content{
+	padding: 20px;
+	border-radius: 15px;
+	border: 2px dashed #5ac1d7;
+	position: relative;
+	text-shadow: 0px 0px 1px #000;
+	-webkit-text-shadow: 0px 0px 1px #000;
+	-moz-text-shadow: 0px 0px 1px #000;
+	-ms-text-shadow: 0px 0px 1px #000;
+	-o-text-shadow: 0px 0px 1px #000;
+	width: 500px;
+	margin: 0 auto;
+text-align: center;
+}
+.arrow-orange{
+	position: absolute;
+	top: -60px;
+	left: -50px;
+}
+.partner-mail{
+	padding: 50px;
+}
+
+.partner-mail img:first-child{
+	width: 500px;
+margin-right: 50px;
+}

@@ -32,7 +32,7 @@ before_filter :authenticate_user!
        	 item_delete = UserItem.delete_all(:id => session[:image_ids])
          session[:image_ids] = ""
        end
-         item = current_user.user_items.create(:image => params[0][:image], :image1 => params[1][:image] )
+         item = current_user.user_items.create(:design => params[:design], :design1 => params[:design1] ,:image => params[:image], :image1 => params[:image1] )
           img_id  = item.id
           session[:image_id] = img_id
 	end

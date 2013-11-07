@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+if(!Category.find_by_name("Tshirts").present?)
+Category.create(:name => "Tshirts" )
+Category.create(:name => "Napkins" )
+Category.create(:name => "Bags" )
+Category.create(:name => "Cases" )
+end
+
+
