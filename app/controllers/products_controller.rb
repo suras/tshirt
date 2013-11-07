@@ -10,10 +10,7 @@ class ProductsController < ApplicationController
      format.json {render :json => {:products => @products}}
      format.js
     end
-
 	end
-
-
 
 	def get_product
         @product = Product.where(:id => params[:id])
@@ -22,7 +19,6 @@ class ProductsController < ApplicationController
          format.json {render :json => {:product => @product, :attribute => @attributes, :image_url => @product.image.url}}
          format.js
         end
-
 	end
 
 

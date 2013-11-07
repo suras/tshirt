@@ -1,3 +1,171 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.category-products{
+	margin-top: 50px;
+	.category-list{
+		padding: 10px;
+		border-right: 5px #5ac1d7 solid;
+		.title{
+			color: #eb623f;
+			padding: 10px;
+			font-size: 20px;
+			line-height: 25px;
+		}
+		ul{
+			list-style: none;
+			.category{
+				padding: 2px 0px;
+				label{
+					display: inline-block;
+				}
+				input{
+					margin-top: -2px;
+					margin-right: 5px;
+				}
+			}
+		}
+	}
+	.product-list{
+		.product-list-item{
+			position: relative;
+			display: inline-block;
+			padding: 5px;
+			border: 1px solid #000;
+			border-radius: 10px;
+			margin: 10px 5px;
+			.title{
+				font-weight: bolder;
+				color: #eb623f;
+				font-size: 18px;
+				padding: 10px 0px;
+			}
+			.choose-btn{
+				width: 90%;
+				margin: 5px auto;
+				display: block;
+				padding: 5px;
+				border-radius: 5px;
+				text-align: center;
+				color: #fff;
+				background: #eb623f;
+				text-decoration: none;
+			}
+			.choose-btn:hover{
+				box-shadow: 0px 0px 10px 1px #eb623f;
+				font-weight: bolder;
+			}
+			.close-full{
+				position: absolute;
+				top: -25px;
+				right: -25px;
+				padding: 10px 12px;
+				text-transform: uppercase;
+				font-size: 15px;
+				line-height: 15px;
+				border-radius: 32px;
+				border: 3px solid #000;
+				font-weight: bolder;
+				cursor: pointer;
+				background: #fff;
+			}
+			.thumb{
+				.show-full{
+					cursor: pointer;
+					position: relative;
+					.hide-show-img{
+						width: 145px;
+						height: 145px;
+						position: absolute;
+						background: transparent;
+					}
+					img{
+						display: block;
+						width: 145px;
+						height: 145px;
+					}
+					.name{
+						padding: 5px;
+						text-align: center;
+						width: 145px;
+						text-overflow: ellipsis;
+						overflow: hidden;
+						white-space: nowrap;
+					}
+				}
+			}
+			.full-details{
+				position: relative;
+				.close-full:hover{
+					background: #EEE8E8;
+				}
+				.left-side{
+					display: inline-block;
+					vertical-align: top;
+					width: 49%;
+					padding: 20px; 
+					img{
+						box-shadow: 0px 0px 10px 2px #000; 
+						border-radius: 10px;
+					}
+				}
+				.right-side{
+					display: inline-block;
+					vertical-align: top;
+					width: 50%;
+					.name{
+						font-size: 25px;
+						color: #eb623f;
+						padding-bottom: 10px;
+						width: 100%;
+						word-wrap: break-word;
+					}
+					.images{
+						img{
+							width: 145px;
+							height: 145px;
+							margin: 10px;
+							cursor: pointer;
+							border-radius: 10px;
+						}
+						img:hover{
+							box-shadow: 0px 0px 10px 2px #000; 
+						}
+					}
+					.price-by-size{
+						.list-size{
+							label{
+								display: inline-block;
+								width: 32%;
+								text-transform: uppercase;
+								span{
+									font-weight: bolder;
+								}
+							}
+
+						}
+					}
+				}
+				.desc{
+					margin-left: 10px;
+					p{
+						padding-left: 25px;
+					}
+				}
+				.choose-btn{
+					position: absolute;
+					width: 20%;
+					bottom: 0px;
+					right: 25px;
+				}
+			}
+		}
+		.product:hover{
+			background: #F8F8F8;
+			.name{
+
+			}
+		}
+	}
+}
