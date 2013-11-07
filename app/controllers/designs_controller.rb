@@ -1,11 +1,8 @@
 class DesignsController < ApplicationController
   before_filter :authenticate_user!
   def index
-    @default_image = Product.first.try(:image).try(:url)
-
-
+    @default_image = Product.try(:first).try(:image).try(:url)
   end
-
 
   def category
     @design_category = DesignCategory.find(params[:category_id])
@@ -13,9 +10,7 @@ class DesignsController < ApplicationController
     @images = self.generate_image_links(@design_images)
     respond_to do |format|
       format.js
-
     end
-  
   end
 
   def generate_image_links(design_images) 
@@ -26,8 +21,6 @@ class DesignsController < ApplicationController
     img_src.html_safe
   end
 
-
-
   def save_user_images
     #@image = Image.create(:image => params[:image])
     @image = current_user.images.new(:image => params[:image])
@@ -35,7 +28,6 @@ class DesignsController < ApplicationController
       if(@image.save)
         format.json {render :json => {:status=>"success", :url=>@image.image.url}  }
         #format.json {render :json => @image.image.url}
-
       else
         format.json {render :text => "Error Uploading"}
       end

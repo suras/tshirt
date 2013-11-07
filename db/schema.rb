@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131107064250) do
+ActiveRecord::Schema.define(:version => 20131107130509) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -19,6 +19,23 @@ ActiveRecord::Schema.define(:version => 20131107064250) do
     t.string   "uid"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "billing_addresses", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "country"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "company"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "postal_code"
+    t.string   "phone"
+    t.boolean  "is_active",   :default => true
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "categories", :force => true do |t|
@@ -102,8 +119,12 @@ ActiveRecord::Schema.define(:version => 20131107064250) do
     t.integer  "currency"
     t.string   "payment_status"
     t.integer  "user_item_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.integer  "cart_subtotal"
+    t.integer  "shipping_and_handling"
+    t.string   "tax"
+    t.string   "order_total"
   end
 
   create_table "prices", :force => true do |t|
@@ -147,6 +168,23 @@ ActiveRecord::Schema.define(:version => 20131107064250) do
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
+  create_table "shipping_addresses", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "country"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "company"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "postal_code"
+    t.string   "phone"
+    t.boolean  "is_active"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "user_items", :force => true do |t|
     t.integer  "product_id"
     t.integer  "user_id"
@@ -156,6 +194,8 @@ ActiveRecord::Schema.define(:version => 20131107064250) do
     t.boolean  "status",     :default => true
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
+    t.text     "design1"
+    t.string   "image1"
   end
 
   create_table "users", :force => true do |t|
