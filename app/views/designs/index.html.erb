@@ -10,9 +10,9 @@
 			<div class="left-side">
 				<div class="about-product">
 					<div class="product">
-						<div class="title">Product :</div>
-						<div class="desc">Cotton tshirt xxl</div>
-						<a class="edit-link" href="#">edit</a>
+						<span class="title">Enter Design Name :</span>
+						<input id="edit-desc" class="desc" type="text">
+						
 					</div>
 
 				</div>
@@ -414,9 +414,9 @@
 	<img src="/assets/checkout/re-calculate.png" class="re-calculate">
 	<div class="notice-success">
 		<div class="sub-title">Final Review</div>
-		<div class=""><b>Shipping : </b>Rs. 213</div>
-		<div class=""><b>Coupon : </b>Rs. 213</div>
-		<div class=""><b>Order Total : </b>Rs. 213</div>
+		<!--<div class=""><b>Shipping : </b>Rs. 213</div>
+		<div class=""><b>Coupon : </b>Rs. 213</div> -->
+		<div class="order-total"><b>Order Total : </b>Rs. <span id="order-total"></span></div>
 		<img src="/assets/checkout/checkout-btn.png" class="checkout-btn">
 	</div>
 	<div class="clearfix"></div>
@@ -549,6 +549,8 @@
 			$('#own_image_upload').trigger('click')
 
 		});
+
+		
 
 		$(document).on("click",".save",function(e){
 			
@@ -857,7 +859,10 @@ $(document).on("click",".re-calculate",function(e){
 	data.attributes={}
 	data.total = 0;
 	$('.custom-popup .sizes .single-size>input').each(function(){
-	var val =  Number($(this).val());
+	var val =  parseInt($(this).val());
+	 if(val!='' && (typeof val!='number') ){
+	 	alert('please enter valid value')
+	 }
 	 data.attributes[$(this).attr('id')] = val
 	 data.total=data.total+val;
 	})
@@ -880,9 +885,11 @@ $(document).on("click",".re-calculate",function(e){
 
 	$.ajax({
 		type: "POST",
-		url: '/calculation',
+		url: '/calculation.json',
 		data: data,
 		success: function (data) {
+			console.log(data)
+			$('#order-total').text(data.price)
 		},
 		error: function (data) {
 		}
