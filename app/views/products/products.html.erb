@@ -56,7 +56,7 @@
 								<div class="name"><%=product.name%></div>
 								<div class="images">
 									<img src="<%=product.try(:image).try(:url)%>">
-									<img src="<%=product.try(:images).try(:first).try(:image).try(:url)%>">
+									<img src="<%=product.try(:second_image).try(:url)%>">
 								</div>
 								<div class="price-by-size">
 									<div class="title">Various Price</div>
