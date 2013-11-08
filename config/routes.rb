@@ -18,6 +18,7 @@ Tshirt::Application.routes.draw do
 
   get "/about_us", :to => "home#about_us", :as => "about"
   get "/partners", :to => "home#partners", :as => "partners"
+  get "/how_to_design", :to => "home#how_to_design", :as => "how_to_design"
   get "/checkout", :to => "orders#new_checkout", :as => "checkout"
   get "/get_product", :to => "products#get_product", :as => "get_product"
   get "/products", :to => "products#products", :as => "product"
