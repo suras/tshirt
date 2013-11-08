@@ -12,7 +12,7 @@
 #               blank: "Email is needed for signup"
 #             password:
 #               blank: "Password Can't be blank"
-en: 
+es: 
   errors:
     format: "%{message}"
   activerecord: 
