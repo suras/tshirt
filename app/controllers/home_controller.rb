@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
 	def index
-
-
+           @sliders = Slider.where(:status => true)
 	end
 
 

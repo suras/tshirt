@@ -76,7 +76,13 @@
 	<div class="container">
 		<div id="ca-container" class="ca-container featured-slider">
 			<div class="ca-wrapper">
-				<div class="ca-item ca-item-1">
+			   <% @sliders.each_with_index do |slider ,index|%>
+                  <div class="ca-item ca-item-<%=index%>">
+					<img src="<%= slider.image.url%>">
+				</div>
+
+			   <% end %>
+				<!-- <div class="ca-item ca-item-1">
 					<img src="assets/ts1.png">
 				</div>
 				<div class="ca-item ca-item-2">
@@ -93,7 +99,7 @@
 				</div>
 				<div class="ca-item ca-item-6">
 					<img src="assets/ts3.png">
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
