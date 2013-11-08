@@ -21,7 +21,7 @@ Tshirt::Application.routes.draw do
   get "/get_product", :to => "products#get_product", :as => "get_product"
   #get "/products/:category_id", :to => "products#products", :as => "product"
   get "/products", :to => "products#products", :as => "product"
-  get "/calculation", :to => "products#calculation"
+  post "/calculation", :to => "products#calculation"
   get "/save_item", :to => "orders#save_item"
   resources :categories
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
