@@ -26,8 +26,13 @@ class ProductsController < ApplicationController
 
 	def calculation
       @product = Product.find(params[:product_id])
-      @attribute = @product.attributes.where(:id => params[:attribute_id])
-      @output_price = (@attribute.price * params[:quantity].to_i)
+      @output_price = 0
+      # @attribute = @product.attributes.where(:id => params[:attribute_id])
+      # @output_price = (@attribute.price * params[:quantity].to_i)
+      params[:attributes].each do |k, v|
+        attribute = @product.attributes.where(:id => k)
+        @output_price += (@attribute.price * v)
+      end
       respond_to do |format|
          format.json {render :json => {:price => @output_price}}
       end
