@@ -1,7 +1,15 @@
 <body>
 	<header>
 		<div class="container">
-		<a href="/" class="home-link" title="">
+			<p class="change-language">
+			<span>Change Language :</span>
+				<% if(I18n.locale.to_s == "en")%>
+				<%= link_to "Spanish", url_for(:locale => "es")%>
+				<% else %>
+				<%= link_to "English", url_for(:locale => "en")%>
+				<% end %>
+			</p>
+			<a href="/" class="home-link" title="">
 				<img src="/assets/logoa.png">
 				<span class="logo-name">Mobby<span>art</span></span>
 			</a>
@@ -17,21 +25,12 @@
 				<% end %>
 			</nav>
 		</div>
-		<p>
-<% if(I18n.locale.to_s == "en")%>
-  <%= link_to "Spanish", url_for(:locale => "es")%>
-
-<% else %>
-  <%= link_to "English", url_for(:locale => "en")%>
-
-<% end %>
-
-</p>
+		
 	</header>
 	<p>
-	<% flash.each do |name, msg| %>
-	  <% if msg.is_a?(String) %>
-	    <%= content_tag :div, msg, :id => "flash_#{name}" %>
-	  <% end %>
-	<% end %>
+		<% flash.each do |name, msg| %>
+		<% if msg.is_a?(String) %>
+		<%= content_tag :div, msg, :id => "flash_#{name}" %>
+		<% end %>
+		<% end %>
 	</p>
