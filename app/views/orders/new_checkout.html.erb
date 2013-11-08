@@ -111,19 +111,19 @@
 				<div class="title">Shipping & Subtotal</div>
 				<div class="field">
 					<label>Cart Subtotal</label>
-					<input type="text" name="" readonly="readonly" value="<%=  %>" placeholder="">
+					<input type="text" name="" readonly="readonly" value="<%=@total  %>" placeholder="">
 				</div>
 				<div class="field">
 					<label>Shipping & Handling</label>
-					<input type="text" name="" readonly="readonly" value="<%= %>" placeholder="">
+					<input type="text" name="" readonly="readonly" value="<%=@shipping %>" placeholder="">
 				</div>
 				<div class="field">
 					<label>Tax</label>
-					<input type="text" name="" readonly="readonly" value="<%=  %>" placeholder="">
+					<input type="text" name="" readonly="readonly" value="<%=@tax  %>" placeholder="">
 				</div>
 				<div class="field">
 					<label>Order Total</label>
-					<input type="text" name="" readonly="readonly" value="<%=  %>" placeholder="">
+					<input type="text" name="" readonly="readonly" value="<%=@payment_amount  %>" placeholder="">
 				</div>
 			</fieldset>
 			<div class="clearfix"></div>

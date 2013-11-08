@@ -33,6 +33,10 @@ crew_back.png: crew_back-dfff563522dec468e817e63b4f3eeb8c.png
 crew_back/index.png: crew_back-dfff563522dec468e817e63b4f3eeb8c.png
 design-icon.png: design-icon-749dd3247a4c7ce70a7fd84e2860ea5f.png
 design-icon/index.png: design-icon-749dd3247a4c7ce70a7fd84e2860ea5f.png
+empty-boy.png: empty-boy-a8aca07702c8ba806253e74d0ca43ad5.png
+empty-boy/index.png: empty-boy-a8aca07702c8ba806253e74d0ca43ad5.png
+empty-tshirt.png: empty-tshirt-9e8aa66ce098303b773ed857714c6818.png
+empty-tshirt/index.png: empty-tshirt-9e8aa66ce098303b773ed857714c6818.png
 facebook.png: facebook-683ee580e09e5f81a48c0b654a2e7a5d.png
 facebook/index.png: facebook-683ee580e09e5f81a48c0b654a2e7a5d.png
 follow-us.png: follow-us-6a12e967d941e0d372c654035bd89218.png
@@ -97,6 +101,10 @@ ts3.png: ts3-ef545aea4c4108c3866dad8321ab4344.png
 ts3/index.png: ts3-ef545aea4c4108c3866dad8321ab4344.png
 ts4.png: ts4-ca1f754267e31a8724054c47bcdf0370.png
 ts4/index.png: ts4-ca1f754267e31a8724054c47bcdf0370.png
+tshirt-boy-text.png: tshirt-boy-text-66b76f8525007de3bd7ca9c16d53e638.png
+tshirt-boy-text/index.png: tshirt-boy-text-66b76f8525007de3bd7ca9c16d53e638.png
+tshirt-boy.png: tshirt-boy-f12447a475c6bbf378aef742dda938b5.png
+tshirt-boy/index.png: tshirt-boy-f12447a475c6bbf378aef742dda938b5.png
 twitter.png: twitter-91c9e1c9559c10f2e0a16e7e5648581d.png
 twitter/index.png: twitter-91c9e1c9559c10f2e0a16e7e5648581d.png
 upload-img/cancel-btn.png: upload-img/cancel-btn-bd87fcfd23342a491446ae05a9fed1ab.png

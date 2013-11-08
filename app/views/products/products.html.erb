@@ -61,7 +61,7 @@
 								<div class="price-by-size">
 									<div class="title">Various Price</div>
 									<div class="list-size">
-									     <%=product.try(:product_attributes).try(:each) do |attribute| %>
+									     <%product.try(:product_attributes).try(:each) do |attribute| %>
                                             <label><span><%=attribute.attribute_name%></span> -<%=attribute.price%></label>
 
 									     <% end %>
