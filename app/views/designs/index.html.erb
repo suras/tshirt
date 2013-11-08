@@ -572,6 +572,10 @@
 					}
 				});
 
+		    	if($('#main_image-back').attr('src')==''){
+					return false;
+				}
+				
 				$('#pcanvas-back').parent().eq(0).show();
 				html2canvas(document.getElementById('pcanvas-back'), {
 					onrendered: function(canvas) {
@@ -596,7 +600,9 @@
 				});
 				
 
-		    }else{
+		    }
+
+		    if($('.main-canvas').attr('data-active')=='back'){
 		    	html2canvas(document.getElementById('pcanvas-back'), {
 					onrendered: function(canvas) {
 						$.ajaxSetup({
@@ -611,17 +617,12 @@
 						}).done(function( respond ) {
 						 	console.log(respond);
 						});
-						console.log(JSON.stringify(canvas_back))
 					}
 				});
 
 				$('#pcanvas').parent().eq(0).show();
 				html2canvas(document.getElementById('pcanvas'), {
 					onrendered: function(canvas) {
-						/*canvas.toBlob(function(blob) {
-							saveAs(blob, "back.png");
-							$('#pcanvas').parent().eq(0).hide();
-						});*/
 						$.ajaxSetup({
 							headers: {
 								'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
@@ -636,7 +637,7 @@
 						 	console.log(respond);
 						 	$('#pcanvas').parent().eq(0).hide();
 						});
-						console.log(JSON.stringify(canvas_front))
+						
 					}
 				});
 				//

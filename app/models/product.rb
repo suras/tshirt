@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
 
-  attr_accessible :category_id, :description, :image, :name, :status, :image_cache, :product_attributes_attributes, :price_attributes, :images_attributes, :remove_image
+  attr_accessible :category_id, :description, :image, :name, :status, :image_cache, :product_attributes_attributes, :price_attributes, :images_attributes, :remove_image,
                   :price_attributes, :images_attributes, :shipping_and_handling, :tax, :second_image
 
   belongs_to :category
