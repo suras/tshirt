@@ -6,20 +6,20 @@
 				<span class="logo-name">Mobby<span>art</span></span>
 			</a>
 			<nav class="cl-effect-21">
-				<a href="/">Home</a>
-				<a href="/about_us">About</a>
-				<a href="/designs">Create</a>
-				<a href="/contact">Contact</a>
+				<a href="/"><%= t :home %></a>
+				<a href="/about_us"><%= t :about %></a>
+				<a href="/designs"><%= t :create %></a>
+				<a href="/contact"><%= t :contact %></a>
 				<% if user_signed_in? %>
-				<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+				<%= link_to t(:sign_out), destroy_user_session_path, method: :delete %>
 				<% else %>
-				<%= link_to "Sign in", new_user_session_path %>
+				<%= link_to t(:sign_in), new_user_session_path %>
 				<% end %>
 			</nav>
 		</div>
 		<p>
 <% if(I18n.locale.to_s == "en")%>
-  <%= link_to "Spanish", url_for(:locale => "sp")%>
+  <%= link_to "Spanish", url_for(:locale => "es")%>
 
 <% else %>
   <%= link_to "English", url_for(:locale => "en")%>
