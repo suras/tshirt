@@ -10,9 +10,9 @@
 			<div class="left-side">
 				<div class="about-product">
 					<div class="product">
-						<div class="title">Product :</div>
-						<div class="desc">Cotton tshirt xxl</div>
-						<a class="edit-link" href="#">edit</a>
+						<span class="title">Enter Design Name :</span>
+						<input id="edit-desc" class="desc" type="text">
+						
 					</div>
 
 				</div>
@@ -184,7 +184,7 @@
 							<textarea name="text-design-notes" class="text-design-notes" id="text-design-notes"></textarea>
 							<div class="text-center">
 								<button class="btn">Continue Designing</button>
-								<button class="btn">Add &amp; Save Design</button>
+								<button class="btn save">Add &amp; Save Design</button>
 							</div>
 						</div>
 						<div class="single-panel edit-product hide">
@@ -414,9 +414,9 @@
 	<img src="/assets/checkout/re-calculate.png" class="re-calculate">
 	<div class="notice-success">
 		<div class="sub-title">Final Review</div>
-		<div class=""><b>Shipping : </b>Rs. 213</div>
-		<div class=""><b>Coupon : </b>Rs. 213</div>
-		<div class=""><b>Order Total : </b>Rs. 213</div>
+		<!--<div class=""><b>Shipping : </b>Rs. 213</div>
+		<div class=""><b>Coupon : </b>Rs. 213</div> -->
+		<div class="order-total"><b>Order Total : </b>Rs. <span id="order-total"></span></div>
 		<img src="/assets/checkout/checkout-btn.png" class="checkout-btn">
 	</div>
 	<div class="clearfix"></div>
@@ -550,29 +550,21 @@
 
 		});
 
+		
+
 		$(document).on("click",".save",function(e){
 			
 		    if($('.main-canvas').attr('data-active')=='main'){
 		    	html2canvas(document.getElementById('pcanvas'), {
 					onrendered: function(canvas) {
-						/*var dataUrl = canvas.toDataURL('image/png');
-						$.ajaxSetup({
-							headers: {
-								'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-							}
-						});
-						$.ajax({
-						  type: "POST",
-						  url: "/save_item.json",
-						  data: {image: dataUrl,design:JSON.stringify(canvas_front)}
-						}).done(function( respond ) {
-						 	console.log(respond);
-						});*/
+						
 			    		canvas.toBlob(function(blob) {
 			    			console.log(blob)
 							var formData = new FormData()
 
 			    			if(typeof formData=="object"){
+			    					formData.append('title',$('.desc').val())
+			    					formData.append('design_notes',$('#text-design-notes').val())
 									formData.append('image',blob)
 									formData.append('design',JSON.stringify(canvas_front))
 									$.ajaxSetup({
@@ -596,7 +588,7 @@
 						});
 					}
 				});
-
+		    	console.log($('#main_image-back').attr('src'))
 		    	if($('#main_image-back').attr('src')==''){
 					return false;
 				}
@@ -605,26 +597,14 @@
 				
 				html2canvas(document.getElementById('pcanvas-back'), {
 					onrendered: function(canvas) {
-						/*var dataUrl = canvas.toDataURL('image/png');
-						$('#pcanvas-back').parent().eq(0).hide();
-						$.ajaxSetup({
-							headers: {
-								'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-							}
-						});
-						$.ajax({
-						  type: "POST",
-						  url: "/save_item.json",
-						  data: {image1: dataUrl,design1:JSON.stringify(canvas_back)}
-						}).done(function( respond ) {
-						 	console.log(respond);
-						 	$('#pcanvas-back').parent().eq(0).hide();
-						});*/
-
+						
 						canvas.toBlob(function(blob) {
 							var formData = new FormData()
 
+
 			    			if(typeof formData=="object"){
+			    					formData.append('title',$('.desc').val())
+			    					formData.append('design_notes',$('#text-design-notes').val())
 									formData.append('image1',blob)
 									formData.append('design1',JSON.stringify(canvas_front))
 									$.ajaxSetup({
@@ -658,37 +638,69 @@
 		    if($('.main-canvas').attr('data-active')=='back'){
 		    	html2canvas(document.getElementById('pcanvas-back'), {
 					onrendered: function(canvas) {
-						$.ajaxSetup({
-							headers: {
-								'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-							}
+						
+		    			canvas.toBlob(function(blob) {
+			    			var formData = new FormData()
+
+			    			if(typeof formData=="object"){
+			    					formData.append('title',$('.desc').val())
+			    					formData.append('design_notes',$('#text-design-notes').val())
+									formData.append('image1',blob)
+									formData.append('design1',JSON.stringify(canvas_back))
+									$.ajaxSetup({
+										headers: {
+											'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+										}
+									});
+									$.ajax({
+										type: "POST",
+										url: '/save_item.json',
+										data: formData,
+										processData: false,
+										contentType: false,
+										success: function (data) {
+											console.log(data,'1')
+											
+										}
+								
+									});
+								}
 						});
-						$.ajax({
-						  type: "POST",
-						  url: "/save_item.json",
-						  data: {image1: dataUrl,design1:JSON.stringify(canvas_back)}
-						}).done(function( respond ) {
-						 	console.log(respond);
-						});
+
 					}
 				});
 
 				$('#pcanvas').parent().eq(0).show();
 				html2canvas(document.getElementById('pcanvas'), {
 					onrendered: function(canvas) {
-						$.ajaxSetup({
-							headers: {
-								'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-							}
-						});
-						var dataUrl = canvas.toDataURL('image/png');
-						$.ajax({
-						  type: "POST",
-						  url: "/save_item.json",
-						  data: {image: dataUrl,design:JSON.stringify(canvas_front)}
-						}).done(function( respond ) {
-						 	console.log(respond);
-						 	$('#pcanvas').parent().eq(0).hide();
+						
+
+						canvas.toBlob(function(blob) {
+			    			var formData = new FormData()
+
+			    			if(typeof formData=="object"){
+			    					formData.append('title',$('.desc').val())
+			    					formData.append('design_notes',$('#text-design-notes').val())
+									formData.append('image',blob)
+									formData.append('design',JSON.stringify(canvas_front))
+									$.ajaxSetup({
+										headers: {
+											'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+										}
+									});
+									$.ajax({
+										type: "POST",
+										url: '/save_item.json',
+										data: formData,
+										processData: false,
+										contentType: false,
+										success: function (data) {
+											console.log(data,'1')
+											$('#pcanvas').parent().eq(0).hide();
+										}
+								
+									});
+								}
 						});
 						
 					}
@@ -847,7 +859,10 @@ $(document).on("click",".re-calculate",function(e){
 	data.attributes={}
 	data.total = 0;
 	$('.custom-popup .sizes .single-size>input').each(function(){
-	var val =  Number($(this).val());
+	var val =  parseInt($(this).val());
+	 if(val!='' && (typeof val!='number') ){
+	 	alert('please enter valid value')
+	 }
 	 data.attributes[$(this).attr('id')] = val
 	 data.total=data.total+val;
 	})
@@ -870,9 +885,11 @@ $(document).on("click",".re-calculate",function(e){
 
 	$.ajax({
 		type: "POST",
-		url: '/calculation',
+		url: '/calculation.json',
 		data: data,
 		success: function (data) {
+			console.log(data)
+			$('#order-total').text(data.price)
 		},
 		error: function (data) {
 		}
