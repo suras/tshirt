@@ -22,7 +22,7 @@ Tshirt::Application.routes.draw do
   #get "/products/:category_id", :to => "products#products", :as => "product"
   get "/products", :to => "products#products", :as => "product"
   post "/calculation", :to => "products#calculation"
-  get "/save_item", :to => "orders#save_item"
+  post "/save_item", :to => "orders#save_item"
   resources :categories
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
   controllers: {omniauth_callbacks: "authentications", registrations: "registrations"}
