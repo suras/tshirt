@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_many :authentications
+  has_many :user_items
   has_many :images, :as => :thing
   has_one :billing_address
   has_one :shipping_address

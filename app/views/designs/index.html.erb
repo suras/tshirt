@@ -556,10 +556,15 @@
 		    	html2canvas(document.getElementById('pcanvas'), {
 					onrendered: function(canvas) {
 						var dataUrl = canvas.toDataURL('image/png');
+						$.ajaxSetup({
+							headers: {
+								'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+							}
+						});
 						$.ajax({
 						  type: "POST",
-						  url: "/",
-						  data: {image: dataURL,front:JSON.stringify(canvas_front)}
+						  url: "/save_item.json",
+						  data: {image: dataUrl,design:JSON.stringify(canvas_front)}
 						}).done(function( respond ) {
 						 	console.log(respond);
 						});
@@ -572,12 +577,18 @@
 					onrendered: function(canvas) {
 						var dataUrl = canvas.toDataURL('image/png');
 						$('#pcanvas-back').parent().eq(0).hide();
+						$.ajaxSetup({
+							headers: {
+								'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+							}
+						});
 						$.ajax({
 						  type: "POST",
-						  url: "/",
-						  data: {image: dataURL,front:JSON.stringify(canvas_back)}
+						  url: "/save_item.json",
+						  data: {image1: dataUrl,design1:JSON.stringify(canvas_back)}
 						}).done(function( respond ) {
 						 	console.log(respond);
+						 	$('#pcanvas-back').parent().eq(0).hide();
 						});
 						
 						
@@ -588,10 +599,15 @@
 		    }else{
 		    	html2canvas(document.getElementById('pcanvas-back'), {
 					onrendered: function(canvas) {
+						$.ajaxSetup({
+							headers: {
+								'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+							}
+						});
 						$.ajax({
 						  type: "POST",
-						  url: "/",
-						  data: {image: dataURL,front:JSON.stringify(canvas_back)}
+						  url: "/save_item.json",
+						  data: {image1: dataUrl,design1:JSON.stringify(canvas_back)}
 						}).done(function( respond ) {
 						 	console.log(respond);
 						});
@@ -606,13 +622,19 @@
 							saveAs(blob, "back.png");
 							$('#pcanvas').parent().eq(0).hide();
 						});*/
+						$.ajaxSetup({
+							headers: {
+								'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+							}
+						});
 						var dataUrl = canvas.toDataURL('image/png');
 						$.ajax({
 						  type: "POST",
-						  url: "/",
-						  data: {image: dataURL,front:JSON.stringify(canvas_front)}
+						  url: "/save_item.json",
+						  data: {image: dataUrl,design:JSON.stringify(canvas_front)}
 						}).done(function( respond ) {
 						 	console.log(respond);
+						 	$('#pcanvas').parent().eq(0).hide();
 						});
 						console.log(JSON.stringify(canvas_front))
 					}
@@ -720,6 +742,11 @@
 		});
 
 		$(document).on('click','.rotate',function(){
+
+			if($('#main_image-back').attr('src')==''){
+				return false;
+			}
+
 			if($('.main-canvas').attr('data-active')=='main'){
 				$('#pcanvas').parent().eq(0).hide();
 				if($('#pcanvas-back').closest('.canvas-container').length<1){
