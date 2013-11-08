@@ -20,7 +20,8 @@
 					<canvas id="pcanvas" width="350" height="420"></canvas>
 					<img class="hide" src="<%= @default_image %>" id="main_image">
 					<canvas class="hide" id="pcanvas-back" width="350" height="420"></canvas>
-					<img class="hide" src="assets/crew_back.png" id="main_image-back">
+					<img class="hide" src="<%= @back_image %>" id="main_image-back">
+					
 				</div>
 				<div class="canvas-operation">
 					<a href="#" class="rotate">
@@ -760,7 +761,8 @@
 
 $(document).on("click",".re-calculate",function(e){
 	
-	var data = {}
+	var data = {},
+	coupon_code = $('.ref-code').val();
 	data.attributes={}
 	data.total = 0;
 	$('.custom-popup .sizes .single-size>input').each(function(){
@@ -768,7 +770,12 @@ $(document).on("click",".re-calculate",function(e){
 	 data.attributes[$(this).attr('id')] = val
 	 data.total=data.total+val;
 	})
+	
+	if(coupon_code && typeof coupon_code!='undefined'){
+	  data.coupon_code = $('.ref-code').val();
+	}
 
+    data.product_id = <%= @product.id %>
 	if(data.total<1){
 		alert('please enter quantity')
 		return false;
@@ -779,7 +786,7 @@ $(document).on("click",".re-calculate",function(e){
 			'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
 		}
 	});
-	
+
 	$.ajax({
 		type: "POST",
 		url: '/calculation',
