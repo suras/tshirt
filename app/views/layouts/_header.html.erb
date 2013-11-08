@@ -17,6 +17,16 @@
 				<% end %>
 			</nav>
 		</div>
+		<p>
+<% if(I18n.locale.to_s == "en")%>
+  <%= link_to "Spanish", url_for(:locale => "sp")%>
+
+<% else %>
+  <%= link_to "English", url_for(:locale => "en")%>
+
+<% end %>
+
+</p>
 	</header>
 	<p>
 	<% flash.each do |name, msg| %>
@@ -24,4 +34,4 @@
 	    <%= content_tag :div, msg, :id => "flash_#{name}" %>
 	  <% end %>
 	<% end %>
-	<p>
+	</p>
