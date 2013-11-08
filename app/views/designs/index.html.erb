@@ -593,7 +593,13 @@
 					return false;
 				}
 
-				$('#pcanvas-back').parent().eq(0).show();
+				if($('#pcanvas-back').closest('.canvas-container').length>0){
+					console.log($('#pcanvas-back').closest('.canvas-container').length)
+					$('#pcanvas-back').parent().eq(0).show();
+				}else{
+					$('#pcanvas-back').show()
+				}
+				
 				
 				html2canvas(document.getElementById('pcanvas-back'), {
 					onrendered: function(canvas) {
@@ -620,7 +626,12 @@
 										contentType: false,
 										success: function (data) {
 											console.log(data,'d')
-											$('#pcanvas-back').parent().eq(0).hide();
+											if($('#pcanvas-back').closest('.canvas-container').length>0){
+												console.log($('#pcanvas-back').closest('.canvas-container').length)
+												$('#pcanvas-back').parent().eq(0).hide();
+											}else{
+												$('#pcanvas-back').hide()
+											}
 											
 										}
 								
