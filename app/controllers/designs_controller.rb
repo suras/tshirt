@@ -4,11 +4,11 @@ class DesignsController < ApplicationController
     if(params[:product_id].present?)
       @product = Product.find(params[:product_id])
       @default_image = @product.try(:image).try(:url)
-      @attributes = @product.attributes
+      @attributes = @product.product_attributes
     else
       @product = Product.first
       @default_image = @product.try(:image).try(:url)
-      @attributes = @product.attributes
+      @attributes = @product.product_attributes
 
     end
   end

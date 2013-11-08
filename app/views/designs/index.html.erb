@@ -344,7 +344,7 @@
 	<div class="quantities">
 		<div class="head">Quantities</div>
 		<div class="sizes">
-			<div class="single-size">
+			<!--<div class="single-size">
 				<label>YXS</label>
 				<input type="number" name="size_yxs" id="size_yxs" class="size_yxs">
 			</div>
@@ -395,8 +395,15 @@
 			<div class="single-size">
 				<label>5xl</label>
 				<input type="number" name="size_5xl" id="size_5xl" class="size_5xl">
+			</div>-->
+			<% @attributes.try(:each) do |attribute| %>
+			<div class="single-size">
+				<label><%=attribute.try(:attribute_name) %></label>
+				<input type="number" name="size_4xl" id="<%=attribute.id%>" class="size_4xl">
 			</div>
-		</div>
+			<% end %>
+		</div> 
+
 	</div>
 	<div class="refer-code">
 		<div class="head">Reference code (leave empty if not)</div>
@@ -752,10 +759,31 @@
 			})
 
 $(document).on("click",".re-calculate",function(e){
+	
+	var data = {}
+	data.attributes={}
+	data.total = 0;
+	$('.custom-popup .sizes .single-size>input').each(function(){
+	var val =  Number($(this).val());
+	 data.attributes[$(this).attr('id')] = val
+	 data.total=data.total+val;
+	})
+
+	if(data.total<1){
+		alert('please enter quantity')
+		return false;
+	}
+
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+	
 	$.ajax({
 		type: "POST",
-		url: '/save_user_images',
-		data: formData,
+		url: '/calculation',
+		data: data,
 		success: function (data) {
 		},
 		error: function (data) {
