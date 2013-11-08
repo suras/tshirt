@@ -1,7 +1,17 @@
 class DesignsController < ApplicationController
   before_filter :authenticate_user!
   def index
-    @default_image = Product.try(:first).try(:image).try(:url)
+    if(params[:product_id].present?)
+      @product = Product.find(params[:product_id])
+      @default_image = @product.try(:image).try(:url)
+      @back_image = @product.try(:second_image).try(:url)
+      @attributes = @product.product_attributes
+    else
+      @product = Product.first
+      @default_image = @product.try(:image).try(:url)
+      @attributes = @product.product_attributes
+
+    end
   end
 
   def category

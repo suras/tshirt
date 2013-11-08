@@ -43,10 +43,14 @@
 	display: inline-block;
 }
 .product .title,.decoration .title{
+	width :205px !important;
 	color: #5ac1d7;
 }
 .product .desc,.decoration .desc{
 	color: #797979;
+	height:30px;
+	margin: 0;
+
 }
 .product .edit-link,.decoration .edit-link{
 	color: #ee5b38;
@@ -375,7 +379,7 @@
 .add-remove-btn{
 	position: absolute;
 	right: 0px;
-	top: 0px;
+	top: 158px;
 }
 .add-remove-btn .btn{
 	font-size: 12px;

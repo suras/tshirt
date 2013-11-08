@@ -9,8 +9,9 @@
 				   <% @category.each do |category| %>
                     
                      <li class="category">
-						<input type="checkbox" value="<%=category.id %>" data-id="1" id="category-1">
-						<label for="category-1"><%=category.name %></label>
+						<!-- <input type="checkbox" value="<%=category.id %>" data-id="1" id="category-1"> -->
+						<!-- <label for="category-1"><%=category.name %></label> -->
+						<%= link_to category.name, product_path(:category_id => category.id)%>
 					</li>
 
 
@@ -34,7 +35,7 @@
 				</ul>
 			</div>
 			<div class="span9 product-list">
-				<div class="result-no">5 Results found</div>
+				<div class="result-no"><%=@products.count%> Results found</div>
 				<div class="all-products">
 					<% @products.each do |product| %>
 					<div class="product-list-item">
@@ -45,7 +46,7 @@
 								<img src="<%=product.try(:image).try(:url)%>">
 								<div class="name"><%=product.name%></div>
 							</div>
-							<a href="/designs/1" class="choose-btn" title="">Choose</a>
+							<a href="/designs/<%=product.id%>" class="choose-btn" title="">Choose</a>
 						</div>
 						<div class="full-details hide	">
 							<div class="left-side">
@@ -55,7 +56,7 @@
 								<div class="name"><%=product.name%></div>
 								<div class="images">
 									<img src="<%=product.try(:image).try(:url)%>">
-									<img src="<%=product.try(:images).try(:first).try(:image).try(:url)%>">
+									<img src="<%=product.try(:second_image).try(:url)%>">
 								</div>
 								<div class="price-by-size">
 									<div class="title">Various Price</div>
@@ -85,7 +86,7 @@
 								<p><%=product.description%></p>
 								<div class="title">Category</div>
 								<p><%=product.try(:category).try(:name)%></p>
-								<a href="/designs/1" class="choose-btn" title="">Choose</a>
+								<a href="/designs/<%=product.id%>" class="choose-btn" title="">Choose</a>
 							</div>
 						</div>
 					</div>

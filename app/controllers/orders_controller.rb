@@ -29,11 +29,25 @@ before_filter :authenticate_user!
 
 	def save_item
        if(session[:image_id].present?)
-       	 item_delete = UserItem.delete_all(:id => session[:image_ids])
-         session[:image_ids] = ""
-       end
-         item = current_user.user_items.create(:image => params[0][:image], :image1 => params[1][:image] )
+       	 @user_item = UserItem.find(session[:image_id])
+         if(params[:design].present? && params[:image].present?)
+           @user_item.update_attributes(:design => params[:design], :image => params[:image], :title => params[:title], :design_notes => params[:design_notes])
+         else
+           @user_item.update_attributes(:design1 => params[:design1] , :image1 => params[:image1], :title => params[:title], :design_notes => params[:design_notes] )
+         end 
+
+         img_id  = @user_item.id
+       else
+         item = current_user.user_items.create(:design => params[:design], :design1 => params[:design1], :image => params[:image], :image1 => params[:image1], :title => params[:title], :design_notes => params[:design_notes])
           img_id  = item.id
           session[:image_id] = img_id
+       end
+        respond_to do |format|
+          format.json {render :json => {:img_id=>img_id}}
+          format.js {render :json => {:img_id=>img_id}}
+
+        end
 	end
+
+
 end

@@ -102,7 +102,7 @@
 .popup-info p{
 	margin: 0px;
 }
-.trigger-close,.popup-btns img{
+.trigger-close,.re-calculate,.popup-btns img{
 	cursor: pointer;
 }
 

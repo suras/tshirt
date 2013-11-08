@@ -26,8 +26,26 @@ class ProductsController < ApplicationController
 
 	def calculation
       @product = Product.find(params[:product_id])
-      @attribute = @product.attributes.where(:id => params[:attribute_id])
-      @output_price = (@attribute.price * params[:quantity].to_i)
+      @output_price = 0
+      # @attribute = @product.attributes.where(:id => params[:attribute_id])
+      # @output_price = (@attribute.price * params[:quantity].to_i)
+      params[:attributes].each do |k, v|
+        attribute = @product.product_attributes.where(:id => k).first
+        @output_price += (attribute.price.to_i * v.to_i)
+      end
+      tax = @output_price - @product.tax.to_i
+      tax = tax/100
+      @output_price = @output_price * tax 
+       @output_price = @output_price + @product.try(:shipping_and_handling).try(:to_i)
+      if(params[:coupon_code].present?)
+          coupon = Coupon.find_by_code(params[:coupon_code])
+          coupon_discount = coupon.discount.to_i
+          coupon_discount = @output_price - coupon_discount
+          @output_price = @output_price * coupon_discount 
+      end
+      session[:tax] = @product.tax
+      session[:shipping] = @product.try(:shipping_and_handling)
+      session[:price] = @output_price
       respond_to do |format|
          format.json {render :json => {:price => @output_price}}
       end

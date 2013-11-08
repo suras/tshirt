@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131107130509) do
+ActiveRecord::Schema.define(:version => 20131108150152) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -150,9 +150,12 @@ ActiveRecord::Schema.define(:version => 20131107130509) do
     t.integer  "category_id"
     t.string   "image"
     t.text     "description"
-    t.boolean  "status",      :default => true
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "status",                :default => true
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+    t.integer  "shipping_and_handling"
+    t.integer  "tax"
+    t.string   "second_image"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -185,17 +188,26 @@ ActiveRecord::Schema.define(:version => 20131107130509) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "sliders", :force => true do |t|
+    t.string   "name"
+    t.string   "image"
+    t.boolean  "status",     :default => true
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
   create_table "user_items", :force => true do |t|
     t.integer  "product_id"
     t.integer  "user_id"
     t.string   "image"
     t.text     "design"
     t.string   "title"
-    t.boolean  "status",     :default => true
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.boolean  "status",       :default => true
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.text     "design1"
     t.string   "image1"
+    t.text     "design_notes"
   end
 
   create_table "users", :force => true do |t|

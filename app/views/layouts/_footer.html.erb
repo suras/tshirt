@@ -7,12 +7,16 @@
 						<div class="footer-links">
 							<div class="link-head">Custom products</div>
 							<ul>
-								<li><a href="#">Tshirts</a></li>
+								<!-- <li><a href="#">Tshirts</a></li>
 								<li><a href="#">Napkins</a></li>
 								<li><a href="#">Bags</a></li>
 								<li><a href="#">Mugs</a></li>
 								<li><a href="#">Cases</a></li>
-								<li><a href="#">and more</a></li>
+								<li><a href="#">and more</a></li> -->
+								<% Category.all.try(:each) do |cat|%>
+                                    <li><a href="#"><%= link_to cat.name, product_path(:category_id => cat.id)%></a></li>  
+
+                                  <%  end %>
 							</ul>
 						</div>
 						<div class="footer-links">

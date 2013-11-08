@@ -1,746 +1,1063 @@
 
-  <%= stylesheet_link_tag  "editor", :media => "all" %>
-  <%= stylesheet_link_tag  "popup-styles", :media => "all" %>
+<%= stylesheet_link_tag  "editor", :media => "all" %>
+<%= stylesheet_link_tag  "popup-styles", :media => "all" %>
 
-<%= javascript_include_tag  "jquery.min","canvas/all","canvas/html2canvas"   %>
+<%= javascript_include_tag  "canvas/canvas-toBlob","canvas/FileSaver","jquery.min","canvas/all","canvas/html2canvas"   %>
 
 <section class="editor">
-		<div class="container">
-			<div class="editor-box">
-				<div class="left-side">
-					<div class="about-product">
-						<div class="product">
-							<div class="title">Product :</div>
-							<div class="desc">Cotton tshirt xxl</div>
-							<a class="edit-link" href="#">edit</a>
-						</div>
+	<div class="container">
+		<div class="editor-box">
+			<div class="left-side">
+				<div class="about-product">
+					<div class="product">
+						<span class="title">Enter Design Name :</span>
+						<input id="edit-desc" class="desc" type="text">
 						
 					</div>
-					<div class="main-canvas">
-						<canvas id="pcanvas" width="350" height="420"></canvas>
-						<img class="hide" src="<%= @default_image %>" id="main_image">
-					</div>
-					<div class="canvas-operation">
-						<a href="#" class="rotate">
-							<div class="img-icon">
-							</div>
-							<div>Rotate</div>
-						</a>
-						<a href="#" class="zoom">
-							<div class="img-icon">
-							</div>
-							<div>Zoom</div>
-						</a>
-						<a href="#" class="calculate">
-							<div>CALCULATE PRICE &amp;</div>
-							<div>ADD TO CART</div>
-						</a>
-						<a href="#" id="clear_canvas" class="pull-right clear">
-							<div class="img-icon">
-							</div>
-							<div>Clear</div>
-						</a>
-					</div>
+
 				</div>
-				<div class="right-side">
-					<div class="welcome-msg">
-						<p>Welcome to the <i>Mobby</i>art design tool</p>
-						<p>Get started designing! choose your option below</p>
-					</div>
+				<div class="main-canvas" data-active="main">
+					<canvas id="pcanvas" width="350" height="420"></canvas>
+					<img class="hide" src="<%= @default_image %>" id="main_image">
+					<canvas class="hide" id="pcanvas-back" width="350" height="420"></canvas>
+					<img class="hide" src="<%= @back_image %>" id="main_image-back">
+					
+				</div>
+				<div class="canvas-operation">
+					<a href="#" class="rotate">
+						<div class="img-icon">
+						</div>
+						<div>Rotate</div>
+					</a>
+					<a href="#" class="zoom">
+						<div class="img-icon">
+						</div>
+						<div>Zoom</div>
+					</a>
+					<a href="#" class="calculate open-popup" data-popup="checkout" data-title="CALCULATE PRICE">
+						<div>CALCULATE PRICE &amp;</div>
+						<div>ADD TO CART</div>
+					</a>
+					<a href="#" id="clear_canvas" class="pull-right clear">
+						<div class="img-icon">
+						</div>
+						<div>Clear</div>
+					</a>
+				</div>
+			</div>
+			<div class="right-side">
+				<div class="welcome-msg">
+					<p>Welcome to the <i>Mobby</i>art design tool</p>
+					<p>Get started designing! choose your option below</p>
+				</div>
 
-					<div class="tab-content-box">
-						<div class="single-content-box">
-							<div class="single-panel add-image hide">
-								<div class="inner-tabs">
-									<a href="" class="clip-art current" data-show="clip-arts">
-										Clip arts
-									</a>
-									<a href="" data-title="Upload My Own Image" data-popup="upload-image-popup" class="open-popup upload-image" data-show="upload-image">
-										Upload Images
-									</a>
-									<a href="" class="my-images" data-show="my-images" >
-										My Images
-									</a>
-								</div>
-								<div class="inner-tab-content">
-									<div class="clip-arts">
-										<div class="clip-art-category">
-										<div class="title">Categories</div>
+				<div class="tab-content-box">
+					<div class="single-content-box">
+						<div class="single-panel add-image hide">
+							<div class="inner-tabs">
+								<a href="" class="clip-art current" data-show="clip-arts">
+									Clip arts
+								</a>
+								<a href="" data-title="Upload My Own Image" data-popup="upload-image-popup" class="open-popup upload-image" data-show="upload-image">
+									Upload Images
+								</a>
+								<a href="" class="my-images" data-show="my-images" >
+									My Images
+								</a>
+							</div>
+							<div class="inner-tab-content">
+								<div class="clip-arts">
+									<div class="clip-art-category">
 										<%= get_categories()%>
-										</div>
-										<div id="clip_art" class="clip-art-list">
-
-										    <%= get_default_category_images()%>
-
-										</div>
 									</div>
-									<div class="my-images hide">
-										<div class="title">My Images</div>
-										<div class="my-image-list">
+									<div id="clip_art" class="clip-art-list">
+
+										<%= get_default_category_images()%>
+
+									</div>
+								</div>
+								<div class="my-images hide">
+									<div class="my-image-list">
 										<%= get_my_images()%>
-										</div>
 									</div>
 								</div>
 							</div>
+						</div>
 
-							<div class="single-panel add-product hide">
-		 						<div class="product-category">
-		 							<div class="product-art-category">
-		 								<%= get_product_categories()%>
-		 							</div>
-		 							<div class="product-art-list">
-		 								<%= get_default_product_category_images%>
-		 							</div>
-		 						</div>
-		 					</div>
+						<div class="single-panel add-product hide">
+							<div class="product-category">
+								<div class="product-art-category">
+									<%= get_product_categories()%>
+								</div>
+								<div class="product-art-list">
+									<%= get_default_product_category_images%>
+								</div>
+							</div>
+						</div>
 
-							<div class="single-panel add-text hide">
-								
+						<div class="single-panel add-text hide">
 
-								<div class="edit-text-panel">
-								    <div class="text-panel-options">
-										<div class="title"><span>ADD </span>YOUR TEXT</div>
+
+							<div class="edit-text-panel">
+								<div class="text-panel-options">
+									<div class="title"><span>ADD </span>YOUR TEXT</div>
+									
+								</div>
+								<div class="details">
+									<div class="text-panel-options">
+
+										<textarea class="text-input" id="text_value" data-source='option' name="text_input">Old Text</textarea>
+										<div class="title">
+											<span>Font </span> 
+											<select id="font-family">
+												<option value="arial">Arial</option>
+												<option selected="" value="helvetica">Helvetica</option>
+												<option value="myriad pro">Myriad Pro</option>
+												<option value="delicious">Delicious</option>
+												<option value="verdana">Verdana</option>
+												<option value="georgia">Georgia</option>
+												<option value="courier">Courier</option>
+												<option value="comic sans ms">Comic Sans MS</option>
+												<option value="impact">Impact</option>
+												<option value="monaco">Monaco</option>
+												<option value="optima">Optima</option>
+												<option value="hoefler text">Hoefler Text</option>
+												<option value="plaster">Plaster</option>
+												<option value="engagement">Engagement</option>
+											</select>
+
+										</div>
 										<div class="add-remove-btn">
 											<div class="add-new-text btn btn-info">
 												<i class="icon-plus"></i>
 												Add Text
 											</div>
-											
-										</div>
-									</div>
-										<div class="details">
-								    	<div class="text-panel-options">
 
-											<textarea class="text-input" id="text_value" data-source='option' name="text_input">Old Text</textarea>
-											<div class="title">
-												<span>Font </span> 
-												<select id="font-family">
-											        <option value="arial">Arial</option>
-											        <option selected="" value="helvetica">Helvetica</option>
-											        <option value="myriad pro">Myriad Pro</option>
-											        <option value="delicious">Delicious</option>
-											        <option value="verdana">Verdana</option>
-											        <option value="georgia">Georgia</option>
-											        <option value="courier">Courier</option>
-											        <option value="comic sans ms">Comic Sans MS</option>
-											        <option value="impact">Impact</option>
-											        <option value="monaco">Monaco</option>
-											        <option value="optima">Optima</option>
-											        <option value="hoefler text">Hoefler Text</option>
-											        <option value="plaster">Plaster</option>
-											        <option value="engagement">Engagement</option>
-											      </select>
-												
-											</div>
-											<div class="title">
-												<span>color </span> 
-												<ul class="nav">
-													<li style="background-color:#ffffff;" title="White" class="color-font"></li>
-													<li style="background-color:#616161;" title="Dark Heather" class="color-font"></li>
-													<li style="background-color:#f0f0f0;" title="Gray" class="color-font"></li>
-													<li style="background-color:#5b5b5b;" title="Charcoal" class="color-font"></li>
-													<li style="background-color:#222222;" title="Black" class="color-font"></li>
-													<li style="background-color:#fc8d74;" title="Heather Orange" class="color-font"></li>
-													<li style="background-color:#432d26;" title="Heather Dark Chocolate" class="color-font"></li>
-													<li style="background-color:#eead91;" title="Salmon" class="color-font"></li>
-													<li style="background-color:#806355;" title="Chesnut" class="color-font"></li>
-													<li style="background-color:#382d21;" title="Dark Chocolate" class="color-font"></li>
-													<li style="background-color:#faef93;" title="Citrus Yellow" class="color-font"></li>
-													<li style="background-color:#aeba5e;" title="Avocado" class="color-font"></li>
-													<li style="background-color:#8aa140;" title="Kiwi" class="color-font"></li>
-													<li style="background-color:#1f6522;" title="Irish Green" class="color-font"></li>
-													<li style="background-color:#13afa2;" title="Scrub Green" class="color-font"></li>
-													<li style="background-color:#b8d5d7;" title="Teal Ice" class="color-font"></li>
-													<li style="background-color:#15aeda;" title="Heather Sapphire" class="color-font"></li>
-													<li style="background-color:#a5def8;" title="Sky" class="color-font"></li>
-													<li style="background-color:#0f77c0;" title="Antique Sapphire" class="color-font"></li>
-													<li style="background-color:#3469b7;" title="Heather Navy" class="color-font"></li>							
-													<li style="background-color:#c50404;" title="Cherry Red" class="color-font"></li>
-												</ul>
-											</div>
-									  		</div>
+										</div>
 										<div class="title">
-											<span>layer </span> order
-											<button id="delete-obj" class="btn btn-danger pull-right">Delete Selected</button>
+											<span>color </span> 
+											<ul class="nav">
+												<li style="background-color:#ffffff;" title="White" class="color-font"></li>
+												<li style="background-color:#616161;" title="Dark Heather" class="color-font"></li>
+												<li style="background-color:#f0f0f0;" title="Gray" class="color-font"></li>
+												<li style="background-color:#5b5b5b;" title="Charcoal" class="color-font"></li>
+												<li style="background-color:#222222;" title="Black" class="color-font"></li>
+												<li style="background-color:#fc8d74;" title="Heather Orange" class="color-font"></li>
+												<li style="background-color:#432d26;" title="Heather Dark Chocolate" class="color-font"></li>
+												<li style="background-color:#eead91;" title="Salmon" class="color-font"></li>
+												<li style="background-color:#806355;" title="Chesnut" class="color-font"></li>
+												<li style="background-color:#382d21;" title="Dark Chocolate" class="color-font"></li>
+												<li style="background-color:#faef93;" title="Citrus Yellow" class="color-font"></li>
+												<li style="background-color:#aeba5e;" title="Avocado" class="color-font"></li>
+												<li style="background-color:#8aa140;" title="Kiwi" class="color-font"></li>
+												<li style="background-color:#1f6522;" title="Irish Green" class="color-font"></li>
+												<li style="background-color:#13afa2;" title="Scrub Green" class="color-font"></li>
+												<li style="background-color:#b8d5d7;" title="Teal Ice" class="color-font"></li>
+												<li style="background-color:#15aeda;" title="Heather Sapphire" class="color-font"></li>
+												<li style="background-color:#a5def8;" title="Sky" class="color-font"></li>
+												<li style="background-color:#0f77c0;" title="Antique Sapphire" class="color-font"></li>
+												<li style="background-color:#3469b7;" title="Heather Navy" class="color-font"></li>							
+												<li style="background-color:#c50404;" title="Cherry Red" class="color-font"></li>
+											</ul>
 										</div>
-										<div class="layer-order">
-											<button id="bring-to-front" class="btn">bring to front</button>
-											<button id="bring-forward" class="btn">bring forward</button>
-											<button id="send-backward" class="btn">send backward</button>
-											<button id="send-to-back" class="btn">send to back</button>
-										</div>
 									</div>
-								</div>
-							</div>
-							<div class="single-panel design-notes hide">
-								<div class="title">
-									<span>Add </span>design notes
-								</div>
-								<div class="details">
-									Use the field bellow to enter the design notes, or special instructions to printing your order and etc.
-								</div>
-								<textarea name="text-design-notes" class="text-design-notes" id="text-design-notes"></textarea>
-								<div class="text-center">
-									<button class="btn">Continue Designing</button>
-									<button class="btn">Add &amp; Save Design</button>
-								</div>
-							</div>
-							<div class="single-panel edit-product">
-								<div class="header">
 									<div class="title">
-										<span>EDIT </span>YOUR PRODUCT
+										<span>layer </span> order
+										<button id="delete-obj" class="btn btn-danger pull-right">Delete Selected</button>
 									</div>
-									<a href="#" class="p-image" data-show="add-product">
-		 								
-		 								<div class="find-product">find a different product</div>
-		 							</a>
-								</div>
-								<div class="details">
-									<div class="name">Ultra Cotton Tee</div>
-									<div class="author">by Gildan</div>
-									<div class="sizes"><span>SIZES </span>YXS - 3XL <a href="#">size chart</a></div>
-									<div class="fabric"><span>Fabric </span>100 % cotton</div>
-									<div class="desc"><span>description </span>Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. </a></div>
-								</div>
-								<div class="header">
-									<div class="title">
-										<span>CHANGE </span>YOUR PRODUCT
+									<div class="layer-order">
+										<button id="bring-to-front" class="btn">bring to front</button>
+										<button id="bring-forward" class="btn">bring forward</button>
+										<button id="send-backward" class="btn">send backward</button>
+										<button id="send-to-back" class="btn">send to back</button>
 									</div>
-									<p>Colors for digital printing (no minimum order)</p>
-									<ul class="nav">
-										<li style="background-color:#ffffff;" title="White" class="color-preview"></li>
-										<li style="background-color:#616161;" title="Dark Heather" class="color-preview"></li>
-										<li style="background-color:#f0f0f0;" title="Gray" class="color-preview"></li>
-										<li style="background-color:#5b5b5b;" title="Charcoal" class="color-preview"></li>
-										<li style="background-color:#222222;" title="Black" class="color-preview"></li>
-										<li style="background-color:#fc8d74;" title="Heather Orange" class="color-preview"></li>
-										<li style="background-color:#432d26;" title="Heather Dark Chocolate" class="color-preview"></li>
-										<li style="background-color:#eead91;" title="Salmon" class="color-preview"></li>
-										<li style="background-color:#806355;" title="Chesnut" class="color-preview"></li>
-										<li style="background-color:#382d21;" title="Dark Chocolate" class="color-preview"></li>
-										<li style="background-color:#faef93;" title="Citrus Yellow" class="color-preview"></li>
-										<li style="background-color:#aeba5e;" title="Avocado" class="color-preview"></li>
-										<li style="background-color:#8aa140;" title="Kiwi" class="color-preview"></li>
-										<li style="background-color:#1f6522;" title="Irish Green" class="color-preview"></li>
-										<li style="background-color:#13afa2;" title="Scrub Green" class="color-preview"></li>
-										<li style="background-color:#b8d5d7;" title="Teal Ice" class="color-preview"></li>
-										<li style="background-color:#15aeda;" title="Heather Sapphire" class="color-preview"></li>
-										<li style="background-color:#a5def8;" title="Sky" class="color-preview"></li>
-										<li style="background-color:#0f77c0;" title="Antique Sapphire" class="color-preview"></li>
-										<li style="background-color:#3469b7;" title="Heather Navy" class="color-preview"></li>							
-										<li style="background-color:#c50404;" title="Cherry Red" class="color-preview"></li>
-									</ul>
-
-								</div>
-							</div>
-							<div class="single-panel load-design hide">
-								<div class="header">
-									<div class="title">
-										<span>EDIT </span>YOUR PRODUCT
-									</div>
-									<div class="find-product">find a different product</div>
-								</div>
-								<div class="details">
-									<div class="name">Ultra Cotton Tee</div>
-									<div class="author">by Gildan</div>
-									<div class="sizes"><span>SIZES </span>YXS - 3XL <a href="#">size chart</a></div>
-									<div class="fabric"><span>Fabric </span>100 % cotton</div>
-									<div class="desc"><span>description </span>Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. </a></div>
-								</div>
-								<div class="header">
-									<div class="title">
-										<span>CHANGE </span>YOUR PRODUCT
-									</div>
-									<p>Colors for digital printing (no minimum order)</p>
-									<button class="btn">Click to Select</button>
-
-									<p>Colors for screen printing (12 pieces minimum)</p>
-									<button class="btn">Click to Select</button>
 								</div>
 							</div>
 						</div>
-					</div>
+						<div class="single-panel design-notes">
+							<div class="title">
+								<span>Add </span>design notes
+							</div>
+							<div class="details">
+								Use the field bellow to enter the design notes, or special instructions to printing your order and etc.
+							</div>
+							<textarea name="text-design-notes" class="text-design-notes" id="text-design-notes"></textarea>
+							<div class="text-center">
+								<button class="btn">Continue Designing</button>
+								<button class="btn save">Add &amp; Save Design</button>
+							</div>
+						</div>
+						<div class="single-panel edit-product hide">
+							<div class="header">
+								<div class="title">
+									<span>EDIT </span>YOUR PRODUCT
+								</div>
+							<!-- 	<a href="#" class="p-image" data-show="add-product">
 
-					<div class="operations">
-						<a href="#" class="image" data-show="add-image">
-							<div class="img-icon">
+									<div class="find-product">find a different product</div>
+								</a> -->
+								<a href="/products" ><div class="find-product">find a different product</div></a>
 							</div>
-							<div>Add Image</div>
-						</a>
-						<a href="#" class="text" data-show="add-text">
-							<div class="img-icon">
+							<div class="details">
+								<!-- <div class="name">Ultra Cotton Tee</div>
+								<div class="author">by Gildan</div>
+								<div class="sizes"><span>SIZES </span>YXS - 3XL <a href="#">size chart</a></div>
+								<div class="fabric"><span>Fabric </span>100 % cotton</div> -->
+								<div class="desc"><span>description </span><%= @product.description %> </a></div>
 							</div>
-							<div>Add Text</div>
-						</a>
-						<a href="#" class="notes" data-show="design-notes">
-							<div class="img-icon">
+							<div class="header">
+								<div class="title">
+									<span>CHANGE </span>YOUR PRODUCT
+								</div>
+								<p>Colors for digital printing (no minimum order)</p>
+								<ul class="nav">
+									<li style="background-color:#ffffff;" title="White" class="color-preview"></li>
+									<li style="background-color:#616161;" title="Dark Heather" class="color-preview"></li>
+									<li style="background-color:#f0f0f0;" title="Gray" class="color-preview"></li>
+									<li style="background-color:#5b5b5b;" title="Charcoal" class="color-preview"></li>
+									<li style="background-color:#222222;" title="Black" class="color-preview"></li>
+									<li style="background-color:#fc8d74;" title="Heather Orange" class="color-preview"></li>
+									<li style="background-color:#432d26;" title="Heather Dark Chocolate" class="color-preview"></li>
+									<li style="background-color:#eead91;" title="Salmon" class="color-preview"></li>
+									<li style="background-color:#806355;" title="Chesnut" class="color-preview"></li>
+									<li style="background-color:#382d21;" title="Dark Chocolate" class="color-preview"></li>
+									<li style="background-color:#faef93;" title="Citrus Yellow" class="color-preview"></li>
+									<li style="background-color:#aeba5e;" title="Avocado" class="color-preview"></li>
+									<li style="background-color:#8aa140;" title="Kiwi" class="color-preview"></li>
+									<li style="background-color:#1f6522;" title="Irish Green" class="color-preview"></li>
+									<li style="background-color:#13afa2;" title="Scrub Green" class="color-preview"></li>
+									<li style="background-color:#b8d5d7;" title="Teal Ice" class="color-preview"></li>
+									<li style="background-color:#15aeda;" title="Heather Sapphire" class="color-preview"></li>
+									<li style="background-color:#a5def8;" title="Sky" class="color-preview"></li>
+									<li style="background-color:#0f77c0;" title="Antique Sapphire" class="color-preview"></li>
+									<li style="background-color:#3469b7;" title="Heather Navy" class="color-preview"></li>							
+									<li style="background-color:#c50404;" title="Cherry Red" class="color-preview"></li>
+								</ul>
+
 							</div>
-							<div>Design Notes</div>
-						</a>
-						<a href="#" class="edit current" data-show="edit-product">
-							<div class="img-icon">
+						</div>
+						<div class="single-panel load-design hide">
+							<div class="header">
+								<div class="title">
+									<span>EDIT </span>YOUR PRODUCT
+								</div>
+								<div class="find-product">find a different product</div>
 							</div>
-							<div>Edit Product</div>
-						</a>
-						<a href="#" class="save open-popup" data-popup="save-design" data-title="Save Design" data-show="save-design">
-							<div class="img-icon">
+							<div class="details">
+								<div class="name">Ultra Cotton Tee</div>
+								<div class="author">by Gildan</div>
+								<div class="sizes"><span>SIZES </span>YXS - 3XL <a href="#">size chart</a></div>
+								<div class="fabric"><span>Fabric </span>100 % cotton</div>
+								<div class="desc"><span>description </span>Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. Our best selling and most effective t-shirt. </a></div>
 							</div>
-							<div>Save Design</div>
-						</a>
-						<a href="#" class="load" data-show="load-design">
-							<div class="img-icon">
+							<div class="header">
+								<div class="title">
+									<span>CHANGE </span>YOUR PRODUCT
+								</div>
+								<p>Colors for digital printing (no minimum order)</p>
+								<button class="btn">Click to Select</button>
+
+								<p>Colors for screen printing (12 pieces minimum)</p>
+								<button class="btn">Click to Select</button>
 							</div>
-							<div>Load Design</div>
-						</a>
+						</div>
 					</div>
+				</div>
+
+				<div class="operations">
+					<a href="#" class="image" data-show="add-image">
+						<div class="img-icon">
+						</div>
+						<div>Add Image</div>
+					</a>
+					<a href="#" class="text current" data-show="add-text">
+						<div class="img-icon">
+						</div>
+						<div>Add Text</div>
+					</a>
+					<a href="#" class="notes" data-show="design-notes">
+						<div class="img-icon">
+						</div>
+						<div>Design Notes</div>
+					</a>
+					<a href="#" class="edit" data-show="edit-product">
+						<div class="img-icon">
+						</div>
+						<div>Edit Product</div>
+					</a>
+					<a href="#" class="save open-popup" data-popup="save-design" data-title="Save Design" data-show="save-design">
+						<div class="img-icon">
+						</div>
+						<div>Save Design</div>
+					</a>
+					<a href="#" class="load" data-show="load-design">
+						<div class="img-icon">
+						</div>
+						<div>Load Design</div>
+					</a>
 				</div>
 			</div>
 		</div>
-	</section>
-
-	<!-- popup contents -->
-	<div class="custom-popup hide">
-		<div class="popup-header">
-			<div class="title">Save Design</div>
-			<img class="close" src="/assets/close-popup.png">
-		</div>
-		<div class="popup-content">
-		</div>
 	</div>
+</section>
 
-	<div class="save-design hide">
-		<div class="notice">
-			<i class="icon-ok"></i> Your design has been saved! What would u like to do next?
-		</div>
-		<div class="popup-btns">
-			<img id="continue" src="/assets/save-design/continue-designing.png">
-			<img id="checkout" src="/assets/save-design/checkout.png">
-		</div>
+<!-- popup contents -->
+<div class="custom-popup hide">
+	<div class="popup-header">
+		<div class="title">Save Design</div>
+		<img class="close" src="/assets/close-popup.png">
 	</div>
-
-	<div class="upload-image-popup hide">
-		
-			<input type="file" name="own_image_upload" id="own_image_upload" class="own_image_upload hide">
-		
-		<div>
-			<input type="checkbox" name="agree" id="agree" class="agree">
-			<span id="agree_text">I acknowledge that I own the copyright to this image or that  i have obtained written permission from the copyright holder to reproduce this image.</span>
-		</div>
-		<button id="upload_img" class="btn">Upload File</button>
-		<div class="popup-info">
-			<p><b>Allowed file types : </b> jpg, gif, png, pdf, eps</p>
-			<p><b>Maximum File Size: </b> 5MB</p>
-		</div>
-		<hr>
-
-		<img class="trigger-close pull-right" src="/assets/upload-img/cancel-btn.png">
-
-		<div class="clearfix"></div>
+	<div class="popup-content">
 	</div>
-	<div class="checkout hide">
-		
-		<div class="quantities">
-			<div class="head">Quantities</div>
-			<div class="sizes">
-				<div class="single-size">
-					<label>YXS</label>
-					<input type="number" name="size_yxs" id="size_yxs" class="size_yxs">
-				</div>
-				<div class="single-size">
-					<label>ys</label>
-					<input type="number" name="size_ys" id="size_ys" class="size_ys">
-				</div>
-				<div class="single-size">
-					<label>ym</label>
-					<input type="number" name="size_ym" id="size_ym" class="size_ym">
-				</div>
-				<div class="single-size">
-					<label>yl</label>
-					<input type="number" name="size_yl" id="size_yl" class="size_yxs">
-				</div>
-				<div class="single-size">
-					<label>yxl</label>
-					<input type="number" name="size_yxl" id="size_yxl" class="size_yxl">
-				</div>
-				<div class="single-size">
-					<label>s</label>
-					<input type="number" name="size_s" id="size_s" class="size_s">
-				</div>
-				<div class="single-size">
-					<label>m</label>
-					<input type="number" name="size_m" id="size_m" class="size_m">
-				</div>
-				<div class="single-size">
-					<label>l</label>
-					<input type="number" name="size_l" id="size_l" class="size_l">
-				</div>
-				<div class="single-size">
-					<label>xl</label>
-					<input type="number" name="size_xl" id="size_xl" class="size_xl">
-				</div>
-				<div class="single-size">
-					<label>xxl</label>
-					<input type="number" name="size_xxl" id="size_xxl" class="size_xxl">
-				</div>
-				<div class="single-size">
-					<label>3xl</label>
-					<input type="number" name="size_3xl" id="size_3xl" class="size_3xl">
-				</div>
-				<div class="single-size">
-					<label>4xl</label>
-					<input type="number" name="size_4xl" id="size_4xl" class="size_4xl">
-				</div>
-				<div class="single-size">
-					<label>5xl</label>
-					<input type="number" name="size_5xl" id="size_5xl" class="size_5xl">
-				</div>
+</div>
+
+<div class="save-design hide">
+	<div class="notice">
+		<i class="icon-ok"></i> Your design has been saved! What would u like to do next?
+	</div>
+	<div class="popup-btns">
+		<img id="continue" src="/assets/save-design/continue-designing.png">
+		<a href="/checkout"><img id="checkout" src="/assets/save-design/checkout.png"></a>
+	</div>
+</div>
+
+<div class="upload-image-popup hide">
+
+	<input type="file" name="own_image_upload" id="own_image_upload" class="own_image_upload hide">
+
+	<div>
+		<input type="checkbox" name="agree" id="agree" class="agree">
+		<span id="agree_text">I acknowledge that I own the copyright to this image or that  i have obtained written permission from the copyright holder to reproduce this image.</span>
+	</div>
+	<button id="upload_img" class="btn">Upload File</button>
+	<div class="popup-info">
+		<p><b>Allowed file types : </b> jpg, gif, png, pdf, eps</p>
+		<p><b>Maximum File Size: </b> 5MB</p>
+	</div>
+	<hr>
+
+	<img class="trigger-close pull-right" src="/assets/upload-img/cancel-btn.png">
+
+	<div class="clearfix"></div>
+</div>
+<div class="checkout hide">
+
+	<div class="quantities">
+		<div class="head">Quantities</div>
+		<div class="sizes">
+			<!--<div class="single-size">
+				<label>YXS</label>
+				<input type="number" name="size_yxs" id="size_yxs" class="size_yxs">
 			</div>
-		</div>
-		<div class="refer-code">
-			<div class="head">Reference code (leave empty if not)</div>
-			<input type="text" class="ref-code" name="ref-code" id="ref-code">
-			<div class="hint">if you have discount or coupon code, enter it here.</div>
-		</div>
-		<img src="/assets/checkout/re-calculate.png" class="re-calculate">
-		<div class="notice-success">
-			<div class="sub-title">Final Review</div>
-			<div class=""><b>Shipping : </b>Rs. 213</div>
-			<div class=""><b>Coupon : </b>Rs. 213</div>
-			<div class=""><b>Order Total : </b>Rs. 213</div>
-			<img src="/assets/checkout/checkout-btn.png" class="checkout-btn">
-		</div>
-		<div class="clearfix"></div>
+			<div class="single-size">
+				<label>ys</label>
+				<input type="number" name="size_ys" id="size_ys" class="size_ys">
+			</div>
+			<div class="single-size">
+				<label>ym</label>
+				<input type="number" name="size_ym" id="size_ym" class="size_ym">
+			</div>
+			<div class="single-size">
+				<label>yl</label>
+				<input type="number" name="size_yl" id="size_yl" class="size_yxs">
+			</div>
+			<div class="single-size">
+				<label>yxl</label>
+				<input type="number" name="size_yxl" id="size_yxl" class="size_yxl">
+			</div>
+			<div class="single-size">
+				<label>s</label>
+				<input type="number" name="size_s" id="size_s" class="size_s">
+			</div>
+			<div class="single-size">
+				<label>m</label>
+				<input type="number" name="size_m" id="size_m" class="size_m">
+			</div>
+			<div class="single-size">
+				<label>l</label>
+				<input type="number" name="size_l" id="size_l" class="size_l">
+			</div>
+			<div class="single-size">
+				<label>xl</label>
+				<input type="number" name="size_xl" id="size_xl" class="size_xl">
+			</div>
+			<div class="single-size">
+				<label>xxl</label>
+				<input type="number" name="size_xxl" id="size_xxl" class="size_xxl">
+			</div>
+			<div class="single-size">
+				<label>3xl</label>
+				<input type="number" name="size_3xl" id="size_3xl" class="size_3xl">
+			</div>
+			<div class="single-size">
+				<label>4xl</label>
+				<input type="number" name="size_4xl" id="size_4xl" class="size_4xl">
+			</div>
+			<div class="single-size">
+				<label>5xl</label>
+				<input type="number" name="size_5xl" id="size_5xl" class="size_5xl">
+			</div>-->
+			<% @attributes.try(:each) do |attribute| %>
+			<div class="single-size">
+				<label><%=attribute.try(:attribute_name) %></label>
+				<input type="number" name="size_4xl" id="<%=attribute.id%>" class="size_4xl">
+			</div>
+			<% end %>
+		</div> 
+
 	</div>
+	<div class="refer-code">
+		<div class="head">Reference code (leave empty if not)</div>
+		<input type="text" class="ref-code" name="ref-code" id="ref-code">
+		<div class="hint">if you have discount or coupon code, enter it here.</div>
+	</div>
+	<img src="/assets/checkout/re-calculate.png" class="re-calculate">
+	<div class="notice-success">
+		<div class="sub-title">Final Review</div>
+		<!--<div class=""><b>Shipping : </b>Rs. 213</div>
+		<div class=""><b>Coupon : </b>Rs. 213</div> -->
+		<div class="order-total"><b>Order Total : </b>Rs. <span id="order-total"></span></div>
+		<img src="/assets/checkout/checkout-btn.png" class="checkout-btn">
+	</div>
+	<div class="clearfix"></div>
+</div>
 
-	<script type="text/javascript">
-		$(document).ready(function(){
+<script type="text/javascript">
+	$(document).ready(function(){
 
-			var canvas,imgElement,imgInstance,zoomIn;
-			canvas = new fabric.Canvas('pcanvas');
-			imgElement = document.getElementById('main_image');
-			zoomIn= false;
-			imgInstance = new fabric.Image(imgElement, {
-			  left: 175,
-			  top: 210,
-			  opacity: 0.85,
-			  width:355,
-			  height:425
+		var canvas,canvas_front,canvas_back,zoomIn;
+
+		canvas = canvas_front = new fabric.Canvas('pcanvas');
+		$('#pcanvas').css({'background':'#ffffff'})
+		var imgUrl = $('#main_image').attr('src');
+		zoomIn= false;
+		fabric.Image.fromURL(imgUrl, function(image) {
+			image.set({
+				left: 175,
+				top: 210,
+				opacity: 0.85,
+				width:355,
+				height:425
 			});
-			canvas.add(imgInstance);
+			canvas.add(image);
+			canvas.item(0).selectable = false;
+			canvas.item(0).hasControls = false;
 			canvas.item(0).lockMovementX = true;
 			canvas.item(0).lockMovementY = true;
-
-			canvas.on('mouse:down', function(options) {
-			    var activeObject = canvas.getActiveObject();
-				var pointerIndex =canvas.getObjects().indexOf(activeObject);
-				  if (pointerIndex>0 && options.target && (options.target.type=='text' || options.target.type=='image' )) {
-					  $(".operations .text").trigger("click");
-				      if(options.target.type=='text'){
-				      	 $('.text-panel-options').show()
-				      	 $('#text_value').val(options.target.getText())
-				      	 $('#text_value').attr('data-source','object')
-				      }else{
-				      	 $('.text-panel-options').hide()
-				      }
-				  }
-			});
+		});
 
 
-			$(document).on("click",".zoom",function(e){
-				e.preventDefault();
-				var scaleX = zoomIn ? canvas.item(0).scaleX-1 : canvas.item(0).scaleX+1;
-				var scaleY = zoomIn ? canvas.item(0).scaleY-1 : canvas.item(0).scaleY+1;
-				canvas.item(0).lockMovementX = false;
-				canvas.item(0).lockMovementY = false;
-				canvas.item(0).scaleX = scaleX;
-				canvas.item(0).scaleY = scaleY;
-				canvas.item(0).setCoords();
-				
+
+
+		canvas.on('mouse:down', function(options) {
+			var activeObject = canvas.getActiveObject();
+			var pointerIndex =canvas.getObjects().indexOf(activeObject);
+			if (pointerIndex>0 && options.target && (options.target.type=='text' || options.target.type=='image' )) {
+				$(".operations .text").trigger("click");
+				if(options.target.type=='text'){
+					$('.text-panel-options').show()
+					$('#text_value').val(options.target.getText())
+					$('#text_value').attr('data-source','object')
+				}else{
+					$('.text-panel-options').hide()
+				}
+			}
+		});
+
+		$(document).on("click",".product-art-list img",function(e){
+			canvas.clear()
+			$('#main_image').attr('src',$(this).attr('src'))
+			$('#pcanvas').parent().eq(0).show()
+			$('#pcanvas').css({'background':'#ffffff'})	
+			var imgUrl = $('.main-canvas').attr('data-active')=='main' ? $('#main_image').attr('src') : $('#main_image-back').attr('src');
+			fabric.Image.fromURL(imgUrl, function(image) {
+				image.set({
+					left: 175,
+					top: 210,
+					opacity: 0.85,
+					width:355,
+					height:425
+				});
+				canvas.add(image);
+				canvas.item(0).selectable = false;
+				canvas.item(0).hasControls = false;
 				canvas.item(0).lockMovementX = true;
 				canvas.item(0).lockMovementY = true;
-				canvas.renderAll();
-				zoomIn = !zoomIn;	
 			});
 
-			$(document).on("click",".color-preview",function(e){
-				var color = $(this).css('background-color')
-				console.log(color)
+
+		});
+
+		$(document).on("click","#clear_canvas",function(e){
+			e.preventDefault();
+			canvas.clear()
+			console.log($('.main-canvas').attr('data-active'))
+
+			var imgUrl = $('.main-canvas').attr('data-active')=='main' ? $('#main_image').attr('src') : $('#main_image-back').attr('src');
+			console.log(imgUrl)
+			fabric.Image.fromURL(imgUrl, function(image) {
+				image.set({
+					left: 175,
+					top: 210,
+					opacity: 0.85,
+					width:355,
+					height:425
+				});
+				canvas.add(image);
+				canvas.item(0).selectable = false;
+				canvas.item(0).hasControls = false;
+				canvas.item(0).lockMovementX = true;
+				canvas.item(0).lockMovementY = true;
+			});
+		});
+
+		$(document).on("click",".zoom",function(e){
+			e.preventDefault();
+			var scaleX = zoomIn ? canvas.item(0).scaleX-1 : canvas.item(0).scaleX+1;
+			var scaleY = zoomIn ? canvas.item(0).scaleY-1 : canvas.item(0).scaleY+1;
+			canvas.item(0).lockMovementX = false;
+			canvas.item(0).lockMovementY = false;
+			canvas.item(0).scaleX = scaleX;
+			canvas.item(0).scaleY = scaleY;
+			canvas.item(0).setCoords();
+
+			canvas.item(0).lockMovementX = true;
+			canvas.item(0).lockMovementY = true;
+			canvas.renderAll();
+			zoomIn = !zoomIn;	
+		});
+
+		$(document).on("click",".color-preview",function(e){
+			var color = $(this).css('background-color')
+			 if($('.main-canvas').attr('data-active')=='main'){
 				$('#pcanvas').css({'background':color})	
-			});
+
+			 }else{
+				$('#pcanvas-back').css({'background':color})	
+
+			 }
+			
+		});
 
 
-			$(document).on("click","#upload_img",function(e){
-				if(!$('#agree').is(':checked')){
-					$('#agree_text').css({'color':'red'});
+		$(document).on("click","#upload_img",function(e){
+			if(!$('#agree').is(':checked')){
+				$('#agree_text').css({'color':'red'});
+				return false;
+			}
+			$('#agree_text').css({'color':''});
+			$('#own_image_upload').trigger('click')
+
+		});
+
+		
+
+		$(document).on("click",".save",function(e){
+			
+		    if($('.main-canvas').attr('data-active')=='main'){
+		    	html2canvas(document.getElementById('pcanvas'), {
+					onrendered: function(canvas) {
+						
+			    		canvas.toBlob(function(blob) {
+			    			console.log(blob)
+							var formData = new FormData()
+
+			    			if(typeof formData=="object"){
+			    					formData.append('title',$('.desc').val())
+			    					formData.append('design_notes',$('#text-design-notes').val())
+									formData.append('image',blob)
+									formData.append('design',JSON.stringify(canvas_front))
+									$.ajaxSetup({
+										headers: {
+											'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+										}
+									});
+									$.ajax({
+										type: "POST",
+										url: '/save_item.json',
+										data: formData,
+										processData: false,
+										contentType: false,
+										success: function (data) {
+											console.log(data,'1')
+											
+										}
+								
+									});
+								}
+						});
+					}
+				});
+		    	console.log($('#main_image-back').attr('src'))
+		    	if($('#main_image-back').attr('src')==''){
 					return false;
 				}
-				$('#agree_text').css({'color':''});
-				$('#own_image_upload').trigger('click')
-        
-		    });
 
-		    $(document).on("click",".save",function(e){
-				html2canvas(document.getElementById('pcanvas'), {
-				  onrendered: function(canvas) {
-				    //document.body.appendChild(canvas);
-				    window.open(canvas.toDataURL("image/png"));
-    				
-				  }
+				if($('#pcanvas-back').closest('.canvas-container').length>0){
+					console.log($('#pcanvas-back').closest('.canvas-container').length)
+					$('#pcanvas-back').parent().eq(0).show();
+				}else{
+					$('#pcanvas-back').show()
+				}
+				
+				
+				html2canvas(document.getElementById('pcanvas-back'), {
+					onrendered: function(canvas) {
+						
+						canvas.toBlob(function(blob) {
+							var formData = new FormData()
+
+
+			    			if(typeof formData=="object"){
+			    					formData.append('title',$('.desc').val())
+			    					formData.append('design_notes',$('#text-design-notes').val())
+									formData.append('image1',blob)
+									formData.append('design1',JSON.stringify(canvas_front))
+									$.ajaxSetup({
+										headers: {
+											'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+										}
+									});
+									$.ajax({
+										type: "POST",
+										url: '/save_item.json',
+										data: formData,
+										processData: false,
+										contentType: false,
+										success: function (data) {
+											console.log(data,'d')
+											if($('#pcanvas-back').closest('.canvas-container').length>0){
+												console.log($('#pcanvas-back').closest('.canvas-container').length)
+												$('#pcanvas-back').parent().eq(0).hide();
+											}else{
+												$('#pcanvas-back').hide()
+											}
+											
+										}
+								
+									});
+								}
+						});
+						
+						
+					}
 				});
-      			window.open(canvas.toDataURL('png'));
-    
-		    });
+				
+
+		    }
+
+		    if($('.main-canvas').attr('data-active')=='back'){
+		    	html2canvas(document.getElementById('pcanvas-back'), {
+					onrendered: function(canvas) {
+						
+		    			canvas.toBlob(function(blob) {
+			    			var formData = new FormData()
+
+			    			if(typeof formData=="object"){
+			    					formData.append('title',$('.desc').val())
+			    					formData.append('design_notes',$('#text-design-notes').val())
+									formData.append('image1',blob)
+									formData.append('design1',JSON.stringify(canvas_back))
+									$.ajaxSetup({
+										headers: {
+											'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+										}
+									});
+									$.ajax({
+										type: "POST",
+										url: '/save_item.json',
+										data: formData,
+										processData: false,
+										contentType: false,
+										success: function (data) {
+											console.log(data,'1')
+											
+										}
+								
+									});
+								}
+						});
+
+					}
+				});
+
+				$('#pcanvas').parent().eq(0).show();
+				html2canvas(document.getElementById('pcanvas'), {
+					onrendered: function(canvas) {
+						
+
+						canvas.toBlob(function(blob) {
+			    			var formData = new FormData()
+
+			    			if(typeof formData=="object"){
+			    					formData.append('title',$('.desc').val())
+			    					formData.append('design_notes',$('#text-design-notes').val())
+									formData.append('image',blob)
+									formData.append('design',JSON.stringify(canvas_front))
+									$.ajaxSetup({
+										headers: {
+											'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+										}
+									});
+									$.ajax({
+										type: "POST",
+										url: '/save_item.json',
+										data: formData,
+										processData: false,
+										contentType: false,
+										success: function (data) {
+											console.log(data,'1')
+											$('#pcanvas').parent().eq(0).hide();
+										}
+								
+									});
+								}
+						});
+						
+					}
+				});
+				//
+		    }	
+			
+
+			
 
 
-			$(document).on("click","#delete-obj",function(evt){
+		});
 
-			    var activeObject = canvas.getActiveObject(),
-			    activeGroup = canvas.getActiveGroup();
-			    if (activeGroup) {
-			      var objectsInGroup = activeGroup.getObjects();
-			      canvas.discardActiveGroup();
-			      objectsInGroup.forEach(function(object) {
-			        canvas.remove(object);
-			      });
-			    }
-			    else if (activeObject) {
-			      canvas.remove(activeObject);
-			    }
-			});
 
-			$(document).on("click",".color-font",function(e){
-				var color = $(this).css('background-color')
-				console.log(color)
-				var activeObject = canvas.getActiveObject();
-				if (activeObject) {
+		$(document).on("click","#delete-obj",function(evt){
+
+			var activeObject = canvas.getActiveObject();
+			var pointerIndex =canvas.getObjects().indexOf(activeObject);
+			if (activeObject && pointerIndex>0) {
+				canvas.remove(activeObject);
+			}
+		});
+
+		$(document).on("click",".color-font",function(e){
+			var color = $(this).css('background-color')
+			console.log(color)
+			var activeObject = canvas.getActiveObject();
+			if (activeObject) {
 				console.log(color,'1')
 
-					activeObject.set("fill", color);
-					canvas.renderAll()
-				}
-			});
+				activeObject.set("fill", color);
+				canvas.renderAll()
+			}
+		});
 
-			$(document).on("click","#bring-to-front",function(e){
-				var activeObject = canvas.getActiveObject();
-				if (activeObject) {
-					canvas.bringToFront(activeObject);
-				}
-			});
+		$(document).on("click","#bring-to-front",function(e){
+			var activeObject = canvas.getActiveObject();
+			if (activeObject) {
+				canvas.bringToFront(activeObject);
+			}
+		});
 
-			$(document).on("click","#bring-forward",function(e){
-				var activeObject = canvas.getActiveObject();
-				if (activeObject) {
-					canvas.bringForward(activeObject);
-				}
-			});
+		$(document).on("click","#bring-forward",function(e){
+			var activeObject = canvas.getActiveObject();
+			if (activeObject) {
+				canvas.bringForward(activeObject);
+			}
+		});
 
-			$(document).on("click","#send-to-back",function(e){
-				var activeObject = canvas.getActiveObject();
-				if (activeObject) {
-					 canvas.sendToBack(activeObject);
-				}
-			});
+		$(document).on("click","#send-to-back",function(e){
+			var activeObject = canvas.getActiveObject();
+			if (activeObject) {
+				canvas.sendToBack(activeObject);
+			}
+		});
 
-			$(document).on("click","#send-backward",function(e){
-				var activeObject = canvas.getActiveObject();
-				if (activeObject) {
-					canvas.sendBackwards(activeObject);
-				}
-			});
+		$(document).on("click","#send-backward",function(e){
+			var activeObject = canvas.getActiveObject();
+			if (activeObject) {
+				canvas.sendBackwards(activeObject);
+			}
+		});
 
-			$(document).on("change","#own_image_upload",function(evt){
+		$(document).on("change","#own_image_upload",function(evt){
 
-				var file = evt.target.files[0]
-		        
-		        var formData = new FormData()
-		        
-		        if(typeof formData=="object"){
-		            formData.append('image',file)
-		            $.ajaxSetup({
-					  headers: {
-					    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-					  }
-					});
-		            $.ajax({
-		                        type: "POST",
-		                        url: '/save_user_images',
-		                        data: formData,
-		                        processData: false,
-		                        contentType: false,
-		                        success: function (data) {
-		                            
-		                            fabric.Image.fromURL(data.url, function(image) {
-		                            	console.log(image)
-									    image.set({
-								          left: 120,
-								          top: 150,
-								          cornersize: 10
-								        });
-								        image.scale(0.2).setCoords();
-										canvas.add(image);
-									});
-									$("#overlay").remove();
-									$(".custom-popup").removeClass("down-popup");
-									$(".custom-popup").hide();
-		                        },
-		                        error: function (data) {
+			var file = evt.target.files[0]
+
+			var formData = new FormData()
+
+			if(typeof formData=="object"){
+				formData.append('image',file)
+				$.ajaxSetup({
+					headers: {
+						'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+					}
+				});
+				$.ajax({
+					type: "POST",
+					url: '/save_user_images',
+					data: formData,
+					processData: false,
+					contentType: false,
+					success: function (data) {
+
+						fabric.Image.fromURL(data.url, function(image) {
+							console.log(image)
+							image.set({
+								left: 120,
+								top: 150,
+								cornersize: 10
+							});
+							image.scale(0.2).setCoords();
+							canvas.add(image);
+						});
+						$("#overlay").remove();
+						$(".custom-popup").removeClass("down-popup");
+						$(".custom-popup").hide();
+					},
+					error: function (data) {
 		                            //console.log(data)
 		                        }
-		            });
-		        }
+		                    });
+			}
 
-		    });
+		});
 
-			$(document).on("click","#clear_canvas",function(e){
-			    e.preventDefault();
-			    canvas.clear()
-			    $('#pcanvas').css({'background':''})	
-			    var imgInstance = new fabric.Image(imgElement, {
-				  left: 175,
-				  top: 210,
-				  opacity: 0.85,
-				  width:355,
-				  height:425
-				});
-				canvas.add(imgInstance);
-				canvas.item(0).lockMovementX = true;
-				canvas.item(0).lockMovementY = true;
-			});
 
-			$(document).on("click","#clip_art img",function(e){
-				var url = $(this).attr('src')
-			    fabric.Image.fromURL(url, function(image) {
-				    image.set({
-			          left: 120,
-			          top: 150,
-			          cornersize: 10
-			        });
-			        image.scale(0.2).setCoords();
-					canvas.add(image);
-				});
-			});
+		$(document).on('click','.rotate',function(){
 
-			$(document).on("click",".add-new-text",function(e){
-				var text = $('#text_value').val()
+			if($('#main_image-back').attr('src')==''){
+				return false;
+			}
 
-				var addText = new fabric.Text(text, { left: 120, top: 150 });
-  				canvas.add(addText);
-			});
-			$(document).on("keyup","#text_value",function(e){
-				var text = $('#text_value').val()
-				var activeObject = canvas.getActiveObject();
+			if($('.main-canvas').attr('data-active')=='main'){
+				$('#pcanvas').parent().eq(0).hide();
+				if($('#pcanvas-back').closest('.canvas-container').length<1){
+					$('#pcanvas-back').show();
+						canvas_back = new fabric.Canvas('pcanvas-back');
+						var imgUrl = $('#main_image-back').attr('src');
+						zoomIn= false;
+						fabric.Image.fromURL(imgUrl, function(image) {
+							image.set({
+								left: 175,
+								top: 210,
+								opacity: 0.85,
+								width:355,
+								height:425
+							});
+							canvas_back.add(image);
+							console.log(canvas_back)
+							canvas_back.item(0).selectable = false;
+							canvas_back.item(0).hasControls = false;
+							canvas_back.item(0).lockMovementX = true;
+							canvas_back.item(0).lockMovementY = true;
+						});
 
-				if (activeObject && /text/.test(activeObject.type)) {
-					console.log(text)
-			        activeObject.setText(text)
-			        canvas.renderAll();
-			      }
+					}else{
+						
+						$('#pcanvas-back').parent().eq(0).show();
+					}
+					canvas =  canvas_back;
+					$('.main-canvas').attr('data-active','back')
+				}else{
+					$('#pcanvas').parent().eq(0).show();
+					$('#pcanvas-back').parent().eq(0).hide();
+					$('.main-canvas').attr('data-active','main')
+					canvas =  canvas_front;
+					
+				}
+					$(".operations .edit").trigger("click");
+			})
 
-			});
-			$(document).on("change","#font-family",function(e){
-				  var activeObject = canvas.getActiveObject();
-			      if (activeObject && /text/.test(activeObject.type)) {
+			$('.rotate').trigger('click')
+			$('.rotate').trigger('click')
+
+
+$(document).on("click",".re-calculate",function(e){
+	
+	var data = {},
+	coupon_code = $('.ref-code').val();
+	data.attributes={}
+	data.total = 0;
+	$('.custom-popup .sizes .single-size>input').each(function(){
+	var val =  parseInt($(this).val());
+	 if(val!='' && (typeof val!='number') ){
+	 	alert('please enter valid value')
+	 }
+	 data.attributes[$(this).attr('id')] = val
+	 data.total=data.total+val;
+	})
+	
+	if(coupon_code && typeof coupon_code!='undefined'){
+	  data.coupon_code = $('.ref-code').val();
+	}
+
+    data.product_id = <%= @product.id %>
+	if(data.total<1){
+		alert('please enter quantity')
+		return false;
+	}
+
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+
+	$.ajax({
+		type: "POST",
+		url: '/calculation.json',
+		data: data,
+		success: function (data) {
+			console.log(data)
+			$('#order-total').text(data.price)
+		},
+		error: function (data) {
+		}
+	});
+
+});
+
+$(document).on("keydown",".single-size input",function(e){
+	if($(this)){
+
+	}
+});
+
+
+$(document).on("click","#clip_art img,.my-image-list img",function(e){
+	var url = $(this).attr('src')
+	fabric.Image.fromURL(url, function(image) {
+		image.set({
+			left: 120,
+			top: 150,
+			cornersize: 10
+		});
+		image.scale(0.2).setCoords();
+		canvas.add(image);
+	});
+});
+
+
+
+$(document).on("click",".add-new-text",function(e){
+
+	var text = $('#text_value').val()
+
+	var addText = new fabric.Text(text, { left: 120, top: 150 });
+	canvas.add(addText);
+});
+$(document).on("keyup","#text_value",function(e){
+	var text = $('#text_value').val()
+	var activeObject = canvas.getActiveObject();
+
+	if (activeObject && /text/.test(activeObject.type)) {
+		console.log(text)
+		activeObject.setText(text)
+		canvas.renderAll();
+	}
+
+});
+$(document).on("change","#font-family",function(e){
+
+	var activeObject = canvas.getActiveObject();
+	if (activeObject && /text/.test(activeObject.type)) {
 			        //canvas.setStyle(activeObject, 'fontFamily', this.value.toLowerCase());
 			        canvas.getActiveObject().set("fontFamily", this.value.toLowerCase());
 			        canvas.renderAll();
-			      }
+			    }
 			    
 			});
 
-			$(document).on("click",".operations a,.p-image",function(){
-				var current = this;
-				single_panel = "."+$(current).data("show");
-				if(single_panel != ".save-design"){
-					
-					$(".operations").find(".current").removeClass("current");
-					$(".p-image").removeClass("current");
-					$(this).addClass("current");
+$(document).on("click",".operations a,.p-image",function(){
+	var current = this;
+	single_panel = "."+$(current).data("show");
+	if(single_panel != ".save-design"){
 
-					$(".single-panel").each(function(){
-						$(this).hide();
-					});
-					$(single_panel).show();
-				}
+		$(".operations").find(".current").removeClass("current");
+		$(".p-image").removeClass("current");
+		$(this).addClass("current");
 
-				if(single_panel=='.add-text'){
-					if($('#text_value').attr('data-source')=='option'){
-						$('#text_value').val('')
-					}
-					$('.text-panel-options').show()
-					
-					$('#text_value').attr('data-source','option')
-
-				}
-				return false;
-			});
-
-			$(document).on("click",".clip-art-category a",function(){
-				var current = this;
-				$(".clip-art-category").find(".current").removeClass("current");
-				$(this).addClass("current");
-				return false;
-			});
-
-			$(document).on("click",".inner-tabs a",function(){
-				var current = this;
-				inner_tab = "."+$(current).data("show");
-				if(inner_tab != ".upload-image"){
-					$(".inner-tabs").find(".current").removeClass("current");
-					$(this).addClass("current");
-
-					$(".inner-tab-content>div").each(function(){
-						$(this).hide();
-					});
-					$(inner_tab).show();
-				}
-				return false;
-			});
-
-
-
-
-			$(document).on("click",".open-popup",function(){
-				var popup_content = "." + $(this).data("popup");
-				var popup_title = $(this).data("title");
-				append_overlay();
-				$(".custom-popup").find(".popup-header .title").html(popup_title);
-				$(".custom-popup").find(".popup-content").html($(popup_content).html());
-				$(".custom-popup").show();
-				$(".custom-popup").addClass("down-popup");
-			});
-
-			function append_overlay () {
-				var docHeight = $(document).height();
-
-				$("body").append("<div id='overlay'></div>");
-
-				$("#overlay")
-				.height(docHeight)
-				.css({
-					'opacity' : 0.4,
-					'position': 'absolute',
-					'top': 0,
-					'left': 0,
-					'background-color': 'black',
-					'width': '100%',
-					'z-index': 1000
-				});
-			}
-
-			$(document).on("click","#overlay,.trigger-close,#continue",function(){
-				$(".custom-popup .close").trigger("click");
-			});
-
-
-
-			$(document).on("click",".custom-popup .close",function(){
-				var current_obj = this;
-				$("#overlay").remove();
-				$(".custom-popup").removeClass("down-popup");
-				$(".custom-popup").hide();
-			});
-
-				
-
+		$(".single-panel").each(function(){
+			$(this).hide();
 		});
+		$(single_panel).show();
+	}
+
+	if(single_panel=='.add-text'){
+		if($('#text_value').attr('data-source')=='option'){
+			$('#text_value').val('')
+		}
+		$('.text-panel-options').show()
+
+		$('#text_value').attr('data-source','option')
+
+	}
+	return false;
+});
+
+$(document).on("click",".clip-art-category a",function(){
+	var current = this;
+	$(".clip-art-category").find(".current").removeClass("current");
+	$(this).addClass("current");
+	return false;
+});
+
+$(document).on("click",".inner-tabs a",function(){
+	var current = this;
+	inner_tab = "."+$(current).data("show");
+	if(inner_tab != ".upload-image"){
+		$(".inner-tabs").find(".current").removeClass("current");
+		$(this).addClass("current");
+
+		$(".inner-tab-content>div").each(function(){
+			$(this).hide();
+		});
+		$(inner_tab).show();
+	}
+	return false;
+});
+
+
+
+
+$(document).on("click",".open-popup",function(){
+	var popup_content = "." + $(this).data("popup");
+	var popup_title = $(this).data("title");
+	append_overlay();
+	$(".custom-popup").find(".popup-header .title").html(popup_title);
+	$(".custom-popup").find(".popup-content").html($(popup_content).html());
+	$(".custom-popup").show();
+	$(".custom-popup").addClass("down-popup");
+});
+
+function append_overlay () {
+	var docHeight = $(document).height();
+
+	$("body").append("<div id='overlay'></div>");
+
+	$("#overlay")
+	.height(docHeight)
+	.css({
+		'opacity' : 0.4,
+		'position': 'absolute',
+		'top': 0,
+		'left': 0,
+		'background-color': 'black',
+		'width': '100%',
+		'z-index': 1000
+	});
+}
+
+$(document).on("click","#overlay,.trigger-close,#continue",function(){
+	$(".custom-popup .close").trigger("click");
+});
+
+
+
+$(document).on("click",".custom-popup .close",function(){
+	var current_obj = this;
+	$("#overlay").remove();
+	$(".custom-popup").removeClass("down-popup");
+	$(".custom-popup").hide();
+});
+
+
+
+});
 </script>
