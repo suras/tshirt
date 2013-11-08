@@ -555,7 +555,7 @@
 		    if($('.main-canvas').attr('data-active')=='main'){
 		    	html2canvas(document.getElementById('pcanvas'), {
 					onrendered: function(canvas) {
-						var dataUrl = canvas.toDataURL('image/png');
+						/*var dataUrl = canvas.toDataURL('image/png');
 						$.ajaxSetup({
 							headers: {
 								'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
@@ -567,19 +567,45 @@
 						  data: {image: dataUrl,design:JSON.stringify(canvas_front)}
 						}).done(function( respond ) {
 						 	console.log(respond);
+						});*/
+			    		canvas.toBlob(function(blob) {
+			    			console.log(blob)
+							var formData = new FormData()
+
+			    			if(typeof formData=="object"){
+									formData.append('image',blob)
+									formData.append('design',JSON.stringify(canvas_front))
+									$.ajaxSetup({
+										headers: {
+											'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+										}
+									});
+									$.ajax({
+										type: "POST",
+										url: '/save_item.json',
+										data: formData,
+										processData: false,
+										contentType: false,
+										success: function (data) {
+											console.log(data,'1')
+											
+										}
+								
+									});
+								}
 						});
-						
 					}
 				});
 
 		    	if($('#main_image-back').attr('src')==''){
 					return false;
 				}
-				
+
 				$('#pcanvas-back').parent().eq(0).show();
+				
 				html2canvas(document.getElementById('pcanvas-back'), {
 					onrendered: function(canvas) {
-						var dataUrl = canvas.toDataURL('image/png');
+						/*var dataUrl = canvas.toDataURL('image/png');
 						$('#pcanvas-back').parent().eq(0).hide();
 						$.ajaxSetup({
 							headers: {
@@ -593,6 +619,33 @@
 						}).done(function( respond ) {
 						 	console.log(respond);
 						 	$('#pcanvas-back').parent().eq(0).hide();
+						});*/
+
+						canvas.toBlob(function(blob) {
+							var formData = new FormData()
+
+			    			if(typeof formData=="object"){
+									formData.append('image1',blob)
+									formData.append('design1',JSON.stringify(canvas_front))
+									$.ajaxSetup({
+										headers: {
+											'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+										}
+									});
+									$.ajax({
+										type: "POST",
+										url: '/save_item.json',
+										data: formData,
+										processData: false,
+										contentType: false,
+										success: function (data) {
+											console.log(data,'d')
+											$('#pcanvas-back').parent().eq(0).hide();
+											
+										}
+								
+									});
+								}
 						});
 						
 						
