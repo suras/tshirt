@@ -30,8 +30,8 @@ class ProductsController < ApplicationController
       # @attribute = @product.attributes.where(:id => params[:attribute_id])
       # @output_price = (@attribute.price * params[:quantity].to_i)
       params[:attributes].each do |k, v|
-        attribute = @product.attributes.where(:id => k)
-        @output_price += (@attribute.price * v)
+        attribute = @product.product_attributes.where(:id => k).first
+        @output_price += (attribute.price.to_i * v.to_i)
       end
       respond_to do |format|
          format.json {render :json => {:price => @output_price}}

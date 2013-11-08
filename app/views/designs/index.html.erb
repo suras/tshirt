@@ -761,7 +761,8 @@
 
 $(document).on("click",".re-calculate",function(e){
 	
-	var data = {}
+	var data = {},
+	coupon_code = $('.ref-code').val();
 	data.attributes={}
 	data.total = 0;
 	$('.custom-popup .sizes .single-size>input').each(function(){
@@ -769,7 +770,12 @@ $(document).on("click",".re-calculate",function(e){
 	 data.attributes[$(this).attr('id')] = val
 	 data.total=data.total+val;
 	})
+	
+	if(coupon_code && typeof coupon_code!='undefined'){
+	  data.coupon_code = $('.ref-code').val();
+	}
 
+    data.product_id = <%= @product.id %>
 	if(data.total<1){
 		alert('please enter quantity')
 		return false;
