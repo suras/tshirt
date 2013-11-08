@@ -33,6 +33,16 @@ class ProductsController < ApplicationController
         attribute = @product.product_attributes.where(:id => k).first
         @output_price += (attribute.price.to_i * v.to_i)
       end
+      shipping = @output_price - @product.shipping_and_handling.to_i
+      shipping = shipping/100
+      @output_price = @output_price * shipping 
+       @output_price = @output_price + @product.tax.to_i
+      if(params[:coupon_code].present?)
+          coupon = Coupon.find_by_code(params[:coupon_code])
+          coupon_discount = coupon.discount.to_i
+          coupon_discount = @output_price - coupon_discount
+          @output_price = @output_price * coupon_discount 
+      end
       respond_to do |format|
          format.json {render :json => {:price => @output_price}}
       end
