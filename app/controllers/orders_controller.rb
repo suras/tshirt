@@ -22,7 +22,10 @@ before_filter :authenticate_user!
 
 
 	def new_checkout
-
+    @shipping = session[:shipping]
+    @tax = session[:tax]
+    @price = session[:price]
+    @totals = session[:totals]
 
 	end
 
