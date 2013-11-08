@@ -20,7 +20,8 @@
 					<canvas id="pcanvas" width="350" height="420"></canvas>
 					<img class="hide" src="<%= @default_image %>" id="main_image">
 					<canvas class="hide" id="pcanvas-back" width="350" height="420"></canvas>
-					<img class="hide" src="assets/crew_back.png" id="main_image-back">
+					<img class="hide" src="<%= @back_image %>" id="main_image-back">
+					
 				</div>
 				<div class="canvas-operation">
 					<a href="#" class="rotate">
@@ -779,7 +780,7 @@ $(document).on("click",".re-calculate",function(e){
 			'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
 		}
 	});
-	
+
 	$.ajax({
 		type: "POST",
 		url: '/calculation',
