@@ -11,7 +11,7 @@
 				<div class="about-product">
 					<div class="product">
 						<span class="title"> <%=t(:enter_design_name)%>:</span>
-						<input id="edit-desc" class="desc" type="text">
+						<input id="edit-desc" class="desc" value="My design" type="text">
 						
 					</div>
 
@@ -34,7 +34,7 @@
 						</div>
 						<div><%=t(:zoom)%></div>
 					</a>
-					<a href="#" class="calculate open-popup" data-popup="checkout" data-title="CALCULATE PRICE">
+					<a href="#" class="save calculate open-popup" data-popup="checkout" data-title="CALCULATE PRICE">
 						<div><%= t(:calculate_price)%></div>
 						<div><%= t(:add_to_cart)%></div>
 					</a>
@@ -320,6 +320,32 @@
 	<div class="notice">
 		<i class="icon-ok"></i> <%= t(:design_saved)%>
 	</div>
+	<div class="quantities">
+		<div class="head"><%=raw t(:quantities) %></div>
+		<div class="sizes">
+			
+			<% @attributes.try(:each) do |attribute| %>
+			<div class="single-size">
+				<label><%=attribute.try(:attribute_name) %></label>
+				<input type="number" name="size_4xl" id="<%=attribute.id%>" class="size_4xl">
+			</div>
+			<% end %>
+		</div> 
+
+	</div>
+	<div class="refer-code">
+		<%=raw t(:refer_code) %>
+		<input type="text" class="ref-code" name="ref-code" id="ref-code">
+		<%=raw t(:discount_enter)%>
+	</div>
+	<img src="/assets/checkout/re-calculate.png" class="re-calculate">
+	<div class="notice-success">
+		<div class="sub-title"><%= t(:final_review)%></div>
+		<!--<div class=""><b>Shipping : </b>Rs. 213</div>
+		<div class=""><b>Coupon : </b>Rs. 213</div> -->
+		<div class="order-total"><b><%= t(:order_total)%> </b>Rs. <span id="order-total"></span></div>
+
+	</div>
 	<div class="popup-btns">
 		<img id="continue" src="/assets/save-design/continue-designing.png">
 		<a href="/checkout"><img id="checkout" src="/assets/save-design/checkout.png"></a>
@@ -499,6 +525,8 @@
 				}
 				$('.rotate').trigger('click')
 
+			}else{
+				$('#main_image-back').attr('src','')
 			}
 		}
 
@@ -617,6 +645,10 @@
 
 		$(document).on("click",".save",function(e){
 			
+			if($('#edit-desc').val()==''){
+				alert('Please enter a design title');
+				return false;
+			}
 		    if($('.main-canvas').attr('data-active')=='main'){
 		    	html2canvas(document.getElementById('pcanvas'), {
 					onrendered: function(canvas) {
