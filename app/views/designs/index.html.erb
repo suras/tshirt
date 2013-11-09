@@ -264,9 +264,9 @@
 
 								<p>Colors for screen printing (12 pieces minimum)</p>
 								<button class="btn">Click to Select</button>
-							</div>
+							</div>-->
 						</div>
-					</div> -->
+					</div> 
 				</div>
 
 				<div class="operations">
@@ -447,6 +447,60 @@
 
 
 		});
+
+
+		$(document).on("click",".load-art-list img",function(e){
+			//canvas.clear()
+		
+			var data = {
+				id : $(this).attr('id')
+			}
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+
+			$.ajax({
+				type: "get",
+				url: '/get_design.json',
+				data: data,
+				success: function (data) {
+					change_canvas(data)
+				}
+		
+			});
+
+		});
+
+		function change_canvas(data){
+
+			console.log(data.design)
+			if(data.design){
+				$('#pcanvas').css({'background':'#'+data.color})
+				canvas_front.clear();
+				if((typeof canvas_back)!='undefined') canvas_back.clear();
+				
+				if($('.main-canvas').attr('data-active')=='back'){
+					$('.rotate').trigger('click')
+			 	}
+				canvas_front.loadFromJSON(data.design)
+			}
+
+			if(data.design1){
+				$('#pcanvas-back').css({'background':'#'+data.color1})
+				$('#main_image-back').attr('src','#')
+				$('.rotate').trigger('click')
+				if((typeof canvas_back)!='undefined') {
+					canvas_back.loadFromJSON(data.design1)
+				}else{
+					canvas_back = new Fabric.canvas('pcanvas-back')
+					canvas_back.loadFromJSON(data.design1)
+				}
+				$('.rotate').trigger('click')
+
+			}
+		}
 
 		$(document).on("click","#clear_canvas",function(e){
 			e.preventDefault();
@@ -783,11 +837,11 @@
 
 
 		$(document).on('click','.rotate',function(){
-
+			console.log('d',$('#main_image-back').attr('src'))
 			if($('#main_image-back').attr('src')==''){
 				return false;
 			}
-
+			console.log('d')
 			if($('.main-canvas').attr('data-active')=='main'){
 				$('#pcanvas').parent().eq(0).hide();
 				if($('#pcanvas-back').closest('.canvas-container').length<1){

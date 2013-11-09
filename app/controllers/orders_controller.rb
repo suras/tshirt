@@ -55,7 +55,15 @@ before_filter :authenticate_user!
   def  get_design
       @design = UserItem.find(params[:id])
       respond_to do |format|
-        format.json {render :json => {:design => @design.design, :design1 => @design.design1, :color => @design.color, :color1 => @design.color1} }      
+        format.json {render :json => {
+              :design => @design.design, 
+              :design1 => @design.design1, 
+              :color => @design.color, 
+              :color1 => @design.color1,
+              :design_notes => @design.design_notes,
+              :title => @design.title
+            } 
+        }      
       end
   end
 end
