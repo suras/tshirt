@@ -33,6 +33,8 @@ Tshirt::Application.routes.draw do
   # get "/partnership", :to => "home#partnership"
   get "/legal_terms", :to => "home#legal_terms"
 
+  get "get_design", :to => "orders#get_design"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

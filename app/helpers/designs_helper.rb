@@ -73,6 +73,13 @@ module DesignsHelper
     
   end
 
-
+   def get_user_item_images()
+    output = ""
+     current_user.user_items.each do |user_item|
+       url = (user_item.image.url || " ")
+        output <<  "<img id=#{user_item.id} src="+ url + "/>"         
+      end
+      return output.html_safe
+    end
 
 end

@@ -41,7 +41,7 @@ before_filter :authenticate_user!
 
          img_id  = @user_item.id
        else
-         item = current_user.user_items.create(:design => params[:design], :design1 => params[:design1],:color1 => params[:color1], :image => params[:image], :image1 => params[:image1], :title => params[:title], :design_notes => params[:design_notes])
+         item = current_user.user_items.create(:design => params[:design], :design1 => params[:design1],:color1 => params[:color1], :image => params[:image], :image1 => params[:image1], :title => params[:title], :design_notes => params[:design_notes], :color => params[:color])
           img_id  = item.id
           session[:image_id] = img_id
        end
@@ -52,5 +52,10 @@ before_filter :authenticate_user!
         end
 	end
 
-
+  def  get_design
+      @design = UserItem.find(params[:id])
+      respond_to do |format|
+        format.json {render :json => {:design => @design.design, :design1 => @design.design1, :color => @design.color, :color1 => @design.color1} }      
+      end
+  end
 end

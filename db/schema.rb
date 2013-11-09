@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131108150152) do
+ActiveRecord::Schema.define(:version => 20131109095626) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -208,6 +208,8 @@ ActiveRecord::Schema.define(:version => 20131108150152) do
     t.text     "design1"
     t.string   "image1"
     t.text     "design_notes"
+    t.string   "color"
+    t.string   "color1"
   end
 
   create_table "users", :force => true do |t|

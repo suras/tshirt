@@ -334,20 +334,20 @@
 .clip-art-category a.current, .product-art-category a.current{
 	color: #ee5b38;
 }
-.clip-art-list, .product-art-list{
+.clip-art-list, .product-art-list, .load-art-list{
 	height: 300px;
 	overflow-y: auto;
 	background: #fff;
 	outline: 1px dashed #ddd;
 }
-.clip-art-list img, .product-art-list img{
+.clip-art-list img, .product-art-list img, .load-art-list img{
 	border: 1px solid #000;
 	height: 50px;
 	width: 50px;
 	margin: 10px;
 	cursor: pointer;
 }
-.clip-art-list img:hover, .product-art-list img:hover{
+.clip-art-list img:hover, .product-art-list img:hover. .product-art-list img:hover{
 	box-shadow: 0px 0px 25px -3px #000;
 }
 
