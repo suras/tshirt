@@ -10,7 +10,7 @@
 			<div class="left-side">
 				<div class="about-product">
 					<div class="product">
-						<span class="title">Enter Design Name :</span>
+						<span class="title"> <%=t(:enter_design_name)%>:</span>
 						<input id="edit-desc" class="desc" type="text">
 						
 					</div>
@@ -27,28 +27,28 @@
 					<a href="#" class="rotate">
 						<div class="img-icon">
 						</div>
-						<div>Rotate</div>
+						<div><%=t(:rotate)%></div>
 					</a>
 					<a href="#" class="zoom">
 						<div class="img-icon">
 						</div>
-						<div>Zoom</div>
+						<div><%=t(:zoom)%></div>
 					</a>
 					<a href="#" class="calculate open-popup" data-popup="checkout" data-title="CALCULATE PRICE">
-						<div>CALCULATE PRICE &amp;</div>
-						<div>ADD TO CART</div>
+						<div><%= t(:calculate_price)%></div>
+						<div><%= t(:add_to_cart)%></div>
 					</a>
 					<a href="#" id="clear_canvas" class="pull-right clear">
 						<div class="img-icon">
 						</div>
-						<div>Clear</div>
+						<div><%=t(:clear)%></div>
 					</a>
 				</div>
 			</div>
 			<div class="right-side">
 				<div class="welcome-msg">
-					<p>Welcome to the <i>Mobby</i>art design tool</p>
-					<p>Get started designing! choose your option below</p>
+				<%=raw t(:welcome_mobby) %>
+					
 				</div>
 
 				<div class="tab-content-box">
@@ -56,13 +56,13 @@
 						<div class="single-panel add-image hide">
 							<div class="inner-tabs">
 								<a href="" class="clip-art current" data-show="clip-arts">
-									Clip arts
+									<%= t(:clip_arts)%>
 								</a>
 								<a href="" data-title="Upload My Own Image" data-popup="upload-image-popup" class="open-popup upload-image" data-show="upload-image">
-									Upload Images
+									<%=t(:upload_images) %>
 								</a>
 								<a href="" class="my-images" data-show="my-images" >
-									My Images
+									 <%=t(:my_images) %>
 								</a>
 							</div>
 							<div class="inner-tab-content">
@@ -100,15 +100,15 @@
 
 							<div class="edit-text-panel">
 								<div class="text-panel-options">
-									<div class="title"><span>ADD </span>YOUR TEXT</div>
+									<%= raw t(:add__your_text)%>
 									
 								</div>
 								<div class="details">
 									<div class="text-panel-options">
 
-										<textarea class="text-input" id="text_value" data-source='option' name="text_input">Old Text</textarea>
+										<textarea class="text-input" id="text_value" data-source='option' name="text_input"><%= t(:old_text) %></textarea>
 										<div class="title">
-											<span>Font </span> 
+											<span><%=t(:font)%> </span> 
 											<select id="font-family">
 												<option value="arial">Arial</option>
 												<option selected="" value="helvetica">Helvetica</option>
@@ -130,12 +130,12 @@
 										<div class="add-remove-btn">
 											<div class="add-new-text btn btn-info">
 												<i class="icon-plus"></i>
-												Add Text
+												<%=t(:add_text) %>
 											</div>
 
 										</div>
 										<div class="title">
-											<span>color </span> 
+											<span><%= t(:color)%> </span> 
 											<ul class="nav">
 												<li style="background-color:#ffffff;" title="White" class="color-font"></li>
 												<li style="background-color:#616161;" title="Dark Heather" class="color-font"></li>
@@ -162,7 +162,7 @@
 										</div>
 									</div>
 									<div class="title">
-										<span>layer </span> order
+										<%= raw t(:layer_order)%>
 										<button id="delete-obj" class="btn btn-danger pull-right">Delete Selected</button>
 									</div>
 									<div class="layer-order">
@@ -176,40 +176,40 @@
 						</div>
 						<div class="single-panel design-notes">
 							<div class="title">
-								<span>Add </span>design notes
+								<%= raw t(:add_design_notes)%>
 							</div>
 							<div class="details">
-								Use the field bellow to enter the design notes, or special instructions to printing your order and etc.
+								<% t(:add_design_notes_details)%>
 							</div>
 							<textarea name="text-design-notes" class="text-design-notes" id="text-design-notes"></textarea>
 							<div class="text-center">
-								<button class="btn">Continue Designing</button>
-								<button id="save-notes" class="btn save open-popup" data-popup="save-design" data-title="Save Design" data-show="save-design">Add &amp; Save Design</button>
+								<button class="btn"><%=t(:continue_designing) %></button>
+								<button id="save-notes" class="btn save open-popup" data-popup="save-design" data-title="Save Design" data-show="save-design"><%= t(:add_and_save_design)%></button>
 							</div>
 						</div>
 						<div class="single-panel edit-product hide">
 							<div class="header">
 								<div class="title">
-									<span>EDIT </span>YOUR PRODUCT
+									<%= raw t(:edit_your_product)%>
 								</div>
 							<!-- 	<a href="#" class="p-image" data-show="add-product">
 
 									<div class="find-product">find a different product</div>
 								</a> -->
-								<a href="/products" ><div class="find-product">find a different product</div></a>
+								<a href="/products" ><div class="find-product"><%= t(:find_a_different_product)%></div></a>
 							</div>
 							<div class="details">
 								<!-- <div class="name">Ultra Cotton Tee</div>
 								<div class="author">by Gildan</div>
 								<div class="sizes"><span>SIZES </span>YXS - 3XL <a href="#">size chart</a></div>
 								<div class="fabric"><span>Fabric </span>100 % cotton</div> -->
-								<div class="desc"><span>description </span><%= @product.description %> </a></div>
+								<div class="desc"><span><%= t(:description)%> </span><%= @product.description %> </a></div>
 							</div>
 							<div class="header">
 								<div class="title">
-									<span>CHANGE </span>YOUR PRODUCT
+									<%= raw t(:change_your_product)%>
 								</div>
-								<p>Colors for digital printing (no minimum order)</p>
+								<p><% raw t(:colors_for_printing)%></p>
 								<ul class="nav">
 									<li style="background-color:#ffffff;" title="White" class="color-preview"></li>
 									<li style="background-color:#616161;" title="Dark Heather" class="color-preview"></li>
@@ -273,32 +273,32 @@
 					<a href="#" class="image" data-show="add-image">
 						<div class="img-icon">
 						</div>
-						<div>Add Image</div>
+						<div><%= t(:add_image)%></div>
 					</a>
 					<a href="#" class="text current" data-show="add-text">
 						<div class="img-icon">
 						</div>
-						<div>Add Text</div>
+						<div><%= t(:add_text)%></div>
 					</a>
 					<a href="#" class="notes" data-show="design-notes">
 						<div class="img-icon">
 						</div>
-						<div>Design Notes</div>
+						<div><%= t(:design_notes)%></div>
 					</a>
 					<a href="#" class="edit" data-show="edit-product">
 						<div class="img-icon">
 						</div>
-						<div>Edit Product</div>
+						<div><%=t(:edit_product) %></div>
 					</a>
 					<a href="#" class="save open-popup" data-popup="save-design" data-title="Save Design" data-show="save-design">
 						<div class="img-icon">
 						</div>
-						<div>Save Design</div>
+						<div><%= t(:save_design)%></div>
 					</a>
 					<a href="#" class="load" data-show="load-design">
 						<div class="img-icon">
 						</div>
-						<div>Load Design</div>
+						<div><%= t(:load_design)%></div>
 					</a>
 				</div>
 			</div>
@@ -309,7 +309,7 @@
 <!-- popup contents -->
 <div class="custom-popup hide">
 	<div class="popup-header">
-		<div class="title">Save Design</div>
+		<div class="title"><%= t(:save_design)%></div>
 		<img class="close" src="/assets/close-popup.png">
 	</div>
 	<div class="popup-content">
@@ -318,7 +318,7 @@
 
 <div class="save-design hide">
 	<div class="notice">
-		<i class="icon-ok"></i> Your design has been saved! What would u like to do next?
+		<i class="icon-ok"></i> <%= t(:design_saved)%>
 	</div>
 	<div class="popup-btns">
 		<img id="continue" src="/assets/save-design/continue-designing.png">
@@ -332,12 +332,11 @@
 
 	<div>
 		<input type="checkbox" name="agree" id="agree" class="agree">
-		<span id="agree_text">I acknowledge that I own the copyright to this image or that  i have obtained written permission from the copyright holder to reproduce this image.</span>
+		<span id="agree_text"><%=t(:popup_acknowledge) %></span>
 	</div>
-	<button id="upload_img" class="btn">Upload File</button>
+	<button id="upload_img" class="btn"><%= t(:upload_file)%></button>
 	<div class="popup-info">
-		<p><b>Allowed file types : </b> jpg, gif, png, pdf, eps</p>
-		<p><b>Maximum File Size: </b> 5MB</p>
+		<%=raw t(:all_file_types) %>
 	</div>
 	<hr>
 
@@ -348,7 +347,7 @@
 <div class="checkout hide">
 
 	<div class="quantities">
-		<div class="head">Quantities</div>
+		<div class="head"><%=raw t(:quantities) %></div>
 		<div class="sizes">
 			
 			<% @attributes.try(:each) do |attribute| %>
@@ -361,16 +360,16 @@
 
 	</div>
 	<div class="refer-code">
-		<div class="head">Reference code (leave empty if not)</div>
+		<%=raw t(:refer_code) %>
 		<input type="text" class="ref-code" name="ref-code" id="ref-code">
-		<div class="hint">if you have discount or coupon code, enter it here.</div>
+		<%=raw t(:discount_enter)%>
 	</div>
 	<img src="/assets/checkout/re-calculate.png" class="re-calculate">
 	<div class="notice-success">
-		<div class="sub-title">Final Review</div>
+		<div class="sub-title"><%= t(:final_review)%></div>
 		<!--<div class=""><b>Shipping : </b>Rs. 213</div>
 		<div class=""><b>Coupon : </b>Rs. 213</div> -->
-		<div class="order-total"><b>Order Total : </b>Rs. <span id="order-total"></span></div>
+		<div class="order-total"><b><%= t(:order_total)%> </b>Rs. <span id="order-total"></span></div>
 		<a href="checkout"><img src="/assets/checkout/checkout-btn.png" class="checkout-btn"></a>
 	</div>
 	<div class="clearfix"></div>
