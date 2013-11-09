@@ -400,11 +400,6 @@
 		});
 
 
-/*var json = '{"objects":[{"type":"image","originX":"center","originY":"center","left":175,"top":210,"width":355,"height":425,"fill":"rgb(0,0,0)","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeLineJoin":"miter","strokeMiterLimit":10,"scaleX":1,"scaleY":1,"angle":0,"flipX":false,"flipY":false,"opacity":0.85,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","src":"http://localhost:3000/uploads/product/image/1/crew_front.png","filters":[]},{"type":"image","originX":"center","originY":"center","left":166,"top":230,"width":530,"height":630,"fill":"rgb(0,0,0)","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeLineJoin":"miter","strokeMiterLimit":10,"scaleX":0.2,"scaleY":0.2,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","src":"http://localhost:3000/uploads/design/image/1/crew_front.png/","filters":[]},{"type":"image","originX":"center","originY":"center","left":144,"top":159,"width":489,"height":489,"fill":"rgb(0,0,0)","stroke":null,"strokeWidth":1,"strokeDashArray":null,"strokeLineCap":"butt","strokeLineJoin":"miter","strokeMiterLimit":10,"scaleX":0.2,"scaleY":0.2,"angle":0,"flipX":false,"flipY":false,"opacity":1,"shadow":null,"visible":true,"clipTo":null,"backgroundColor":"","src":"http://localhost:3000/uploads/design/image/4/heart_circle.png/","filters":[]}],"background":""} '
-		canvas.loadFromJSON(json)
-		console.log(canvas)*/
-
-
 
 		canvas.on('mouse:down', function(options) {
 			var activeObject = canvas.getActiveObject();
@@ -473,10 +468,13 @@
 		});
 
 		function change_canvas(data){
-
-			console.log(data.design)
+			$('#edit-desc').val(data.title)
+			$('#text-design-notes').val(data.design_notes)
+			//console.log(data.design)
 			if(data.design){
-				$('#pcanvas').css({'background':data.color})
+				console.log(data.color)
+				var color = data.color ? data.color : ""
+				$('#pcanvas').css({'background':color})
 				canvas_front.clear();
 				if((typeof canvas_back)!='undefined') canvas_back.clear();
 				
@@ -487,27 +485,78 @@
 			}
 
 			if(data.design1){
-				$('#pcanvas-back').css({'background':data.color1})
+				console.log(data.color1)
+				var color1 = data.color1 ? data.color1 : ""
+				$('#pcanvas-back').css({'background':color1})
 				$('#main_image-back').attr('src','#')
 				$('.rotate').trigger('click')
 				if((typeof canvas_back)!='undefined') {
 					canvas_back.loadFromJSON(data.design1)
 				}else{
-					canvas_back = new Fabric.canvas('pcanvas-back')
+					canvas = canvas_back = new Fabric.canvas('pcanvas-back')
 					canvas_back.loadFromJSON(data.design1)
+
 				}
 				$('.rotate').trigger('click')
 
 			}
 		}
 
+		$(document).on('click','.rotate',function(){
+			//console.log('d',$('#main_image-back').attr('src'))
+			if($('#main_image-back').attr('src')==''){
+				return false;
+			}
+			//console.log('d')
+			if($('.main-canvas').attr('data-active')=='main'){
+				$('#pcanvas').parent().eq(0).hide();
+				if($('#pcanvas-back').closest('.canvas-container').length<1){
+					$('#pcanvas-back').show();
+						canvas_back = new fabric.Canvas('pcanvas-back');
+						var imgUrl = $('#main_image-back').attr('src');
+						zoomIn= false;
+						fabric.Image.fromURL(imgUrl, function(image) {
+							image.set({
+								left: 175,
+								top: 210,
+								opacity: 0.85,
+								width:355,
+								height:425
+							});
+							canvas_back.add(image);
+							//console.log(canvas_back)
+							canvas_back.item(0).selectable = false;
+							canvas_back.item(0).hasControls = false;
+							canvas_back.item(0).lockMovementX = true;
+							canvas_back.item(0).lockMovementY = true;
+						});
+
+					}else{
+						
+						$('#pcanvas-back').parent().eq(0).show();
+					}
+					canvas =  canvas_back;
+					$('.main-canvas').attr('data-active','back')
+				}else{
+					$('#pcanvas').parent().eq(0).show();
+					$('#pcanvas-back').parent().eq(0).hide();
+					$('.main-canvas').attr('data-active','main')
+					canvas =  canvas_front;
+					
+				}
+					$(".operations .edit").trigger("click");
+			})
+
+			$('.rotate').trigger('click')
+			$('.rotate').trigger('click')
+
 		$(document).on("click","#clear_canvas",function(e){
 			e.preventDefault();
 			canvas.clear()
-			console.log($('.main-canvas').attr('data-active'))
+			//console.log($('.main-canvas').attr('data-active'))
 
 			var imgUrl = $('.main-canvas').attr('data-active')=='main' ? $('#main_image').attr('src') : $('#main_image-back').attr('src');
-			console.log(imgUrl)
+			//console.log(imgUrl)
 			fabric.Image.fromURL(imgUrl, function(image) {
 				image.set({
 					left: 175,
@@ -573,7 +622,7 @@
 					onrendered: function(canvas) {
 						
 			    		canvas.toBlob(function(blob) {
-			    			console.log(blob)
+			    			//console.log(blob)
 							var formData = new FormData()
 
 			    			if(typeof formData=="object"){
@@ -603,13 +652,13 @@
 						});
 					}
 				});
-		    	console.log($('#main_image-back').attr('src'))
+		    	//console.log($('#main_image-back').attr('src'))
 		    	if($('#main_image-back').attr('src')==''){
 					return false;
 				}
 
 				if($('#pcanvas-back').closest('.canvas-container').length>0){
-					console.log($('#pcanvas-back').closest('.canvas-container').length)
+					//console.log($('#pcanvas-back').closest('.canvas-container').length)
 					$('#pcanvas-back').parent().eq(0).show();
 				}else{
 					$('#pcanvas-back').show()
@@ -643,7 +692,7 @@
 										success: function (data) {
 											//console.log(data,'d')
 											if($('#pcanvas-back').closest('.canvas-container').length>0){
-												console.log($('#pcanvas-back').closest('.canvas-container').length)
+												//console.log($('#pcanvas-back').closest('.canvas-container').length)
 												$('#pcanvas-back').parent().eq(0).hide();
 											}else{
 												$('#pcanvas-back').hide()
@@ -723,7 +772,7 @@
 										processData: false,
 										contentType: false,
 										success: function (data) {
-											console.log(data,'1')
+											//console.log(data,'1')
 											$('#pcanvas').parent().eq(0).hide();
 										}
 								
@@ -754,10 +803,10 @@
 
 		$(document).on("click",".color-font",function(e){
 			var color = $(this).css('background-color')
-			console.log(color)
+			//console.log(color)
 			var activeObject = canvas.getActiveObject();
 			if (activeObject) {
-				console.log(color,'1')
+				//console.log(color,'1')
 
 				activeObject.set("fill", color);
 				canvas.renderAll()
@@ -814,7 +863,7 @@
 					success: function (data) {
 
 						fabric.Image.fromURL(data.url, function(image) {
-							console.log(image)
+							//console.log(image)
 							image.set({
 								left: 120,
 								top: 150,
@@ -836,53 +885,7 @@
 		});
 
 
-		$(document).on('click','.rotate',function(){
-			console.log('d',$('#main_image-back').attr('src'))
-			if($('#main_image-back').attr('src')==''){
-				return false;
-			}
-			console.log('d')
-			if($('.main-canvas').attr('data-active')=='main'){
-				$('#pcanvas').parent().eq(0).hide();
-				if($('#pcanvas-back').closest('.canvas-container').length<1){
-					$('#pcanvas-back').show();
-						canvas_back = new fabric.Canvas('pcanvas-back');
-						var imgUrl = $('#main_image-back').attr('src');
-						zoomIn= false;
-						fabric.Image.fromURL(imgUrl, function(image) {
-							image.set({
-								left: 175,
-								top: 210,
-								opacity: 0.85,
-								width:355,
-								height:425
-							});
-							canvas_back.add(image);
-							console.log(canvas_back)
-							canvas_back.item(0).selectable = false;
-							canvas_back.item(0).hasControls = false;
-							canvas_back.item(0).lockMovementX = true;
-							canvas_back.item(0).lockMovementY = true;
-						});
-
-					}else{
-						
-						$('#pcanvas-back').parent().eq(0).show();
-					}
-					canvas =  canvas_back;
-					$('.main-canvas').attr('data-active','back')
-				}else{
-					$('#pcanvas').parent().eq(0).show();
-					$('#pcanvas-back').parent().eq(0).hide();
-					$('.main-canvas').attr('data-active','main')
-					canvas =  canvas_front;
-					
-				}
-					$(".operations .edit").trigger("click");
-			})
-
-			$('.rotate').trigger('click')
-			$('.rotate').trigger('click')
+		
 
 
 		$(document).on("click",".re-calculate",function(e){
@@ -921,7 +924,7 @@
 				url: '/calculation.json',
 				data: data,
 				success: function (data) {
-					console.log(data)
+					//console.log(data)
 					$('#order-total').text(data.price)
 				},
 				error: function (data) {
@@ -964,7 +967,7 @@
 			var activeObject = canvas.getActiveObject();
 
 			if (activeObject && /text/.test(activeObject.type)) {
-				console.log(text)
+				//console.log(text)
 				activeObject.setText(text)
 				canvas.renderAll();
 			}
