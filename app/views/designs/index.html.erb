@@ -477,7 +477,7 @@
 
 			console.log(data.design)
 			if(data.design){
-				$('#pcanvas').css({'background':'#'+data.color})
+				$('#pcanvas').css({'background':data.color})
 				canvas_front.clear();
 				if((typeof canvas_back)!='undefined') canvas_back.clear();
 				
@@ -488,7 +488,7 @@
 			}
 
 			if(data.design1){
-				$('#pcanvas-back').css({'background':'#'+data.color1})
+				$('#pcanvas-back').css({'background':data.color1})
 				$('#main_image-back').attr('src','#')
 				$('.rotate').trigger('click')
 				if((typeof canvas_back)!='undefined') {
@@ -545,11 +545,12 @@
 			var color = $(this).css('background-color')
 			 if($('.main-canvas').attr('data-active')=='main'){
 				$('#pcanvas').css({'background':color})	
-
+				$('#pcanvas').attr('data-background',color)
 			 }else{
-				$('#pcanvas-back').css({'background':color})	
+				$('#pcanvas-back').css({'background':color})
+				$('#pcanvas-back').attr('data-background',color)
 
-			 }
+			}
 			
 		});
 
