@@ -1,5 +1,6 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+#single quotes ascii &#39;
 # en: 
 #   invalid_coupon_error_message: "Please Enter a numeric value less than 500" 
 #   activerecord:
@@ -36,3 +37,7 @@ en:
   contact: "Contact"
   sign_out: "Sign Out"
   sign_out: "Sign_in"
+  about_us_content: '<section class="about-us-page"><div class="about-part1"> <div class="container"> <div class="row"> <div class="span8 content"> <div class="head">Hello, I am Mobby,</div> <p>We are a startup full of creative talent and we love marketing</p> <p>We truly believe that marketing and design is the fuel that drives your brand, business or concept</p> <div class="title">Mobby&#39;s secret is:  </div> <ul class="tick-list-black"> <li>make it interactive</li> <li>make it fun</li> <li>make it intuitive</li> <li>make that people want to come back to us</li> </ul> <a href="/designs" class="btn btn-large btn-danger pull-right" title="Start Desinging">Start Designing Now!</a> </div> <div class="span4 text-center"> <img class="about-logo" src="/assets/logoa.png"> </div> </div> </div> </div> <div class="about-part2"> <div class="container"> <div class="row"> <div class="span4 text-center"> <img class="about-man" src="/assets/about-us.png"> </div> <div class="span8 content"> <div class="head">Powered by Mobby</div> <div class="title">Some of our platforms: </div> <p> <b>Mobbynet:</b> Social network around shopping, events and deals HTML5 and webapps </p> <p> <b>Mobby2go:</b> Mobile loyalty program for smartphones Android and Blackberry </p> <p> <b>Chat4:</b> chat app with rewards Android and Blackberry </p> <p> <b>Drink4:</b> Mobile ordering with rewards and loyalty program for the hospitality. Android and Apple </p> </div> </div> </div> </div> </div> </section>'
+  partners_content: '<section class="partner-us-page"><div class="contact-part1"> <div class="container"> <div class="content"> <img src="/assets/arrow-orange.png" class="arrow-orange"> <p class="marked">Would you like to be our partner?</p> <p class="sub-head">Why don&#39;t you open your city?</p> <p>We can create exclusive designs that will reflect your city evironment like maps, cartoons, historic personages, monuments, etc.</p> <p>You will be able to sell our products in your city to all the businesses, sport organizations, museums, city atteractions and more.</p> </div> <div class="partner-mail"> <img src="/assets/partner-mail.png"> <img src="/assets/partner.png"> </div> </div> </div> </section>'
+  terms_and_conditions_content: 
+  legal_terms_content: 

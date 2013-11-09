@@ -24,8 +24,8 @@ before_filter :authenticate_user!
 	def new_checkout
     @shipping = session[:shipping]
     @tax = session[:tax]
-    @price = session[:price]
-    @totals = session[:totals]
+    @payment_amount = session[:payment_amount]
+    @total = session[:total]
 
 	end
 
