@@ -26,6 +26,9 @@ class HomeController < ApplicationController
 	
 	def partners
 	end
+
+	def terms_and_conditions
+	end
 	
 	def how_to_design
 	end

@@ -28,6 +28,10 @@ Tshirt::Application.routes.draw do
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
   controllers: {omniauth_callbacks: "authentications", registrations: "registrations"}
   match '/auth/:provider/callback' => 'authentications#create'
+  get "/terms_and_conditions", :to => "home#terms_and_conditions"
+  get "/privacy_policy", :to => "home#privacy_policy"
+  # get "/partnership", :to => "home#partnership"
+  get "/legal_terms", :to => "home#legal_terms"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
