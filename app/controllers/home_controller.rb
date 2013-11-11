@@ -32,4 +32,7 @@ class HomeController < ApplicationController
 	
 	def how_to_design
 	end
+
+	def legal_terms
+	end
 end
