@@ -29,29 +29,46 @@ body{
 
 /* Home Page */
 /* Header */
-			
+
 .change-language{
 	position: absolute;
 	z-index: 25;
-	bottom: 5px;
-	right: 0px;
+	top: 5px;
+	bottom: auto;
+	right: 20px;
 	font-weight: bolder;
+	font-size: 14px;
+	color: #fff;
+	text-transform: capitalize;
 }
 .change-language a{
-	color: #eb623f;
+	color: #00EBFF;
 }
 .change-language img{
-	width: 50px;
-	height: 33px;
+	width: 40px;
+	height: 27px;
+	margin-left: 10px;
 }
 .change-language img:hover{
-	box-shadow: 0px 0px 3px #000;
-	-webkit-box-shadow: 0px 0px 3px #000;
-	-moz-box-shadow: 0px 0px 3px #000;
-	-ms-box-shadow: 0px 0px 3px #000;
-	-o-box-shadow: 0px 0px 3px #000;
+	box-shadow: 0px 0px 3px #fff;
+	-webkit-box-shadow: 0px 0px 3px #fff;
+	-moz-box-shadow: 0px 0px 3px #fff;
+	-ms-box-shadow: 0px 0px 3px #fff;
+	-o-box-shadow: 0px 0px 3px #fff;
 }
 
+.change-language div{
+	display: inline-block;
+	margin-left: 20px;
+}
+.change-language .lang{
+	display: inline-block;
+	margin-left: 20px;
+}
+.change-language .login-details{
+	display: inline-block;
+	margin-left: 20px;
+}
 
 header{
 	width: 100%;
@@ -80,11 +97,13 @@ header img{
 .cl-effect-21{
 	display: inline-block;
 	float: right;
-	padding: 23px 0px;
+	padding: 10px 0px;
+	padding-top: 45px;
 }
 .cl-effect-21 a{
+	padding: 6px 10px !important;
 	margin: 5px 10px;
-	font-size: 1.1em;
+	font-size: 1em;
 	text-decoration: none;
 	color: #fff;
 }
@@ -137,7 +156,7 @@ nav a{
 }
 .footer-links{
 	display: inline-block;
-	width: 180px;
+	width: 240px;
 	vertical-align: top;
 }
 .link-head{

@@ -12,9 +12,7 @@
 					<div class="product">
 						<span class="title"> <%=t(:enter_design_name)%>:</span>
 						<input id="edit-desc" class="desc" value="My design" type="text">
-						
 					</div>
-
 				</div>
 				<div class="main-canvas" data-active="main">
 					<canvas id="pcanvas" data-background="ffffff" width="350" height="420"></canvas>
@@ -48,7 +46,6 @@
 			<div class="right-side">
 				<div class="welcome-msg">
 				<%=raw t(:welcome_mobby) %>
-					
 				</div>
 
 				<div class="tab-content-box">
@@ -174,7 +171,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="single-panel design-notes">
+						<div class="single-panel design-notes hide">
 							<div class="title">
 								<%= raw t(:add_design_notes)%>
 							</div>
@@ -187,7 +184,7 @@
 								<button id="save-notes" class="btn save open-popup" data-popup="save-design" data-title="Save Design" data-show="save-design"><%= t(:add_and_save_design)%></button>
 							</div>
 						</div>
-						<div class="single-panel edit-product hide">
+						<div class="single-panel edit-product">
 							<div class="header">
 								<div class="title">
 									<%= raw t(:edit_your_product)%>
@@ -238,9 +235,7 @@
 						</div>
 						<div class="single-panel load-design hide">
 						 	<div class="load-art-list">
-									
 									<%= get_user_item_images() %>
-								
 							</div>
 							<!-- <div class="header">
 								<div class="title">
@@ -275,7 +270,7 @@
 						</div>
 						<div><%= t(:add_image)%></div>
 					</a>
-					<a href="#" class="text current" data-show="add-text">
+					<a href="#" class="text" data-show="add-text">
 						<div class="img-icon">
 						</div>
 						<div><%= t(:add_text)%></div>
@@ -285,7 +280,7 @@
 						</div>
 						<div><%= t(:design_notes)%></div>
 					</a>
-					<a href="#" class="edit" data-show="edit-product">
+					<a href="#" class="edit current" data-show="edit-product">
 						<div class="img-icon">
 						</div>
 						<div><%=t(:edit_product) %></div>
@@ -396,7 +391,7 @@
 		<!--<div class=""><b>Shipping : </b>Rs. 213</div>
 		<div class=""><b>Coupon : </b>Rs. 213</div> -->
 		<div class="order-total"><b><%= t(:order_total)%> </b>Rs. <span id="order-total"></span></div>
-		<a href="checkout"><img src="/assets/checkout/checkout-btn.png" class="checkout-btn"></a>
+		<a href="/checkout"><img src="/assets/checkout/checkout-btn.png" class="checkout-btn"></a>
 	</div>
 	<div class="clearfix"></div>
 </div>

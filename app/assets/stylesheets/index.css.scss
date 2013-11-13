@@ -56,9 +56,8 @@
 }
 
 .gallery{
-	width: 275px;
 	left: -60px;
-	top: 30px;
+	top: 5px;
 	-webkit-animation: down-element 2s ease-in-out 1 forwards;
 	-moz-animation: down-element 2s ease-in-out 1 forwards;
 	-ms-animation: down-element 2s ease-in-out 1 forwards;
@@ -71,7 +70,7 @@
 }
 .templates{
 	left: -100px;
-	bottom: 25px;
+	bottom: -25px;
 	-webkit-animation: move-up-element 2s ease-in-out 1 forwards;
 	-moz-animation: move-up-element 2s ease-in-out 1 forwards;
 	-ms-animation: move-up-element 2s ease-in-out 1 forwards;

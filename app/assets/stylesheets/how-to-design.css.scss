@@ -38,7 +38,7 @@
 				text-align: center;
 				.img-holder{
 					vertical-align: top;
-					height: 261px;
+					min-height: 261px;
 					img{
 						vertical-align: middle;
 					}
@@ -50,9 +50,11 @@
 					margin: 20px 0px;
 					span{
 						display: inline-block;
-						font-size: 16px;
+						font-size: 15px;
 						font-weight: normal;
 						width: 75%;
+						text-align: left;
+						margin-left: 10px;
 					}
 					.count{
 						vertical-align: top;
