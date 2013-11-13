@@ -101,6 +101,7 @@
 
 .contact-us{
 	margin-top: 50px;
+	padding: 50px 0px;
 	background: url(/assets/contact-bg.png);
 	.left-side{
 		color: #808080;
@@ -108,6 +109,7 @@
 		background: #fff;
 		padding: 20px;
 		padding-bottom: 55px;
+		height: 400px;
 		.left-mark{
 			margin: 10px 0px; 
 		}
@@ -123,7 +125,7 @@
 		}
 		ul{
 			list-style: none;
-			width: 160px;
+			width: 175px;
 			margin: 0 auto;
 		}
 	}
@@ -132,6 +134,7 @@
 		padding: 20px;
 		margin-left: 0px;
 		padding-left: 40px;
+		padding-top: 45px;
 		.span6{
 			margin-top: 16px;
 		}
@@ -154,4 +157,17 @@
 			}
 		}
 	}
+}
+.twitter-contact{
+	position: absolute;
+	bottom: 48px;
+	left: 125px;
+}
+
+.twitter-contact:hover{
+	-webkit-animation: rotate-full 0.5s ease-in-out 1 forwards;
+	-moz-animation: rotate-full 0.5s ease-in-out 1 forwards;
+	-ms-animation: rotate-full 0.5s ease-in-out 1 forwards;
+	-o-animation: rotate-full 0.5s ease-in-out 1 forwards;
+	animation: rotate-full 0.5s ease-in-out 1 forwards;
 }

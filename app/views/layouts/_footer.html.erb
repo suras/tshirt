@@ -20,14 +20,14 @@
 							</ul>
 						</div>
 						<div class="footer-links">
-							<div class="link-head"> <%=t(:from_whom)%></div>
+							<div class="link-head"> <%=t(:for_whom)%></div>
 							<ul>
-								<li><a href="#">For marketing</a></li>
-								<li><a href="#">For business</a></li>
-								<li><a href="#">For events</a></li>
-								<li><a href="#">For organisation</a></li>
-								<li><a href="#">For special ocasion</a></li>
-								<li><a href="#">For gifts</a></li>
+								<li><a href="#"><%=t(:for_marketing)%></a></li>
+								<li><a href="#"><%=t(:for_business)%></a></li>
+								<li><a href="#"><%=t(:for_events)%></a></li>
+								<li><a href="#"><%=t(:for_organisation)%></a></li>
+								<li><a href="#"><%=t(:for_special_ocasion)%></a></li>
+								<li><a href="#"><%=t(:for_gifts)%></a></li>
 							</ul>
 						</div>
 						<!-- <div class="footer-links hide">
@@ -44,12 +44,13 @@
 						<div class="footer-links">
 							<div class="link-head"><%=t(:sitemap)%></div>
 							<ul class="tick-list">
-								<li><a href="/about_us">About us</a></li>
-								<li><a href="#">FAQ</a></li>
-								<li><a href="/legal_terms">Legal terms</a></li>
-								<li><a href="/privacy_policy">Privacy policy</a></li>
-								<li><a href="/partners">Partnership</a></li>
-								<li><a href="#">Donec et lorem suscipit</a></li>
+								<ul class="tick-list">
+								<li><a href="/about_us"><%=t(:about_us)%></a></li>
+								<li><a href="#"><%=t(:FAQ)%></a></li>
+								<li><a href="/legal_terms"><%=t(:Legal_terms)%></a></li>
+								<li><a href="/privacy_policy"><%=t(:Privacy_policy)%></a></li>
+								<li><a href="/partners"><%=t(:Partnership)%></a></li>
+							</ul>
 							</ul>
 						</div>
 					</div>
@@ -82,7 +83,7 @@
 					<div class="span6">
 						<a href="/about_us"><%=t(:about_us)%></a>
 						<a href="#"> <%=t(:delivery_and_returns)%></a>
-						<a href="#"> <%=t(:terms_and_conditions)%></a>
+						<a href="/legal_terms"> <%=t(:terms_and_conditions)%></a>
 						<a href="/contact"><%= t(:contact_us)%></a>
 					</div>
 				</div>

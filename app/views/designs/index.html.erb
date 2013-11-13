@@ -10,7 +10,7 @@
 			<div class="left-side">
 				<div class="about-product">
 					<div class="product">
-						<span class="title"> <%=t(:enter_design_name)%>:</span>
+						<span class="title"> <%=t(:design_name)%>:</span>
 						<input id="edit-desc" class="desc" value="My design" type="text">
 					</div>
 				</div>
@@ -97,7 +97,7 @@
 
 							<div class="edit-text-panel">
 								<div class="text-panel-options">
-									<%= raw t(:add__your_text)%>
+									<%= raw t(:add_your_text)%>
 									
 								</div>
 								<div class="details">
@@ -160,7 +160,7 @@
 									</div>
 									<div class="title">
 										<%= raw t(:layer_order)%>
-										<button id="delete-obj" class="btn btn-danger pull-right">Delete Selected</button>
+										<button id="delete-obj" class="btn btn-danger pull-right"><%= raw t(:delete_selected)%></button>
 									</div>
 									<div class="layer-order">
 										<button id="bring-to-front" class="btn">bring to front</button>
@@ -273,7 +273,10 @@
 					<a href="#" class="text" data-show="add-text">
 						<div class="img-icon">
 						</div>
-						<div><%= t(:add_text)%></div>
+						<div>
+						<%= t(:add_br)%>
+						<br>
+						<%= t(:text_br)%></div>
 					</a>
 					<a href="#" class="notes" data-show="design-notes">
 						<div class="img-icon">

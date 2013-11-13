@@ -156,8 +156,9 @@ nav a{
 }
 .footer-links{
 	display: inline-block;
-	width: 240px;
+	width: 220px;
 	vertical-align: top;
+	margin-right: 20px;
 }
 .link-head{
 	font-family: 'MyriadProRegular';
@@ -231,6 +232,6 @@ nav a{
 }
 .bottom-links a{
 	color: #8adcf0;
-	padding-left: 25px;
+	padding-left: 15px;
 }
 

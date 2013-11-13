@@ -1,50 +1,96 @@
 <%= stylesheet_link_tag  "contact-us", :media => "all" %>
 
+<!-- <%=raw t(:contact_us_left_side) %> -->
 <section class="contact-us">
-	<!-- <div class="page-title">Contact us</div> -->
-	<div class="contact-part1">
-		<div class="container">
-			<div class="row">
-				<div class="span4 left-side">
-					<img class="left-mark" src="/assets/left-mark.png">
-					<p class="title">We would love to hear from you</p>
-					<p class="sub-title">Please contact us  with any questions about:</p>
-					<ul class="">
-						<li><img src="/assets/list-tick-gray.png"> &nbsp;Design</li>
-						<li><img src="/assets/list-tick-gray.png"> &nbsp;Shipping</li>
-						<li><img src="/assets/list-tick-gray.png"> &nbsp;Products</li>
-						<li><img src="/assets/list-tick-gray.png"> &nbsp;Partnership</li>
-						<li><img src="/assets/list-tick-gray.png"> &nbsp;Suggestions</li>
-						<li><img src="/assets/list-tick-gray.png"> &nbsp;Comments Feedback</li>
-					</ul>
-				</div>
-				<div class="span8 right-side">
-					<div class="contact-box span6">
-						<%= simple_form_for @contact, :url => contact_us_path do |f| %>
-						<img src="/assets/send-msg-corner.png" class="corner">
-						<div class="title">Send us a message</div>
-						<div class="underline"></div>
-						<%= f.text_field :name, :class=>"name", :placeholder =>"Enter Your Name" %>
-						<%= f.text_field :email, :class=>"email", :placeholder =>"Enter Your Email" %>
-						<%= f.text_area :message, :class=>"message", :placeholder =>"Enter the Message" %>
-						<div class="follow-us">
-							<a class="social-gplus" href="#"></a>
-							<a class="social-in" href="#"></a>
-							<a class="social-rss" href="#"></a>
-							<a class="social-fb" href="#"></a>
-							<%= f.button :submit, :class=>"btn btn-danger pull-right", :value=>"Send Message" %>
-						</div>
-						<% end %>
-					</div>
-				</div>
+	<div class="container">
+		<div class="row">
+			<div class="span4 left-side">
+				<%=raw t(:contact_us_left_side) %>
+				<!-- <img class="left-mark" src="/assets/left-mark.png">
+				<p class="title">We would love to hear from you</p>
+				<p class="sub-title">Please contact us  with any questions about:</p>
+				<ul class="">
+					<li><img src="/assets/list-tick-gray.png"> &nbsp;Design</li>
+					<li><img src="/assets/list-tick-gray.png"> &nbsp;Shipping</li>
+					<li><img src="/assets/list-tick-gray.png"> &nbsp;Products</li>
+					<li><img src="/assets/list-tick-gray.png"> &nbsp;Partnership</li>
+					<li><img src="/assets/list-tick-gray.png"> &nbsp;Suggestions</li>
+					<li><img src="/assets/list-tick-gray.png"> &nbsp;Comments Feedback</li>
+				</ul> -->
 			</div>
-			<div class="row skype-details">
-				<div class="span3 pull-right">
-					<img src="/assets/skype.png">
-					<div class="mail-id"><a href="mailto:mobby@mobbyart.com" title="">mobby@mobbyart.com</a></div>
+			<div class="span8 right-side">
+				<div class="contact-box span6">
+					<%= simple_form_for @contact, :url => contact_us_path do |f| %>
+					<img src="/assets/send-msg-corner.png" class="corner">
+					<div class="title"><%= t(:send_us_a_msg) %></div>
+					<div class="underline"></div>
+					<%= f.text_field :name, :class=>"name", :placeholder =>t(:enter_your_name) %>
+					<%= f.text_field :email, :class=>"email", :placeholder =>t(:enter_your_email) %>
+					<%= f.text_area :message, :class=>"message", :placeholder =>t(:enter_your_message) %>
+					<div class="follow-us">
+						<a class="social-gplus" href="#"></a>
+						<a class="social-in" href="#"></a>
+						<a class="social-rss" href="#"></a>
+						<a class="social-fb" href="#"></a>
+						<%= f.button :submit, :class=>"btn btn-danger pull-right", :value=>t(:send_msg) %>
+					</div>
+					<% end %>
 				</div>
-				<div class="clearfix"></div>
 			</div>
 		</div>
-	</section>
+		<div class="row skype-details">
+			<div class="span3 pull-right">
+				<img src="/assets/skype.png">
+				<div class="mail-id"><a href="mailto:mobby@mobbyart.com" title="">mobby@mobbyart.com</a></div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</section>
+
+<!-- <section class="contact-us">
+	<div class="container">
+		<div class="row">
+			<div class="span4 left-side">
+				<img class="left-mark" src="/assets/left-mark.png">
+				<p class="title">Nos encantaría saber de usted</p>
+				<p class="sub-title">Por favor, póngase en contacto con nosotros con cualquier pregunta sobre:</p>
+				<ul class="">
+					<li><img src="/assets/list-tick-gray.png"> &nbsp;diseño</li>
+					<li><img src="/assets/list-tick-gray.png"> &nbsp;envío</li>
+					<li><img src="/assets/list-tick-gray.png"> &nbsp;Productos</li>
+					<li><img src="/assets/list-tick-gray.png"> &nbsp;asociación</li>
+					<li><img src="/assets/list-tick-gray.png"> &nbsp;Sugerencias</li>
+					<li><img src="/assets/list-tick-gray.png"> &nbsp;Comentarios Comentarios</li>
+				</ul>
+			</div>
+			<div class="span8 right-side">
+				<div class="contact-box span6">
+					<%= simple_form_for @contact, :url => contact_us_path do |f| %>
+					<img src="/assets/send-msg-corner.png" class="corner">
+					<div class="title">Envíenos un mensaje</div>
+					<div class="underline"></div>
+					<%= f.text_field :name, :class=>"name", :placeholder =>"Ingrese su Nombre" %>
+					<%= f.text_field :email, :class=>"email", :placeholder =>"Ingrese su E-mail" %>
+					<%= f.text_area :message, :class=>"message", :placeholder =>"Ingrese el mensaje" %>
+					<div class="follow-us">
+						<a class="social-gplus" href="#"></a>
+						<a class="social-fb" href="#"></a>
+						<%= f.button :submit, :class=>"btn btn-danger pull-right", :value=>"Enviar mensaje" %>
+					</div>
+						<a class="twitter-contact" href="#"><img src="/assets/twitter-contact.png"></a>
+
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<div class="row skype-details">
+			<div class="span3 pull-right">
+				<img src="/assets/skype.png">
+				<div class="mail-id"><a href="mailto:mobby@mobbyart.com" title="">mobby@mobbyart.com</a></div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</section> -->
 

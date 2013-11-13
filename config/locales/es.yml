@@ -42,6 +42,8 @@ es:
   password: "Contraseña"
   password_confirmation: "Confirme Contraseña"
   remember_me: "Recuérdame"
+  not_receive_ins: "Didn't receive confirmation instructions?"
+  not_receive_unlock_ins:  "Didn't receive unlock instructions?"
 
   coupon_generate_error: "Por favor, introduzca un valor numérico inferior a 500"
   coupon_generate_success: "Generated Successfully"
@@ -53,54 +55,85 @@ es:
   clear: "Borrar"
   add_image: "Añadir imagen"
   add_text: "Añadir texto"
+  add_br: "Añadir"
+  text_br: "texto"
   design_notes: "Notas de Diseño"
-  add_design_notes: "<span> Añadir </ span> notas de diseño"
+  add_design_notes: "<span> Añadir </span> notas de diseño"
   add_design_notes_details: "Utilice el campo abajo para entrar en las notas de diseño, o instrucciones especiales para la impresión de su orden y etc"
-  edit_product: "Edición de productos"
+  edit_product: "editar productos"
   save_design: "Guardar Diseño"
   load_design: "Diseño de carga"
   continue_designing: "Continuar Diseño"
   add_and_save_design: "Añadir y Guardar Diseño"
-  enter_design_name: "Introduzca el nombre de Diseño"
+  design_name: "inombre del diseño"
   calculate_price: "CALCULAR PRECIO Y"
   add_to_cart: "Añadir al Carro"
   final_review: "revisión Final"
   order_total: "Total del pedido:"
   quantities: "Cantidades"
-  refer_code: '<div class="head"> Código de referencia (dejar en blanco si no) </ div>'
-  discount_enter: '<div class="hint"> si tiene descuento o código de descuento, escríbalo aquí. </ div>'
-  allow_file_types: '<p> <b> animales tipos de archivos: </ b> jpg, gif, png, pdf, EPS </ p> <b> Tamaño máximo del archivo: </ b> 5 MB </ p>'
+  refer_code: '<div class="head"> Código de referencia (dejar en blanco si no) </div>'
+  discount_enter: '<div class="hint"> si tiene descuento o código de descuento, escríbalo aquí. </div>'
+  allow_file_types: '<p> <b> animales tipos de archivos: </b> jpg, gif, png, pdf, EPS </p> <b> Tamaño máximo del archivo: </b> 5 MB </p>'
   popup_acknowledge: "Reconozco que soy dueño de los derechos de autor de esta imagen o que he obtenido el permiso por escrito del propietario del copyright para reproducir esta imagen."
   design_saved: "Su diseño se ha guardado! ¿Cómo sería u desea hacer a continuación?"
   colors_for_printing: "Colores para la impresión digital (sin pedido mínimo)"
   description: "descripción"
-  change_your_product: "<span> CAMBIO </ span> Su producto"
+  change_your_product: "<span> CAMBIO </span> Su producto"
   find_a_different_product: "encontrar un producto diferente"
-  edit_your_product: "<span> EDIT </ span> Su producto"
+  edit_your_product: "<span> EDIT </span> Su producto"
   clip_arts: "Los clip arts"
   old_text: "Old texto"
   font: "fuente"
-  add_text: "Añadir texto"
   color: "color"
-  layer_order: "<span> capa </ span> para"
+  layer_order: "<span> capa </span> para"
   upload_images: "Subir Imágenes"
   upload_file: "Subir archivo"
   my_images: "Mis Imágenes"
-  add_your_text: '<div class="title"> <span> ADD </ span> el texto </ div>'
-  welcome_mobby: "<p> Bienvenido al Mobby <i> </ i> herramienta de diseño de arte </ p> Comience a diseñar! elegir su opción abajo </ p>"
-  sign_in_with: "Sign in with"
-  forgot_your_password: "Forgot your password"
-  delivery_and_returns: "Delivery & Returns"
-  terms_and_conditions: "Terms & Conditions"
-  contact_us: "Contact Us"
-  how_to_design: '<section class="how-to-design"> <div class="container"> <div class="section-title">Your customized merchandise products and marketing designed by you!</div> <div class="section-details"> <p> Now you can create excellent marketing products that display your brand long after your clients or friends have visited your venue, hotel, business, festival, birthday, and more. </p> <p> Use our designs to create merchandise you can sell, give or use to make that moment special. </p> </div> <div class="how-it-work"> <div class="title">How it work?</div> <div class="steps"> <div class="step"> <div class="img-holder"><img src="/assets/crew_front.png"></div> <div class="about"> <span class="count">1</span> <span>Select your apparel. Let us know if you don&#39;t see what you&#39;re looking for</span> </div> </div> <div class="step"> <div class="img-holder make-center"><img src="/assets/cartoon.jpg"></div> <div class="about"> <span class="count">2</span> <span>Select our design, or upload your own images (preferably vector artwork)</span> </div> </div> <div class="step"> <div class="img-holder"><img src="/assets/tshirt-hotel.png"></div> <div class="about"> <span class="count">3</span> <span>Start designing! Add your text, name, brand, business or event and customize it</span> </div> </div> </div> </div> <div class="customize-it"> <div class="title">Customize it</div> <div class="intro"> <div class="about"> With our online tool you can your products exactly you wish. you are done will be printed </div> <div class="img-holder"> <img src="/assets/editor-image.png"> </div> </div> <div class="tags"> <div class="tag1"> <span>Your Brand</span> </div> <div class="tag2"> <span>Your Location</span> </div> <div class="tag3"> <span>Your Merchandise</span> </div> </div> <div class="product-details"> <img class="product-img" src="/assets/tshirt-hotel-text.png"> <div class="add-name"> Add your text <img src="/assets/pointer-gallery.png"> </div> <div class="add-img"> Add ourexclusivedesigns or useyour ownimages, or wecreate acustom designfor you <img src="/assets/pointer-interface.png"> </div> <div class="add-text"> Add any text, location, numbers, names, etc <img src="/assets/pointer-templates.png"> </div> </div> </div> </div> </div> </section>'
-  how_to_design_heading: "How To Design"
-  Sitemap: "Sitemap"
-  custom_products: "Custom products"
-  from_whom: "For whom"
-  copyrights: "Copyright 2013 Codingmart technologies, All Rights Reserved."
-  partners_content: '<section class="partner-us-page"><div class="contact-part1"> <div class="container"> <div class="content"> <img src="/assets/arrow-orange.png" class="arrow-orange"> <p class="marked">Would you like to be our partner?</p> <p class="sub-head">Why don&#39;t you open your city?</p> <p>We can create exclusive designs that will reflect your city evironment like maps, cartoons, historic personages, monuments, etc.</p> <p>You will be able to sell our products in your city to all the businesses, sport organizations, museums, city atteractions and more.</p> </div> <div class="partner-mail"> <img src="/assets/partner-mail.png"> <img src="/assets/partner.png"> </div> </div> </div> </section>'
+  add_your_text: '<div class="title"> <span> ADD </span> el texto </div>'
+  welcome_mobby: "<p>Bienvenido a la <i>Mobby</i>art herramienta de diseño de arte </p><p> Comience a diseñar! elegir su opción abajo </p>"
+  delete_selected: "Delete Selected"
   
+  sign_in_with: "Iniciar sesión con"
+  forgot_your_password: "Olvidó su contraseña"
+  delivery_and_returns: "Entrega y Devoluciones"
+  terms_and_conditions: "Términos y condiciones"
+  contact_us: "contáctenos"
+  how_to_design: '<section class="how-to-design"> <div class="container"> <div class="section-title">Your customized merchandise products and marketing designed by you!</div> <div class="section-details"> <p> Now you can create excellent marketing products that display your brand long after your clients or friends have visited your venue, hotel, business, festival, birthday, and more. </p> <p> Use our designs to create merchandise you can sell, give or use to make that moment special. </p> </div> <div class="how-it-work"> <div class="title">How it work?</div> <div class="steps"> <div class="step"> <div class="img-holder"><img src="/assets/crew_front.png"></div> <div class="about"> <span class="count">1</span> <span>Select your apparel. Let us know if you don&#39;t see what you&#39;re looking for</span> </div> </div> <div class="step"> <div class="img-holder make-center"><img src="/assets/cartoon.jpg"></div> <div class="about"> <span class="count">2</span> <span>Select our design, or upload your own images (preferably vector artwork)</span> </div> </div> <div class="step"> <div class="img-holder"><img src="/assets/tshirt-hotel.png"></div> <div class="about"> <span class="count">3</span> <span>Start designing! Add your text, name, brand, business or event and customize it</span> </div> </div> </div> </div> <div class="customize-it"> <div class="title">Customize it</div> <div class="intro"> <div class="about"> With our online tool you can your products exactly you wish. you are done will be printed </div> <div class="img-holder"> <img src="/assets/editor-image.png"> </div> </div> <div class="tags"> <div class="tag1"> <span>Your Brand</span> </div> <div class="tag2"> <span>Your Location</span> </div> <div class="tag3"> <span>Your Merchandise</span> </div> </div> <div class="product-details"> <img class="product-img" src="/assets/tshirt-hotel-text.png"> <div class="add-name"> Add your text <img src="/assets/pointer-gallery.png"> </div> <div class="add-img"> Add ourexclusivedesigns or useyour ownimages, or wecreate acustom designfor you <img src="/assets/pointer-interface.png"> </div> <div class="add-text"> Add any text, location, numbers, names, etc <img src="/assets/pointer-templates.png"> </div> </div> </div> </div> </div> </section>'
+  how_to_design_heading: "Cómo diseñar"
+  Sitemap: "Mapa del sitio"
+  custom_products: "productos personalizados"
+  from_whom: "Para quién"
+  sitemap: "Mapa del sitio"
+  custom_products: "Productos personalizados"
+  for_whom: "Para quien"
+  for_marketing: "Márketing"
+  for_business: "Negocios"
+  for_events: "Eventos"
+  for_organisation: "Clubes"
+  for_special_ocasion: "Ocasiones especiales"
+  for_gifts: "Y más"
+  about_us: "Nosotros"
+  FAQ: "FAQ"
+  Legal_terms: "Términos legales"
+  Privacy_policy: "Privacidad"
+  Partnership: "Alianzas"
+
+  delivery_and_returns:  "Entrega y Devoluciones"
+  terms_and_conditions:  "Términos y condiciones"
+  contact_us: "contáctenos"
+
+  copyrights: "Derechos de autor 2013 tecnologías Codingmart Reservados todos los derechos."
+  
+  contact_us_left_side: '<img class="left-mark" src="/assets/left-mark.png"> <p class="title">Nos encantaría saber de usted</p> <p class="sub-title">Por favor, póngase en contacto con nosotros con cualquier pregunta sobre:</p> <ul class=""> <li><img src="/assets/list-tick-gray.png"> &nbsp;diseño</li> <li><img src="/assets/list-tick-gray.png"> &nbsp;envío</li> <li><img src="/assets/list-tick-gray.png"> &nbsp;Productos</li> <li><img src="/assets/list-tick-gray.png"> &nbsp;asociación</li> <li><img src="/assets/list-tick-gray.png"> &nbsp;Sugerencias</li> <li><img src="/assets/list-tick-gray.png"> &nbsp;Comentarios Comentarios</li> </ul>'
+
+  send_us_a_msg: "Envíenos un mensaje"
+  enter_your_name: "Ingrese su Nombre"
+  enter_your_email: "Ingrese su E-mail"
+  enter_your_message: "Ingrese el mensaje"
+  send_msg: "Enviar mensaje"
+
+
+  partners_content: '<div class="span6 about-partner text-center"> <p class="title">haría Te gustaría ser nuestro socio?</p> <p class="sub-title">Por qué no abres tu ciudad?</p> <p>Podemos crear diseños exclusivos que reflejen su evironment ciudad como mapas, dibujos animados, personajes históricos, monumentos, etc</p> <p>Usted será capaz de vender nuestros productos en su ciudad para todas las empresas, organizaciones deportivas, museos, atteractions ciudad y mucho más.</p> </div>'
   index: '<section class="banner"> <div class="container"> <div class="slider"> <div class="desc gallery"> <div class="desc-head"> <i class="banner-icon"> </i>Creación de productos personalizados </div> <div class="desc-value">Para marketing, promociones y merchandising </div> <img class="pointer" src="assets/pointer-gallery.png"> </div> <div class="desc templates"> <div class="desc-head"> <i class="banner-icon"> </i>Utilice nuestro ilustraciones exclusivas </div> <div class="desc-value">O cargar sus propias imágenes </div> <img class="pointer" src="assets/pointer-templates.png"> </div> <div class="desc interface"> <div class="desc-head"> <i class="banner-icon"> </i>Personalizar yout camiseta </div> <div class="desc-value">Para eventos, bodas, fiestas, equipos y más </div> <img class="pointer" src="assets/pointer-interface.png"> </div> <div class="center-image"> <div id="myCarousel" class="carousel slide"> <ol class="carousel-indicators"> <li data-target="#myCarousel" data-slide-to="0" class="active"> </li> <li data-target="#myCarousel" data-slide-to="1"> </li> <li data-target="#myCarousel" data-slide-to="2"> </li> </ol> <div class="carousel-inner"> <div class="active item"> <img src="/assets/center-image.png"> </div> <div class="item"> <img src="/assets/center-image.png"> </div> <div class="item"> <img src="/assets/center-image.png"> </div> </div> <a class="carousel-control left" href="#myCarousel" data-slide="prev"> <img src="/assets/prev.png"> </a> <a class="carousel-control right" href="#myCarousel" data-slide="next"> <img src="/assets/next.png"> </a> </div> </div> </div> </div> </section> <section class="testimonials"> <div class="container"> <p>Crea tus productos personalizados de <br> Marketing, Promociones y mercancía </p> </div> </section> <section class="process-steps hi-icon-effect-9 hi-icon-effect-9a"> <div class="container"> <div class="row"> <div class="span4 choose-design"> <a href="" class="hi-icon "> <img src="assets/design-icon.png"> </a> <!-- <div class="icons"> </div> --> <p class="title">Nuestros diseños exclusivos </p> <!-- <p class="sub-title">Lorem ipsum text </p> --> </div> <div class="span4 add-photo"> <a href="" class="hi-icon "> <img src="assets/photo-icon.png"> </a> <!-- <div class="icons"> </div> --> <p class="title">Tus propias imágenes </p> <!-- <p class="sub-title">Lorem ipsum text </p> --> </div> <div class="span4 save-icon"> <a href="" class="hi-icon "> <img src="assets/save-icon.png"> </a> <!-- <div class="icons"> </div> --> <p class="title">Diseño e impresión </p> </div> </div> </div> </section>'
   how_to_design: '<section class="how-to-design"> <div class="container"> <div class="section-title">Tus productos personalizados para merchandise y márketing diseñados por ti</div> <div class="section-details"> <p> Ahora puedes crear productos de márketing que mostrará tu marca luego que tus clientes o amigos hayan visitado tu negocio, hotel, festival, fiesta, y más. </p> <p> Usa nuestros diseños exclusivos para crear merchandise que puedes vender, regalar o usar y que convierte a ese momento en muy especial. </p> </div> <div class="how-it-work"> <div class="title">Como funciona?</div> <div class="steps"> <div class="step"> <div class="img-holder"><img src="/assets/crew_front.png"></div> <div class="about"> <span class="count">1</span> <span>Selecciona tu producto. Déjanos saber si no encuentras el producto que deseas.</span> </div> </div> <div class="step"> <div class="img-holder make-center"><img src="/assets/cartoon.jpg"></div> <div class="about"> <span class="count">2</span> <span>Seleciona nuestro diseño, o sube tu propia imagen (preferimos imágenes vectorizadas)</span> </div> </div> <div class="step"> <div class="img-holder"><img src="/assets/tshirt-hotel.png"></div> <div class="about"> <span class="count">3</span> <span>Comienza a diseñar! Agrega tu texto, nombre, marca, negocio o evento y personalizalo</span> </div> </div> </div> </div> <div class="customize-it"> <div class="title">Personalizalo</div> <div class="intro"> <div class="about"> Con nuestra herramienta de diseño online puedes personalizar tus productos exactamente como lo desees. Cuando hayas terminado seimprimirá </div> <div class="img-holder"> <img src="/assets/editor-image.png"> </div> </div> <div class="tags"> <div class="tag1"> <span>Tu marca</span> </div> <div class="tag2"> <span>Tu lugar</span> </div> <div class="tag3"> <span>Tu merchandise</span> </div> </div> <div class="product-details"> <img class="product-img" src="/assets/tshirt-hotel-text.png"> <div class="add-name"> Agrega tu texto <img src="/assets/pointer-gallery.png"> </div> <div class="add-img"> Agrega nuestros diseños exclusivos o usa tus propias imágenes, o te crearemos un diseño exclusivo para ti <img src="/assets/pointer-interface.png"> </div> <div class="add-text"> Agrega cualquier texto, lugar, números, nombres, etc. <img src="/assets/pointer-templates.png"> </div> </div> </div> </div> </div> </section>'
   about_us_content: '<section class="about-us"> <div class="center-details"> <div class="details"> <div class="head">Hola, yo soy Mobby,</div> <p>Somos una startup especializada en márketing digital.</p> <p>Creemos verdaderamente que el márketing y el diseño  son la energia que mueve tu marca, negocio o concepto.</p> <div class="title">El secreto de Mobby es: </div> <ul class="tick-list-black"> <li>hazlo interactivo</li> <li>hazlo divertido</li> <li>hazlo intuitivo</li> <li>haz que los usuarios quieran regresar</li> </ul> </div> <div class="details"> <div class="head">Powered by Mobby</div> <div class="title">Algunas de nuestras platformas:</div> <p> <b>Mobbynet:</b> Red Social alrededor de compras, eventos y ofertas. HTML5 y webapps. </p> <p> <b>Mobby2go:</b> Programa móvil de fidelidad para smartphones. Android and Blackberry </p> <p> <b>Chat4:</b> App para chatear con recompensas. Android y Blackberry </p> <p> <b>Drink4:</b> Ordena con tu móvil comida y bebidas con recompensas y programa de fidelidad para la hosteleria. Android y Apple </p> </div> </div> </section>'
