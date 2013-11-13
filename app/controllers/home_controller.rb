@@ -16,7 +16,8 @@ class HomeController < ApplicationController
 			if(UserMailer.contact_email(params[:contact]).deliver  && @contact.save)
 				format.html {redirect_to(contact_path(), :notice => "Message sent successfully")}   
 			else
-				format.html { render :action => "new_contact"}
+				format.html {redirect_to(contact_path(), :notice => "Please fill in all fields with valid values and submit")}   
+				#format.html { render :action => "new_contact", :notice => "Please fill all fields and send"}
 			end
 		end
 	end
