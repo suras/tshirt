@@ -12,4 +12,8 @@ Category.create(:name => "Bags" )
 Category.create(:name => "Cases" )
 end
 
+if(!User.find_by_email("admin@admin.com").present?)
+	User.create(:email => "admin@admin.com", :password => "12345678", :is_admin => true)
+end	
+
 
