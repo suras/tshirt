@@ -27,10 +27,6 @@
 	-o-text-shadow: 0px 0px 1px #eb3506;
 
 }
-.contact-part1 .span6,.contact-part2 .span6{
-	margin-left: 23%;
-	text-align: center;
-}
 .contact-us-page ul{
 	list-style: none;
 	
@@ -51,7 +47,7 @@
 	-o-text-shadow: 0px 0px 1px #000;
 	width: 500px;
 	margin: 0 auto;
-text-align: center;
+	text-align: center;
 }
 .arrow-orange{
 	position: absolute;
@@ -60,15 +56,12 @@ text-align: center;
 }
 .contact-box{
 	position: relative;
-	border-image: url(/assets/contact-border.png) 19% repeat repeat;
-	border-width: 10px;
-	min-height: 200px;
 	padding: 20px;
-	box-shadow: 0px 0px 10px 5px #ddd;
-	-webkit-box-shadow: 0px 0px 10px 5px #ddd;
-	-moz-box-shadow: 0px 0px 10px 5px #ddd;
-	-ms-box-shadow: 0px 0px 10px 5px #ddd;
-	-o-box-shadow: 0px 0px 10px 5px #ddd;
+	box-shadow: 0px 0px 10px 5px #757575;
+	-webkit-box-shadow: 0px 0px 10px 5px #757575;
+	-moz-box-shadow: 0px 0px 10px 5px #757575;
+	-ms-box-shadow: 0px 0px 10px 5px #757575;
+	-o-box-shadow: 0px 0px 10px 5px #757575;
 	width: 500px;
 	margin: 0 auto;
 }
@@ -85,7 +78,7 @@ text-align: center;
 }
 .contact-box .underline{
 	height: 4px;
-	border: 1px solid #d6d6d6;
+	border: 1px solid #696969;
 	margin-bottom: 20px;
 	border-top-width: 2px;
 	border-left-width: 0px;
@@ -103,4 +96,62 @@ text-align: center;
 	width: 100%;
 	height: 100px;
 	resize: none;
+}
+
+
+.contact-us{
+	margin-top: 50px;
+	background: url(/assets/contact-bg.png);
+	.left-side{
+		color: #808080;
+		font-size: 13px;
+		background: #fff;
+		padding: 20px;
+		padding-bottom: 55px;
+		.left-mark{
+			margin: 10px 0px; 
+		}
+		.title{
+			text-align: center;
+			font-size: 17px;
+			font-weight: bold;
+			font-style: italic;
+			padding-top: 15px;
+		}
+		.sub-title{
+
+		}
+		ul{
+			list-style: none;
+			width: 160px;
+			margin: 0 auto;
+		}
+	}
+	.right-side{
+		background: #ddd;
+		padding: 20px;
+		margin-left: 0px;
+		padding-left: 40px;
+		.span6{
+			margin-top: 16px;
+		}
+	}
+	.skype-details{
+		margin: 40px 0px;
+		text-align: center;
+		img{
+			padding: 20px;
+			cursor: pointer;
+		}
+		.mail-id{
+			background: #808080;
+			font-size: 18px;
+			padding: 10px;
+			display: inline-block;
+			margin: 0 auto;
+			a{
+				color: #fff;
+			}
+		}
+	}
 }

@@ -1,0 +1,46 @@
+.legal_page{
+	text-align: justify;
+	.container{
+		margin: 50px auto;
+		padding: 20px;
+		border-radius: 10px;
+		box-shadow: 0px 0px 10px #97d1dc;
+		-moz-box-shadow: 0px 0px 10px #97d1dc;
+		-webkit-box-shadow: 0px 0px 10px #97d1dc;
+		-ms-box-shadow: 0px 0px 10px #97d1dc;
+		-o-box-shadow: 0px 0px 10px #97d1dc;
+	}
+	.page-title{
+		color: #fff;
+		font-size: 25px;
+		line-height: 40px;
+		padding: 10px 0px;
+		border-radius: 15px;
+		font-weight: bolder;
+		text-align: center;
+		background: #6ad9c8;
+		margin: 10px 0px;
+	}
+	.division{
+		.title{
+			font-size: 20px;
+			padding: 10px 0px;
+			font-weight: bolder;	
+		}
+		.terms{
+			.title{
+				padding-left: 0px;
+				font-size: 17px;
+			}
+			p{
+				padding-left: 25px;
+				margin-bottom: 5px;
+			}
+			.sub-terms{
+				padding: 5px 0px;
+				padding-left: 25px;
+
+			}
+		}
+	}	
+}

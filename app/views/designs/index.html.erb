@@ -1069,6 +1069,9 @@
 
 
 		$(document).on("click",".open-popup",function(){
+			if($(this).hasClass('save') && $('#edit-desc').val()==''){
+				return false;
+			}
 			var popup_content = "." + $(this).data("popup");
 			var popup_title = $(this).data("title");
 			append_overlay();
