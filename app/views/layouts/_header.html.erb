@@ -1,31 +1,39 @@
 <body>
 	<header>
 		<div class="container">
-			<p class="change-language">
-			<span>Change Language :</span>
-				<% if(I18n.locale.to_s == "en")%>
-				<%= link_to "<img src='/assets/spain-flag.png'>".html_safe, url_for(:locale => "es")%>
-				<% else %>
-				<%= link_to "<img src='/assets/english-flag.png'>".html_safe, url_for(:locale => "en")%>
-				<% end %>
-			</p>
+			<div class="change-language">
+				<div class="lang">
+					<span><%= t :change_language %> :</span>
+					<% if(I18n.locale.to_s == "en")%>
+					<%= link_to "<img src='/assets/spain-flag.png'>".html_safe, url_for(:locale => "es")%>
+					<% else %>
+					<%= link_to "<img src='/assets/english-flag.png'>".html_safe, url_for(:locale => "en")%>
+					<% end %>
+				</div>
+				<div class="login-details">
+					<% if user_signed_in? %>
+					<%= link_to t(:sign_out), destroy_user_session_path, method: :delete %>
+					<% else %>
+					<%= link_to t(:sign_in), new_user_session_path %>
+					/ <a href="/users/sign_up"><%= t :sign_up %></a>
+					<% end %>
+				</div>
+			</div>
 			<a href="/" class="home-link" title="">
 				<img src="/assets/logoa.png">
 				<span class="logo-name">Mobby<span>art</span></span>
 			</a>
 			<nav class="cl-effect-21">
 				<a href="/"><%= t :home %></a>
-				<a href="/about_us"><%= t :about %></a>
+				<a href="/how_to_design"><%= t :how %></a>
 				<a href="/products"><%= t :create %></a>
+				<a href="/about_us"><%= t :about %></a>
 				<a href="/contact"><%= t :contact %></a>
-				<% if user_signed_in? %>
-				<%= link_to t(:sign_out), destroy_user_session_path, method: :delete %>
-				<% else %>
-				<%= link_to t(:sign_in), new_user_session_path %>
-				<% end %>
+
 			</nav>
 		</div>
 		
+
 	</header>
 	<p>
 		<% flash.each do |name, msg| %>

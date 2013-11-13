@@ -25,6 +25,27 @@ en:
               blank: "Email is needed for signup"
             password: 
               blank: "Password Can't be blank"
+
+
+# Header
+  change_language: "Change Language"
+  home: "Home"
+  how: "How"
+  create: "Create"
+  about: "About"
+  contact: "Contact"
+  sign_in: "Sign In"
+  sign_out: "Sign Out"
+  sign_up: "Sign Up"
+
+
+# Login
+  email: "Email"
+  password:  "Password"
+  password_confirmation: "Confirme Contraseña"
+  remember_me: "Remember me"
+
+
   coupon_generate_error: "Please Enter a numeric value less than 500"
   coupon_generate_success: "Generated Successfully"
   logging_successful: "Logged in successfully"
@@ -45,7 +66,7 @@ en:
   continue_designing: "Continue Designing"
   add_and_save_design: "Add & Save Design"
   enter_design_name: "Enter Design Name"
-  calculate_price: "CALCULATE PRICE &amp;"
+  calculate_price: "CALCULATE PRICE &"
   add_to_cart: "ADD TO CART"
   final_review: "Final Review"
   order_total: "Order Total :"
@@ -71,22 +92,13 @@ en:
   my_images: "My Images"
   add_your_text: '<div class="title"><span>ADD </span>YOUR TEXT</div>'
   welcome_mobby: "<p>Welcome to the <i>Mobby</i>art design tool</p><p>Get started designing! choose your option below</p>"
-  home: "Home"
-  about: "About"
-  about_us: "About Us"
-  create: "Create"
-  email: "Email"
-  password: "Password"
-  remember_me: "Remember Me"
-  contact: "Contact"
-  sign_out: "Sign Out"
-  sign_in: "Sign_in"
+  
   sign_in_with: "Sign in with"
   forgot_your_password: "Forgot your password"
   delivery_and_returns: "Delivery & Returns"
   terms_and_conditions: "Terms & Conditions"
   contact_us: "Contact Us"
-  how_to_design: '<section class="how-to-design"> <div class="container"> <div class="section-title">Your customized merchandise products and marketing designed by you!</div> <div class="section-details"> <p> Now you can create excellent marketing products that display your brand long after your clients or friends have visited your venue, hotel, business, festival, birthday, and more. </p> <p> Use our designs to create merchandise you can sell, give or use to make that moment special. </p> </div> <div class="how-it-work"> <div class="title">How it work?</div> <div class="steps"> <div class="step"> <div class="img-holder"><img src="/assets/empty-tshirt.png"></div> <div class="about"> <span class="count">1</span> <span>Select your apparel. Let us know if you don&#39;t see what you&#39;re looking for</span> </div> </div> <div class="step"> <div class="img-holder make-center"><img src="/assets/cartoon.jpg"></div> <div class="about"> <span class="count">2</span> <span>Select our design, or upload your own images (preferably vector artwork)</span> </div> </div> <div class="step"> <div class="img-holder"><img src="/assets/tshirt-hotel.png"></div> <div class="about"> <span class="count">3</span> <span>Start designing! Add your text, name, brand, business or event and customize it</span> </div> </div> </div> </div> <div class="customize-it"> <div class="title">Customize it</div> <div class="intro"> <div class="about"> With our online tool you can your products exactly you wish. you are done will be printed </div> <div class="img-holder"> <img src="/assets/editor-image.png"> </div> </div> <div class="tags"> <div class="tag1"> <span>Your Brand</span> </div> <div class="tag2"> <span>Your Location</span> </div> <div class="tag3"> <span>Your Merchandise</span> </div> </div> <div class="product-details"> <img class="product-img" src="/assets/tshirt-hotel-text.png"> <div class="add-name"> Add your text <img src="/assets/pointer-gallery.png"> </div> <div class="add-img"> Add ourexclusivedesigns or useyour ownimages, or wecreate acustom designfor you <img src="/assets/pointer-interface.png"> </div> <div class="add-text"> Add any text, location, numbers, names, etc <img src="/assets/pointer-templates.png"> </div> </div> </div> </div> </div> </section>'
+  how_to_design: '<section class="how-to-design"> <div class="container"> <div class="section-title">Your customized merchandise products and marketing designed by you!</div> <div class="section-details"> <p> Now you can create excellent marketing products that display your brand long after your clients or friends have visited your venue, hotel, business, festival, birthday, and more. </p> <p> Use our designs to create merchandise you can sell, give or use to make that moment special. </p> </div> <div class="how-it-work"> <div class="title">How it work?</div> <div class="steps"> <div class="step"> <div class="img-holder"><img src="/assets/crew_front.png"></div> <div class="about"> <span class="count">1</span> <span>Select your apparel. Let us know if you don&#39;t see what you&#39;re looking for</span> </div> </div> <div class="step"> <div class="img-holder make-center"><img src="/assets/cartoon.jpg"></div> <div class="about"> <span class="count">2</span> <span>Select our design, or upload your own images (preferably vector artwork)</span> </div> </div> <div class="step"> <div class="img-holder"><img src="/assets/tshirt-hotel.png"></div> <div class="about"> <span class="count">3</span> <span>Start designing! Add your text, name, brand, business or event and customize it</span> </div> </div> </div> </div> <div class="customize-it"> <div class="title">Customize it</div> <div class="intro"> <div class="about"> With our online tool you can your products exactly you wish. you are done will be printed </div> <div class="img-holder"> <img src="/assets/editor-image.png"> </div> </div> <div class="tags"> <div class="tag1"> <span>Your Brand</span> </div> <div class="tag2"> <span>Your Location</span> </div> <div class="tag3"> <span>Your Merchandise</span> </div> </div> <div class="product-details"> <img class="product-img" src="/assets/tshirt-hotel-text.png"> <div class="add-name"> Add your text <img src="/assets/pointer-gallery.png"> </div> <div class="add-img"> Add ourexclusivedesigns or useyour ownimages, or wecreate acustom designfor you <img src="/assets/pointer-interface.png"> </div> <div class="add-text"> Add any text, location, numbers, names, etc <img src="/assets/pointer-templates.png"> </div> </div> </div> </div> </div> </section>'
   how_to_design_heading: "How To Design"
   Sitemap: "Sitemap"
   custom_products: "Custom products"

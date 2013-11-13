@@ -2,27 +2,27 @@
 
 <section class="login-page">
   <div class="container">
-  <h2>Sign up</h2>
+  <h2><%= t(:sign_up) %></h2>
   <%= devise_error_messages! %>
 
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 
   <div>
-    <%= f.label :email %>
+    <%= f.label t(:email) %>
     <%= f.email_field :email, :autofocus => true %>
   </div>
   <% if @user.password_required? %>
   <div>
-    <%= f.label :password %>
+    <%= f.label t(:password) %>
     <%= f.password_field :password %>
   </div>
   <div>
-    <%= f.label :password_confirmation %>
+    <%= f.label t(:password_confirmation) %>
     <%= f.password_field :password_confirmation %>
   </div>
   <% end %>
   <div>
-    <%= f.submit "Sign up", :class => "btn btn-primary sign-up" %>
+    <%= f.submit t(:sign_up), :class => "btn btn-primary sign-up" %>
   </div>
   <% end %>
 
