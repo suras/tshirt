@@ -4,16 +4,20 @@ class Ability
   def initialize(user)
     alias_action :edit, :add_coupon,:read, :update, :view, :show, :to => :permission1
     
-    can :access, :rails_admin
-    can :dashboard 
+   
 
-    can :manage, [User, Image, Design, DesignCategory, Price, ProductAttribute, Order, OrderDetail, Product, Category, Slider]
-    can :permission1, [Coupon]
-    # if(user.user_type == "admin")
-    #     can :manage, :all
-     
+    
+    if(user.is_admin?)
+        #can :manage, :all
+        can :access, :rails_admin
+        can :dashboard 
+        can :permission1, [Coupon]
 
-    # end 
+       can :manage, [User, Image, Design, DesignCategory, Price, ProductAttribute, Order, OrderDetail, Product, Category, Slider]
+
+     end
+ 
+
 
     # if(user.user_type == "member")
         

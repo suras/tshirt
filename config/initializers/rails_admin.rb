@@ -50,7 +50,22 @@ RailsAdmin.config do |config|
   end
 
 
+    config.model Product do
+    create do 
+      field :name
+      field :category
+      field :description
+      field :category
+      field :image
+      field :status
+      field :shipping_and_handling
+      field :tax
+      field :second_image
+    end
    
+  end
+
+
   
 # visible do
 #            bindings[:view]._current_user.role.include?("super")

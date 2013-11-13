@@ -12,4 +12,5 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :price
   mount_uploader :image, ImageUploader
   mount_uploader :second_image, ImageUploader
+  validates :name, :presence => true
 end
