@@ -1,45 +1,50 @@
 <%= stylesheet_link_tag  "contact-us", :media => "all" %>
 
-<section class="contact-us-page">
+<section class="contact-us">
 	<!-- <div class="page-title">Contact us</div> -->
 	<div class="contact-part1">
 		<div class="container">
-			<div class="content">
-				<img src="/assets/arrow-orange.png" class="arrow-orange">
-				<p class="marked">We would love to hear from you</p>
-				<p class="marked">Please contact us  with any questions about :</p>
-				<ul class="">
-					<li><img src="/assets/list-tick-black.png"> &nbsp;Design</li>
-					<li><img src="/assets/list-tick-black.png"> &nbsp;Products</li>
-					<li><img src="/assets/list-tick-black.png"> &nbsp;Shipping</li>
-					<li><img src="/assets/list-tick-black.png"> &nbsp;Partnership</li>
-				</ul>
-
-				<p>or any other suggestion, comment or feedback</p>
-			</div>
-		</div>
-	</div>
-	<div class="contact-part2">
-		<div class="container">
-			<div class="contact-box">
-				<%= simple_form_for @contact, :url => contact_us_path do |f| %>
-				<img src="/assets/send-msg-corner.png" class="corner">
-				<div class="title">Send us a message</div>
-				<div class="underline"></div>
-				<%= f.text_field :name, :class=>"name", :placeholder =>"Enter Your Name" %>
-				<%= f.text_field :email, :class=>"email", :placeholder =>"Enter Your Email" %>
-				<%= f.text_area :message, :class=>"message", :placeholder =>"Enter the Message" %>
-				<div class="follow-us">
-					<a class="social-gplus" href="#"></a>
-					<a class="social-in" href="#"></a>
-					<a class="social-rss" href="#"></a>
-					<a class="social-fb" href="#"></a>
-<%= f.button :submit, :class=>"btn btn-danger pull-right", :value=>"Send Message" %>
+			<div class="row">
+				<div class="span4 left-side">
+					<img class="left-mark" src="/assets/left-mark.png">
+					<p class="title">We would love to hear from you</p>
+					<p class="sub-title">Please contact us  with any questions about:</p>
+					<ul class="">
+						<li><img src="/assets/list-tick-gray.png"> &nbsp;Design</li>
+						<li><img src="/assets/list-tick-gray.png"> &nbsp;Shipping</li>
+						<li><img src="/assets/list-tick-gray.png"> &nbsp;Products</li>
+						<li><img src="/assets/list-tick-gray.png"> &nbsp;Partnership</li>
+						<li><img src="/assets/list-tick-gray.png"> &nbsp;Suggestions</li>
+						<li><img src="/assets/list-tick-gray.png"> &nbsp;Comments Feedback</li>
+					</ul>
 				</div>
-				<% end %>
-
+				<div class="span8 right-side">
+					<div class="contact-box span6">
+						<%= simple_form_for @contact, :url => contact_us_path do |f| %>
+						<img src="/assets/send-msg-corner.png" class="corner">
+						<div class="title">Send us a message</div>
+						<div class="underline"></div>
+						<%= f.text_field :name, :class=>"name", :placeholder =>"Enter Your Name" %>
+						<%= f.text_field :email, :class=>"email", :placeholder =>"Enter Your Email" %>
+						<%= f.text_area :message, :class=>"message", :placeholder =>"Enter the Message" %>
+						<div class="follow-us">
+							<a class="social-gplus" href="#"></a>
+							<a class="social-in" href="#"></a>
+							<a class="social-rss" href="#"></a>
+							<a class="social-fb" href="#"></a>
+							<%= f.button :submit, :class=>"btn btn-danger pull-right", :value=>"Send Message" %>
+						</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="row skype-details">
+				<div class="span3 pull-right">
+					<img src="/assets/skype.png">
+					<div class="mail-id"><a href="mailto:mobby@mobbyart.com" title="">mobby@mobbyart.com</a></div>
+				</div>
+				<div class="clearfix"></div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 

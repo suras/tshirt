@@ -4,9 +4,9 @@
 			<p class="change-language">
 			<span>Change Language :</span>
 				<% if(I18n.locale.to_s == "en")%>
-				<%= link_to "Spanish", url_for(:locale => "es")%>
+				<%= link_to "<img src='/assets/spain-flag.png'>".html_safe, url_for(:locale => "es")%>
 				<% else %>
-				<%= link_to "English", url_for(:locale => "en")%>
+				<%= link_to "<img src='/assets/english-flag.png'>".html_safe, url_for(:locale => "en")%>
 				<% end %>
 			</p>
 			<a href="/" class="home-link" title="">
@@ -16,7 +16,7 @@
 			<nav class="cl-effect-21">
 				<a href="/"><%= t :home %></a>
 				<a href="/about_us"><%= t :about %></a>
-				<a href="/designs"><%= t :create %></a>
+				<a href="/products"><%= t :create %></a>
 				<a href="/contact"><%= t :contact %></a>
 				<% if user_signed_in? %>
 				<%= link_to t(:sign_out), destroy_user_session_path, method: :delete %>
