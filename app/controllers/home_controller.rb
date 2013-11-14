@@ -34,6 +34,9 @@ class HomeController < ApplicationController
 	def how_to_design
 	end
 
+	def how
+	end
+
 	def legal_terms
 	end
 end
