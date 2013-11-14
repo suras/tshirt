@@ -19,8 +19,6 @@ boy-rect.png: boy-rect-8ab9168c25cc800ce73e06cb516fb098.png
 boy-rect/index.png: boy-rect-8ab9168c25cc800ce73e06cb516fb098.png
 cartoon.jpg: cartoon-fcdf066729a918188a4683872f0328f2.jpg
 cartoon/index.jpg: cartoon-fcdf066729a918188a4683872f0328f2.jpg
-center-image.png: center-image-54e765c5e273ac35e6e39594015ae916.png
-center-image/index.png: center-image-54e765c5e273ac35e6e39594015ae916.png
 checkout/checkout-btn.png: checkout/checkout-btn-00ea2fd8f175317eff057f9e267cbff8.png
 checkout/checkout-btn/index.png: checkout/checkout-btn-00ea2fd8f175317eff057f9e267cbff8.png
 checkout/re-calculate.png: checkout/re-calculate-be15e8cfc461f0e0c3502f3f2e9daf83.png
@@ -83,10 +81,14 @@ next.png: next-1e9b1f02bcae6677cc3c2ed0e3fc9bb6.png
 next/index.png: next-1e9b1f02bcae6677cc3c2ed0e3fc9bb6.png
 operations-icons.png: operations-icons-4dc17f804ebab139d66bb7ab9e687749.png
 operations-icons/index.png: operations-icons-4dc17f804ebab139d66bb7ab9e687749.png
-partner-mail.png: partner-mail-7912dee15515fc34fa0b3946a40b4119.png
-partner-mail/index.png: partner-mail-7912dee15515fc34fa0b3946a40b4119.png
+partner-mail.png: partner-mail-05d86e618b32e9174e59154e25ba9c72.png
+partner-mail/index.png: partner-mail-05d86e618b32e9174e59154e25ba9c72.png
 partner.png: partner-56e5f4c415fa1f9234a9ef950c910ee9.png
 partner/index.png: partner-56e5f4c415fa1f9234a9ef950c910ee9.png
+partners.jpg: partners-22e3f493f96d180cc55fbc5b6f0e083f.jpg
+partners/index.jpg: partners-22e3f493f96d180cc55fbc5b6f0e083f.jpg
+partnerships.png: partnerships-298025aa7e275202f5e3bf310819590d.png
+partnerships/index.png: partnerships-298025aa7e275202f5e3bf310819590d.png
 photo-icon.png: photo-icon-604dcd775536d15526db2f63c2d38fdf.png
 photo-icon/index.png: photo-icon-604dcd775536d15526db2f63c2d38fdf.png
 pointer-gallery.png: pointer-gallery-46f32add986be1344a8bb8daad493c41.png
@@ -121,10 +123,6 @@ ts3.png: ts3-ef545aea4c4108c3866dad8321ab4344.png
 ts3/index.png: ts3-ef545aea4c4108c3866dad8321ab4344.png
 ts4.png: ts4-ca1f754267e31a8724054c47bcdf0370.png
 ts4/index.png: ts4-ca1f754267e31a8724054c47bcdf0370.png
-tshirt-boy-text.png: tshirt-boy-text-66b76f8525007de3bd7ca9c16d53e638.png
-tshirt-boy-text/index.png: tshirt-boy-text-66b76f8525007de3bd7ca9c16d53e638.png
-tshirt-boy.png: tshirt-boy-f12447a475c6bbf378aef742dda938b5.png
-tshirt-boy/index.png: tshirt-boy-f12447a475c6bbf378aef742dda938b5.png
 tshirt-hotel-text.png: tshirt-hotel-text-c2ff11711de968f91408c331bfdd2301.png
 tshirt-hotel-text/index.png: tshirt-hotel-text-c2ff11711de968f91408c331bfdd2301.png
 tshirt-hotel.png: tshirt-hotel-92a640b9888a0d26b450586d05740799.png
@@ -137,8 +135,8 @@ upload-img/cancel-btn.png: upload-img/cancel-btn-bd87fcfd23342a491446ae05a9fed1a
 upload-img/cancel-btn/index.png: upload-img/cancel-btn-bd87fcfd23342a491446ae05a9fed1ab.png
 application.js: application-05035475f0213c19465ac02846332048.js
 application/index.js: application-05035475f0213c19465ac02846332048.js
-application.css: application-4aa47d01b700a952a890681a167eb457.css
-application/index.css: application-4aa47d01b700a952a890681a167eb457.css
+application.css: application-d28fca513d1b9ac9e0657c56b12f8d78.css
+application/index.css: application-d28fca513d1b9ac9e0657c56b12f8d78.css
 font/FontAwesome.otf: font/FontAwesome-d2e1f2cb067bb8a9b129341f5ed85582.otf
 font/FontAwesome/index.otf: font/FontAwesome-d2e1f2cb067bb8a9b129341f5ed85582.otf
 font/fontawesome-webfont.eot: font/fontawesome-webfont-009f6d1f667cc42c25e712ab3429cbc7.eot

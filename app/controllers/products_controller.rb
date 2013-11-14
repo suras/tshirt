@@ -45,9 +45,9 @@ class ProductsController < ApplicationController
        @output_price = @output_price + @product.try(:shipping_and_handling).to_i
       if(params[:coupon_code].present?)
           coupon = Coupon.find_by_code(params[:coupon_code])
-          coupon_discount = coupon.discount.to_i
-          coupon_discount = @output_price - coupon_discount
-          @output_price = @output_price * coupon_discount 
+          coupon_discount = (coupon.discount.to_f/100) * @output_price
+          @output_price = @output_price - coupon_discount
+          #@output_price = @output_price * coupon_discount 
       end
       session[:tax] = @product.tax
       session[:shipping] = @product.try(:shipping_and_handling)
