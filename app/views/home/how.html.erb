@@ -1,4 +1,5 @@
 <%= stylesheet_link_tag  "how", :media => "all" %>
+<%= stylesheet_link_tag  "how-to-design", :media => "all" %>
 	<section class="how-page">
 		<div class="container">
 			<div class="center">
@@ -12,7 +13,9 @@
 					<img class="brown" src="/assets/how/arrow-brown.png">
 					<img class="c-green" src="/assets/how/arrow-c-green.png">
 				</div>
-				<div class="circles">
+				<%= raw t(:how_circle) %>
+				<%= raw t(:how_to_design) %>
+				<!-- <div class="circles">
 					<div class="green circle">
 						<div class="small-icon bg"><img src="/assets/how/icon-green.png"></div>
 						<div class="content bg">
@@ -39,8 +42,7 @@
 						<div class="content bg">
 							<div class="name">Organisation Merchandise</div>
 						</div>
-						<div class="title bg">
-							Build team strength</div>
+						<div class="title bg">Build team strength</div>
 						</div>
 						<div class="c-green circle">
 							<div class="small-icon bg"><img src="/assets/how/icon-c-green.png"></div>
@@ -50,7 +52,45 @@
 							<div class="title bg">Your brand at clients home</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
+				<!-- <div class="circles">
+					<div class="green circle">
+						<div class="small-icon bg"><img src="/assets/how/icon-green.png"></div>
+						<div class="content bg">
+							<div class="name">Hotel Merchanidise</div>
+						</div>
+						<div class="title bg">Vende a su huésped</div>
+					</div>
+					<div class="violet circle">
+						<div class="small-icon bg"><img src="/assets/how/icon-violet.png"></div>
+						<div class="content bg">
+							<div class="name">Mercancía<br>City</div>
+						</div>
+						<div class="title bg">Ciudad de impacto visual</div>
+					</div>
+					<div class="blue circle">
+						<div class="small-icon bg"><img src="/assets/how/icon-blue.png"></div>
+						<div class="content bg">
+							<div class="name">Mercancía Evento</div>
+						</div>
+						<div class="title bg">Para los próximos eventos</div>
+					</div>
+					<div class="brown circle">
+						<div class="small-icon bg"><img src="/assets/how/icon-brown.png"></div>
+						<div class="content bg">
+							<div class="name">Organización Merchandise</div>
+						</div>
+						<div class="title bg">Construir la fuerza del equipo</div>
+						</div>
+						<div class="c-green circle">
+							<div class="small-icon bg"><img src="/assets/how/icon-c-green.png"></div>
+							<div class="content bg">
+								<div class="name">Mercancía Negocio</div>
+							</div>
+							<div class="title bg">Su marca a los clientes en casa</div>
+						</div>
+					</div>
+				</div> -->
 			</div>
 		</div>
 	</section>

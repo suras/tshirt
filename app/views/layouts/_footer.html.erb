@@ -1,12 +1,12 @@
 <hr class="footer-border">
-	<section class="footer">
-		<div class="other-nav">
-			<div class="container">
-				<div class="row">
-					<div class="span9 footer-link-box">
-						<div class="footer-links">
-							<div class="link-head"><%=t(:custom_products)%></div>
-							<ul>
+<section class="footer">
+	<div class="other-nav">
+		<div class="container">
+			<div class="row">
+				<div class="span9 footer-link-box">
+					<div class="footer-links">
+						<div class="link-head"><%=t(:custom_products)%></div>
+						<ul>
 								<!-- <li><a href="#">Tshirts</a></li>
 								<li><a href="#">Napkins</a></li>
 								<li><a href="#">Bags</a></li>
@@ -14,9 +14,9 @@
 								<li><a href="#">Cases</a></li>
 								<li><a href="#">and more</a></li> -->
 								<% Category.all.try(:each) do |cat|%>
-                                    <li><a href="#"><%= link_to cat.name, product_path(:category_id => cat.id)%></a></li>  
+								<li><a href="#"><%= link_to cat.name, product_path(:category_id => cat.id)%></a></li>  
 
-                                  <%  end %>
+								<%  end %>
 							</ul>
 						</div>
 						<div class="footer-links">
@@ -45,12 +45,13 @@
 							<div class="link-head"><%=t(:sitemap)%></div>
 							<ul class="tick-list">
 								<ul class="tick-list">
-								<li><a href="/about_us"><%=t(:about_us)%></a></li>
-								<li><a href="#"><%=t(:FAQ)%></a></li>
-								<li><a href="/legal_terms"><%=t(:Legal_terms)%></a></li>
-								<li><a href="/privacy_policy"><%=t(:Privacy_policy)%></a></li>
-								<li><a href="/partners"><%=t(:Partnership)%></a></li>
-							</ul>
+									<li><a href="/about_us"><%=t(:about_us)%></a></li>
+									<li><a href="#"><%=t(:FAQ)%></a></li>
+									<li><a href="/legal_terms"><%=t(:Legal_terms)%></a></li>
+									<li><a href="/privacy_policy"><%=t(:Privacy_policy)%></a></li>
+									<li><a href="/partners"><%=t(:Partnership)%></a></li>
+									<li><a href="/uploads/<%=t(:brochure_url)%>"><%=t(:brochure)%></a></li>
+								</ul>
 							</ul>
 						</div>
 					</div>

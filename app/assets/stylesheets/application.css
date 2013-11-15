@@ -15,6 +15,17 @@
  *= require animate/animation-style
 
  */
+
+	@font-face {
+        font-family: "sp";
+        src: url('fonts/sp/sp.eot');
+        src: url('fonts/sp/sp.eot?#iefix') format('embedded-opentype'),
+        url('fonts/sp/sp.svg#Segoe Print') format('svg'),
+        url('fonts/sp/sp.woff') format('woff'),
+        url('fonts/sp/sp.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
 body{
 	min-width: 1000px;	
 }

@@ -6,6 +6,16 @@
 	url('fonts/mp/mr.ttf') format('truetype'),
 	url('fonts/mp/mr.svg#MyriadProRegular') format('svg');
 }
+/*	@font-face {
+        font-family: "Segoe Print";
+        src: url('64788819-Segoe-Print.eot');
+        src: url('64788819-Segoe-Print.eot?#iefix') format('embedded-opentype'),
+        url('64788819-Segoe-Print.svg#Segoe Print') format('svg'),
+        url('64788819-Segoe-Print.woff') format('woff'),
+        url('64788819-Segoe-Print.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }*/
 
 body{
 	line-height: 25px;
@@ -93,6 +103,7 @@ header img{
 }
 .logo-name span{
 	color: #00EBFF;
+	font-style: normal;
 }
 .cl-effect-21{
 	display: inline-block;
