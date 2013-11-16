@@ -104,6 +104,12 @@
 }
 .trigger-close,.re-calculate,.popup-btns img{
 	cursor: pointer;
+	background: #5084AF;
+	padding: 5px;
+	border-radius: 10px;
+	color: white;
+	margin-bottom: 5px;
+	display: inline-block;
 }
 
 
@@ -171,4 +177,9 @@
 	right: 30px;
 	bottom: 20px;
 	cursor: pointer;
+	background: #41C53E;
+	padding: 10px;
+	color: white;
+	border-radius: 10px;
+	text-decoration: bold;
 }

@@ -5,7 +5,7 @@
 			<div class="page-title">Checkout</div>
 
 			<fieldset class="my-account">
-				<div class="title">My Account</div>
+				<div class="title"><%=t(:my_account)%></div>
 				<div class="field">
 					<label>Email *</label>
 					<input type="text" name="" value="" placeholder="">
@@ -14,122 +14,118 @@
 			<div class="clearfix"></div>
 
 			<fieldset class="billing-address">
-				<div class="title">Billing Address</div>
+				<div class="title"><%=t(:billing_address)%></div>
 				<div class="field">
-					<label>Country *</label>
+					<label><%=t(:country)%> *</label>
 					<input type="text" name="" value="" placeholder="">
 				</div>
 				<div class="field">
-					<label>First Name *</label>
+					<label><%=t(:f_name)%> *</label>
 					<input type="text" name="" value="" placeholder="">
 				</div>
 				<div class="field">
-					<label>Last Name *</label>
+					<label><%=t(:l_name)%> *</label>
 					<input type="text" name="" value="" placeholder="">
 				</div>
 				<div class="field">
-					<label>Company</label>
+					<label><%=t(:company)%></label>
 					<input type="text" name="" value="" placeholder="">
 				</div>
 				<div class="field">
-					<label>Address 1 *</label>
+					<label><%=t(:address)%> 1*</label>
 					<input type="text" name="" value="" placeholder="">
 				</div>
 				<div class="field">
-					<label>Address 2</label>
+					<label><%=t(:address)%> 2</label>
 					<input type="text" name="" value="" placeholder="">
 				</div>
 				<div class="field">
-					<label>City *</label>
+					<label><%=t(:city)%> *</label>
 					<input type="text" name="" value="" placeholder="">
 				</div>
 				<div class="field">
-					<label>State / Province *</label>
+					<label><%=t(:state)%> *</label>
 					<input type="text" name="" value="" placeholder="">
 				</div>
 				<div class="field">
-					<label>Postal Code *</label>
+					<label><%=t(:postal_code)%> *</label>
 					<input type="text" name="" value="" placeholder="">
 				</div>
 				<div class="field">
-					<label>Phone *</label>
+					<label><%=t(:phone)%> *</label>
 					<input type="text" name="" value="" placeholder="">
 				</div>
 				<div class="show-shipping-address">
 					<input type="checkbox" name="" value="" id="differ-address">
-					<label for="differ-address">Use a different shipping address.</label>
+					<label for="differ-address"><%=t(:use_shipping)%>.</label>
 				</div>
 			</fieldset>
 			<div class="clearfix"></div>
 
 			<fieldset class="shipping-address hide">
-				<div class="title">Shipping Address</div>
+				<div class="title"><%=t(:billing_address)%></div>
 				<div class="field">
-					<label>Country *</label>
+					<label><%=t(:country)%> *</label>
 					<input type="text" name="" value="" placeholder="">
 				</div>
 				<div class="field">
-					<label>First Name *</label>
+					<label><%=t(:f_name)%> *</label>
 					<input type="text" name="" value="" placeholder="">
 				</div>
 				<div class="field">
-					<label>Last Name *</label>
+					<label><%=t(:l_name)%> *</label>
 					<input type="text" name="" value="" placeholder="">
 				</div>
 				<div class="field">
-					<label>Company</label>
+					<label><%=t(:company)%></label>
 					<input type="text" name="" value="" placeholder="">
 				</div>
 				<div class="field">
-					<label>Address 1 *</label>
+					<label><%=t(:address)%> *</label>
 					<input type="text" name="" value="" placeholder="">
 				</div>
 				<div class="field">
-					<label>Address 2</label>
+					<label><%=t(:address)%> 2</label>
 					<input type="text" name="" value="" placeholder="">
 				</div>
 				<div class="field">
-					<label>City *</label>
+					<label><%=t(:state)%> *</label>
 					<input type="text" name="" value="" placeholder="">
 				</div>
 				<div class="field">
-					<label>State / Province *</label>
+					<label><%=t(:postal_code)%> *</label>
 					<input type="text" name="" value="" placeholder="">
 				</div>
 				<div class="field">
-					<label>Postal Code *</label>
-					<input type="text" name="" value="" placeholder="">
-				</div>
-				<div class="field">
-					<label>Phone *</label>
+					<label><%=t(:phone)%> *</label>
 					<input type="text" name="" value="" placeholder="">
 				</div>
 			</fieldset>
 			<div class="clearfix"></div>
 
 			<fieldset class="shipping-sub-total">
-				<div class="title">Shipping & Subtotal</div>
+				<div class="title"><%=t(:shipping_total)%></div>
 				<div class="field">
-					<label>Cart Subtotal</label>
+					<label><%=t(:cart_total)%></label>
 					<input type="text" name="" readonly="readonly" value="<%=@total  %>" placeholder="">
 				</div>
 				<div class="field">
-					<label>Shipping & Handling</label>
+					<label><%=t(:ship_handle)%></label>
 					<input type="text" name="" readonly="readonly" value="<%=@shipping %>" placeholder="">
 				</div>
 				<div class="field">
-					<label>Tax</label>
+					<label><%=t(:tax)%></label>
 					<input type="text" name="" readonly="readonly" value="<%=@tax  %>" placeholder="">
 				</div>
 				<div class="field">
-					<label>Order Total</label>
+					<label><%=t(:order_total)%></label>
 					<input type="text" name="" readonly="readonly" value="<%=@payment_amount  %>" placeholder="">
 				</div>
 			</fieldset>
 			<div class="clearfix"></div>
 
 			<fieldset class="payment-types">
-				<div class="title">Shipping & Subtotal</div>
+				<div class="title"><%=t(:shipping_total)%></div>
 				<div class="field">
 					<img src="/assets/logo-visa.png">
 					<img src="/assets/logo-master-card.png">
@@ -137,7 +133,7 @@
 				</div>
 			</fieldset>
 			<div class="clearfix"></div>
-			<button type="submit" class="btn btn-success btn-large pull-right">Complete Your Payment</button>
+			<button type="submit" class="btn btn-success btn-large pull-right"><%=t(:payment_complete)%></button>
 			<div class="clearfix"></div>
 		</div>
 	</section>
