@@ -325,7 +325,7 @@
 			<% @attributes.try(:each) do |attribute| %>
 			<div class="single-size">
 				<label><%=attribute.try(:attribute_name) %></label>
-				<input type="number" name="size_4xl" id="<%=attribute.id%>" class="size_4xl">
+				<input min="1" max="5" type='number' name="size_4xl" id="<%=attribute.id%>" class="size_4xl">
 			</div>
 			<% end %>
 		</div> 
@@ -377,7 +377,7 @@
 			<% @attributes.try(:each) do |attribute| %>
 			<div class="single-size">
 				<label><%=attribute.try(:attribute_name) %></label>
-				<input type="number" name="size_4xl" id="<%=attribute.id%>" class="size_4xl">
+				<input type="text" pattern="[0-9]*"  name="size_4xl" id="<%=attribute.id%>" class="size_4xl">
 			</div>
 			<% end %>
 		</div> 
@@ -926,7 +926,7 @@
 			data.total = 0;
 			$('.custom-popup .sizes .single-size>input').each(function(){
 			var val =  parseInt($(this).val());
-			 if(val!='' && (typeof val!='number') ){
+			 if(val === NaN){
 			 	alert('please enter valid value')
 			 }
 			 data.attributes[$(this).attr('id')] = val

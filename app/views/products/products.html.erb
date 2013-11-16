@@ -62,7 +62,7 @@
 									<div class="title">Various Price</div>
 									<div class="list-size">
 									     <%product.try(:product_attributes).try(:each) do |attribute| %>
-                                            <label><span><%=attribute.attribute_name%></span> -<%=attribute.price%></label>
+                                            <label><span><%=attribute.attribute_name%></span><span> : <%=session[:currency].html_safe if session[:currency].present?%><%=attribute.price%></span></label>
 
 									     <% end %>
 										<!-- <label><span>YXS</span> - $15</label>
