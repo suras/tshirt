@@ -32,7 +32,7 @@
 						</div>
 						<div><%=t(:zoom)%></div>
 					</a>
-					<a href="#" class="save calculate open-popup" data-popup="checkout" data-title="CALCULATE PRICE">
+					<a href="#" class="save calculate open-popup" data-popup="checkout" data-title="<%= t(:pop_calculate_price)%>">
 						<div><%= t(:calculate_price)%></div>
 						<div><%= t(:add_to_cart)%></div>
 					</a>
@@ -325,7 +325,7 @@
 			<% @attributes.try(:each) do |attribute| %>
 			<div class="single-size">
 				<label><%=attribute.try(:attribute_name) %></label>
-				<input type="number" name="size_4xl" id="<%=attribute.id%>" class="size_4xl">
+				<input min="1" max="5" type='number' name="size_4xl" id="<%=attribute.id%>" class="size_4xl">
 			</div>
 			<% end %>
 		</div> 
@@ -336,7 +336,8 @@
 		<input type="text" class="ref-code" name="ref-code" id="ref-code">
 		<%=raw t(:discount_enter)%>
 	</div>
-	<img src="/assets/checkout/re-calculate.png" class="re-calculate">
+	<span class="re-calculate">Calculate Price</span>
+	<!-- <img src="/assets/checkout/re-calculate.png" class="re-calculate"> -->
 	<div class="notice-success">
 		<div class="sub-title"><%= t(:final_review)%></div>
 		<!--<div class=""><b>Shipping : </b>Rs. 213</div>
@@ -377,7 +378,7 @@
 			<% @attributes.try(:each) do |attribute| %>
 			<div class="single-size">
 				<label><%=attribute.try(:attribute_name) %></label>
-				<input type="number" name="size_4xl" id="<%=attribute.id%>" class="size_4xl">
+				<input type="text" pattern="[0-9]*"  name="size_4xl" id="<%=attribute.id%>" class="size_4xl">
 			</div>
 			<% end %>
 		</div> 
@@ -388,13 +389,17 @@
 		<input type="text" class="ref-code" name="ref-code" id="ref-code">
 		<%=raw t(:discount_enter)%>
 	</div>
-	<img src="/assets/checkout/re-calculate.png" class="re-calculate">
+	<span class="re-calculate"><%=raw t(:re_calculate) %></span>
+	<!-- <img src="/assets/checkout/re-calculate.png" class="re-calculate"> -->
 	<div class="notice-success">
 		<div class="sub-title"><%= t(:final_review)%></div>
 		<!--<div class=""><b>Shipping : </b>Rs. 213</div>
 		<div class=""><b>Coupon : </b>Rs. 213</div> -->
 		<div class="order-total"><b><%= t(:order_total)%> </b>Rs. <span id="order-total"></span></div>
-		<a href="/checkout"><img src="/assets/checkout/checkout-btn.png" class="checkout-btn"></a>
+		<a href="/checkout">
+			<span class="checkout-btn"><%= t(:checkout_text)%></span>
+			<!-- <img src="/assets/checkout/checkout-btn.png" class="checkout-btn"> -->
+		</a>
 	</div>
 	<div class="clearfix"></div>
 </div>
@@ -926,7 +931,7 @@
 			data.total = 0;
 			$('.custom-popup .sizes .single-size>input').each(function(){
 			var val =  parseInt($(this).val());
-			 if(val!='' && (typeof val!='number') ){
+			 if(val === NaN){
 			 	alert('please enter valid value')
 			 }
 			 data.attributes[$(this).attr('id')] = val

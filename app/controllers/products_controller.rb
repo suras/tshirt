@@ -41,8 +41,8 @@ class ProductsController < ApplicationController
 
       tax =  @product.tax.to_i
       tax = tax.to_f/100
-      @output_price = @output_price + (@output_price*tax)
-       @output_price = @output_price + @product.try(:shipping_and_handling).to_i
+      @output_price_with_shipping = @output_price + (@output_price*tax)
+      @output_price_with_shipping = @output_price_with_shipping + @product.try(:shipping_and_handling).to_i
       if(params[:coupon_code].present?)
           coupon = Coupon.find_by_code(params[:coupon_code])
           coupon_discount = (coupon.discount.to_f/100) * @output_price
@@ -51,7 +51,7 @@ class ProductsController < ApplicationController
       end
       session[:tax] = @product.tax
       session[:shipping] = @product.try(:shipping_and_handling)
-      session[:payment_amount] = @output_price
+      session[:payment_amount] = @output_price_with_shipping
 
       respond_to do |format|
          format.json {render :json => {:price => @output_price}}
