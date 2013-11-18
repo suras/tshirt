@@ -24,10 +24,9 @@ test:
 
 
 production:
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql2
   database: tshirt_production
-  pool: 5
   username: root
   password: root
+  host: localhost
 
