@@ -19,6 +19,8 @@ boy-rect.png: boy-rect-8ab9168c25cc800ce73e06cb516fb098.png
 boy-rect/index.png: boy-rect-8ab9168c25cc800ce73e06cb516fb098.png
 cartoon.jpg: cartoon-fcdf066729a918188a4683872f0328f2.jpg
 cartoon/index.jpg: cartoon-fcdf066729a918188a4683872f0328f2.jpg
+center-image.png: center-image-54e765c5e273ac35e6e39594015ae916.png
+center-image/index.png: center-image-54e765c5e273ac35e6e39594015ae916.png
 checkout/checkout-btn.png: checkout/checkout-btn-00ea2fd8f175317eff057f9e267cbff8.png
 checkout/checkout-btn/index.png: checkout/checkout-btn-00ea2fd8f175317eff057f9e267cbff8.png
 checkout/re-calculate.png: checkout/re-calculate-be15e8cfc461f0e0c3502f3f2e9daf83.png
