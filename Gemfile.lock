@@ -129,7 +129,6 @@ GEM
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
     orm_adapter (0.4.0)
-    pg (0.17.0)
     polyglot (0.3.3)
     pry (0.9.6)
       coderay (>= 0.9.8)
@@ -162,9 +161,6 @@ GEM
       activesupport (= 3.2.13)
       bundler (~> 1.0)
       railties (= 3.2.13)
-    rails_12factor (0.0.2)
-      rails_serve_static_assets
-      rails_stdout_logging
     rails_admin (0.1.2)
       bootstrap-sass (~> 2.0)
       builder (~> 3.0)
@@ -179,8 +175,6 @@ GEM
       rails (~> 3.1)
       remotipart (~> 1.0)
       sass-rails (~> 3.1)
-    rails_serve_static_assets (0.0.1)
-    rails_stdout_logging (0.0.3)
     railties (3.2.13)
       actionpack (= 3.2.13)
       activesupport (= 3.2.13)
@@ -245,11 +239,9 @@ DEPENDENCIES
   nifty-generators
   omniauth-facebook
   omniauth-twitter
-  pg
   pry
   quiet_assets
   rails (= 3.2.13)
-  rails_12factor
   rails_admin
   sass-rails (~> 3.2.3)
   simple_form
