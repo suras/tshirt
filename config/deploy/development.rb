@@ -1,4 +1,4 @@
-server "162.243.109.85", :app, :web, :db, :primary => true
+server "162.243.99.92", :app, :web, :db, :primary => true
 set :deploy_to, "/var/www/mobby/"
 set :branch, 'master'
 set :scm_verbose, true
@@ -25,7 +25,7 @@ after 'deploy:update_code' do
 
   run "cd #{release_path} && bundle install"
   # run "cd #{release_path} && rake db:drop"
-  # run "cd #{release_path} && rake db:create"
+  run "cd #{release_path} && rake db:create"
   run "cd #{release_path} && rake db:migrate"
   # run "cd #{release_path} && rake db:seed"
   # run "cd #{release_path} && RAILS_ENV=production rake assets:precompile"
