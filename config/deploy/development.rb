@@ -24,7 +24,6 @@ after 'deploy:update_code' do
   run "ln -s #{shared_path}/uploads  #{release_path}/public/"
 
   run "cd #{release_path} && bundle install"
-  run "cd #{release_path} && bundle exec"
   # run "cd #{release_path} && rake db:drop"
   run "cd #{release_path} && rake db:create"
   run "cd #{release_path} && rake db:migrate"
