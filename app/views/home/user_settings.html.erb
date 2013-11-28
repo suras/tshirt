@@ -27,6 +27,20 @@
                     <%= f.button :submit %>
                    <% end %>
             </div>
+             <div class="tab-content category-shipping">
+                  <p>shipping</p>
+                   <%= simple_form_for @shipping, :url => profile_shipping_path() do |f| %>
+                    <%= f.input :first_name %>
+                    <%= f.input :last_name %>
+                    <%= f.input :country %>
+                    <%= f.input :state %>
+                    <%= f.input :city %>
+                    <%= f.input :address1 %>
+                    <%= f.input :address2 %>
+                    <%= f.input :postal_code %>
+                    <%= f.button :submit %>
+                   <% end %>
+            </div>
 
             <div class="tab-content category-profile">
                    <%= simple_form_for @user, :url => save_user_path do |f| %>

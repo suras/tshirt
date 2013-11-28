@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131109095626) do
+ActiveRecord::Schema.define(:version => 20131128182115) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -36,6 +36,22 @@ ActiveRecord::Schema.define(:version => 20131109095626) do
     t.boolean  "is_active",   :default => true
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "billings", :force => true do |t|
+    t.string   "country"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "company"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "postal_code"
+    t.string   "phone"
+    t.string   "order_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "categories", :force => true do |t|
@@ -186,6 +202,22 @@ ActiveRecord::Schema.define(:version => 20131109095626) do
     t.boolean  "is_active"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "shippings", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "country"
+    t.string   "state"
+    t.string   "city"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "postal_code"
+    t.string   "contact_number"
+    t.string   "user_id"
+    t.string   "order_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "sliders", :force => true do |t|

@@ -37,6 +37,7 @@ Tshirt::Application.routes.draw do
 
   get "get_design", :to => "orders#get_design"
   match "profile_billing", :to => "home#create_billing", :as => "profile_billing"
+  match "profile_shipping", :to => "home#create_shipping", :as => "profile_shipping"
   match "save_user", :to => "home#save_user", :as => "save_user"
 
 

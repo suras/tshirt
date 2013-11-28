@@ -44,6 +44,10 @@ class HomeController < ApplicationController
       current_user.create_billing_address(params[:billing_address])   
       redirect_to user_setting_path()
 	 end
+	  def create_shipping
+      current_user.create_shipping_address(params[:shipping_address])   
+      redirect_to user_setting_path()
+	 end
 
 	 def save_user
 
@@ -60,6 +64,7 @@ class HomeController < ApplicationController
 	def user_settings
 		@user = current_user
 		@billing = @user.billing_address.present? ? @user.billing_address : @user.build_billing_address
+		@shipping = @user.shipping_address.present? ? @user.shipping_address : @user.build_shipping_address
 		@category = Category.all
 		@user_items = @user.user_items
 		# if(params[:category_id].present?)
