@@ -33,9 +33,12 @@ Tshirt::Application.routes.draw do
   get "/privacy_policy", :to => "home#privacy_policy"
   # get "/partnership", :to => "home#partnership"
   get "/legal_terms", :to => "home#legal_terms"
-  get "/user_settings", :to => "home#user_settings"
+  get "/user_settings", :to => "home#user_settings", :as => "user_setting"
 
   get "get_design", :to => "orders#get_design"
+  match "profile_billing", :to => "home#create_billing", :as => "profile_billing"
+  match "save_user", :to => "home#save_user", :as => "save_user"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

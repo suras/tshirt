@@ -16,7 +16,6 @@ before_filter :authenticate_user!
 		order = Order.find(session[:user_id])
         details = order.order_details.new
         product = Product.find(params[:product_id])
-        
         session[:order_id] = ""
 	end
 
@@ -24,9 +23,9 @@ before_filter :authenticate_user!
 	def new_checkout
     @shipping = session[:shipping]
     @tax = session[:tax]
+    @billing = current_user.billing_address
     @payment_amount = session[:payment_amount]
     @total = session[:total]
-
 	end
 
 

@@ -53,6 +53,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    country_select (1.2.0)
     debug_inspector (0.0.2)
     devise (3.1.1)
       bcrypt-ruby (~> 3.0)
@@ -231,6 +232,7 @@ DEPENDENCIES
   cancan
   carrierwave
   coffee-rails (~> 3.2.1)
+  country_select
   devise
   fb_graph
   jquery-rails

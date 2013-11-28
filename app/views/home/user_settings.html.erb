@@ -14,67 +14,44 @@
 
                 </li>
             </ul>
+            <div class="tab-content category-billing">
+                   <%= simple_form_for @billing, :url => profile_billing_path() do |f| %>
+                    <%= f.input :first_name %>
+                    <%= f.input :last_name %>
+                    <%= f.input :country %>
+                    <%= f.input :state %>
+                    <%= f.input :city %>
+                    <%= f.input :address1 %>
+                    <%= f.input :address2 %>
+                    <%= f.input :postal_code %>
+                    <%= f.button :submit %>
+                   <% end %>
+            </div>
+
+            <div class="tab-content category-profile">
+                   <%= simple_form_for @user, :url => save_user_path do |f| %>
+                    <%= f.input :email %>
+                    <%= f.input :username %>
+                    <%= f.input :password %>
+                    <%= f.input :mobile %>
+                    <%= f.button :submit %>
+                   <% end %>
+            </div>
+
             <div class="tab-content category-products">
                 <div class="tab-pane active fade in" id="profile">Profile tab content</div>
                 <div class="tab-pane" id="order">Order tab content</div>
                 <div class="tab-pane" id="products">
                 	<div class="span9 product-list">
-				<div class="result-no"><%=@products.count%> <%= t(:result_found) %></div>
 				<div class="all-products">
-					<% @products.each do |product| %>
-					<div class="product-list-item">
-						<div class="close-full hide">x</div>
-						<div class="thumb">
-							<div class="show-full">
-								<div class="hide-show-img"></div>
-								<img src="<%=product.try(:image).try(:url)%>">
-								<div class="name"><%=product.name%></div>
-							</div>
-							<a href="/designs/<%=product.id%>" class="choose-btn" title="">Choose</a>
-						</div>
-						<div class="full-details hide	">
-							<div class="left-side">
-								<img src="<%=product.try(:image).try(:url)%>">
-							</div>
-							<div class="right-side">
-								<div class="name"><%=product.name%></div>
-								<div class="images">
-									<img src="<%=product.try(:image).try(:url)%>">
-									<img src="<%=product.try(:second_image).try(:url)%>">
-								</div>
-								<div class="price-by-size">
-									<div class="title">Various Price</div>
-									<div class="list-size">
-									     <!-- <%product.try(:product_attributes).try(:each) do |attribute| %>
-                                            <label><span><%=attribute.attribute_name%></span><span> : <%=session[:currency].html_safe if session[:currency].present?%><%=attribute.price%></span></label>
+			        <%@user_items.each do |item|%>
+			              <p><%=item.title%></p>
+			              <p><%=item.design_notes%></p>
+			              <p><%=item.created_at%></p>
+                          <p><img src="<%=item.image.url%>"/></p>
+                          <p><img src="<%=item.image1.url%>"/></p>
 
-									     <% end %> -->
-										<label><span>YXS</span> - $15</label>
-										<label><span>ys</span> - $15</label>
-										<label><span>ym</span> - $15</label>
-										<label><span>yl</span> - $15</label>
-										<label><span>yxl</span> - $15</label>
-										<label><span>s</span> - $15</label>
-										<label><span>m</span> - $15</label>
-										<label><span>l</span> - $15</label>
-										<label><span>xl</span> - $15</label>
-										<label><span>xxl</span> - $15</label>
-										<label><span>3xl</span> - $15</label>
-										<label><span>4xl</span> - $15</label>
-										<label><span>5xl</span> - $15</label>
-									</div>
-								</div>
-							</div>
-							<div class="desc">
-								<div class="title">Description</div>
-								<p><%=product.description%></p>
-								<div class="title">Category</div>
-								<p><%=product.try(:category).try(:name)%></p>
-								<a href="/designs/<%=product.id%>" class="choose-btn" title="">Choose</a>
-							</div>
-						</div>
-					</div>
-					<% end %>
+			        <% end %>
 				</div>
 			</div>
                 </div>

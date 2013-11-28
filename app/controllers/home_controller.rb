@@ -39,14 +39,34 @@ class HomeController < ApplicationController
 
 	def legal_terms
 	end
+   
+	 def create_billing
+      current_user.create_billing_address(params[:billing_address])   
+      redirect_to user_setting_path()
+	 end
+
+	 def save_user
+
+       current_user.update_attributes(params[:user])   
+       #sign_in(current_user, :bypass => true)
+       if(params[:user][:password].present?)
+            redirect_to new_user_session_path, :notice => "Please login with changed password"
+       else
+       redirect_to user_setting_path()
+       end
+	 end
+
 
 	def user_settings
+		@user = current_user
+		@billing = @user.billing_address.present? ? @user.billing_address : @user.build_billing_address
 		@category = Category.all
-		if(params[:category_id].present?)
-			@products = Product.where(:category_id => params[:category_id])
-		else
-			@products = Product.all
-		end
+		@user_items = @user.user_items
+		# if(params[:category_id].present?)
+		# 	@products = Product.where(:category_id => params[:category_id])
+		# else
+		# 	@products = Product.all
+		# end
 		respond_to do |format|
 			format.json {render :json => {:products => @products}}
 			format.js

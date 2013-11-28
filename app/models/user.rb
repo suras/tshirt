@@ -5,12 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :is_admin
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :is_admin, :mobile, :username
 
   has_many :authentications
   has_many :user_items
   has_many :images, :as => :thing
-  has_one :billing_address
+  has_one :billing_address, :dependent => :destroy
   has_one :shipping_address
 
   #validates :email, presence: { message: "Please enter your email" }
