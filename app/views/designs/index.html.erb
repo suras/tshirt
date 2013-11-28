@@ -678,8 +678,8 @@
 										processData: false,
 										contentType: false,
 										success: function (data) {
-											//console.log(data,'1')
-											
+											$('.load-art-list').find('#'+data.img_id).remove()
+											$('.load-art-list').append('<img src="'+data.img_url+'" id="'+data.img_id+'">')
 										}
 								
 									});
@@ -771,7 +771,8 @@
 										contentType: false,
 										success: function (data) {
 											//console.log(data,'1')
-											
+											$('.load-art-list').find('#'+data.img_id).remove()
+											$('.load-art-list').append('<img src="'+data.img_url+'" id="'+data.img_id+'">')
 										}
 								
 									});
