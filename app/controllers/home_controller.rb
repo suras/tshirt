@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 	def index
-           @sliders = Slider.where(:status => true)
+		@sliders = Slider.where(:status => true)
 	end
 	
 	def sign_in
@@ -38,5 +38,19 @@ class HomeController < ApplicationController
 	end
 
 	def legal_terms
+	end
+
+	def user_settings
+		@category = Category.all
+		if(params[:category_id].present?)
+			@products = Product.where(:category_id => params[:category_id])
+		else
+			@products = Product.all
+		end
+		respond_to do |format|
+			format.json {render :json => {:products => @products}}
+			format.js
+			format.html
+		end
 	end
 end

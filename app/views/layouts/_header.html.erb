@@ -12,6 +12,7 @@
 				</div>
 				<div class="login-details">
 					<% if user_signed_in? %>
+					<a href="/user_settings"><%= current_user.email %></a> /
 					<%= link_to t(:sign_out), destroy_user_session_path, method: :delete %>
 					<% else %>
 					<%= link_to t(:sign_in), new_user_session_path %>

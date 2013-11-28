@@ -33,6 +33,7 @@ Tshirt::Application.routes.draw do
   get "/privacy_policy", :to => "home#privacy_policy"
   # get "/partnership", :to => "home#partnership"
   get "/legal_terms", :to => "home#legal_terms"
+  get "/user_settings", :to => "home#user_settings"
 
   get "get_design", :to => "orders#get_design"
 
