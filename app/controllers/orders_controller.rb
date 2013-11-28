@@ -44,10 +44,11 @@ before_filter :authenticate_user!
          item = current_user.user_items.create(:design => params[:design], :design1 => params[:design1],:color1 => params[:color1], :image => params[:image], :image1 => params[:image1], :title => params[:title], :design_notes => params[:design_notes], :color => params[:color])
           img_id  = item.id
           session[:image_id] = img_id
+          @user_item = item
        end
         respond_to do |format|
-          format.json {render :json => {:img_id=>img_id}}
-          format.js {render :json => {:img_id=>img_id}}
+          format.json {render :json => {:img_id=>img_id, :img_url =>@user_item.image.url}}
+          format.js {render :json => {:img_id=>img_id, :img_url =>@user_item.image.url}}
 
         end
 	end
