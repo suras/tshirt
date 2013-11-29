@@ -64,3 +64,20 @@ fieldset .title{
 .checkout-page .btn{
 	margin-bottom: 20px;
 }
+form{
+	.input{
+		padding: 5px 0px;
+		padding-left: 30px;
+		label{
+			display: inline-block;
+			width: 175px;
+		}
+		input,select{
+			height: 30px;
+			width: 250px;
+		}
+	}
+	.btn{
+		margin-left: 130px;
+	}
+}

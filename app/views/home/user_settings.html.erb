@@ -1,105 +1,197 @@
-<%= stylesheet_link_tag "products","user_settings",:media=>"all" %>
+<%= stylesheet_link_tag "user_settings",:media=>"all" %>
+<%= javascript_include_tag "jquery-validation" %>
 <section class="user-settings">
-<div class="container">
-    <div class="row">
-        <div class="span12">
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#profile" data-target="#profile" data-toggle="tab">Profile</a>
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#profile" data-target="#profile" data-toggle="tab">Profile</a>
+					</li>
+					<li class=""><a href="#change_pass" data-target="#change_pass" data-toggle="tab">Change Password</a>
+						<li class=""><a href="#billing" data-target="#billing" data-toggle="tab">Billing Address</a>
+						</li>
+						<li class=""><a href="#shipping" data-target="#shipping" data-toggle="tab">Shipping Address</a>
+						</li>
+						<li class=""><a href="#design" data-target="#design" data-toggle="tab">Own Designs</a>
+						</li>
+						<li class=""><a href="#order" data-target="#order" data-toggle="tab">Order Details</a>
+						</li>
+					</ul>
 
-                </li>
-                <li><a href="#order" data-target="#order" data-toggle="tab">Order Details</a>
-
-                </li>
-                <li><a href="#products" data-target="#products" data-toggle="tab">Products Details</a>
-
-                </li>
-            </ul>
-            <div class="tab-content category-billing">
-                   <%= simple_form_for @billing, :url => profile_billing_path() do |f| %>
-                    <%= f.input :first_name %>
-                    <%= f.input :last_name %>
-                    <%= f.input :country %>
-                    <%= f.input :state %>
-                    <%= f.input :city %>
-                    <%= f.input :address1 %>
-                    <%= f.input :address2 %>
-                    <%= f.input :postal_code %>
-                    <%= f.button :submit %>
-                   <% end %>
-            </div>
-             <div class="tab-content category-shipping">
-                  <p>shipping</p>
-                   <%= simple_form_for @shipping, :url => profile_shipping_path() do |f| %>
-                    <%= f.input :first_name %>
-                    <%= f.input :last_name %>
-                    <%= f.input :country %>
-                    <%= f.input :state %>
-                    <%= f.input :city %>
-                    <%= f.input :address1 %>
-                    <%= f.input :address2 %>
-                    <%= f.input :postal_code %>
-                    <%= f.button :submit %>
-                   <% end %>
-            </div>
-
-            <div class="tab-content category-profile">
-                   <%= simple_form_for @user, :url => save_user_path do |f| %>
-                    <%= f.input :email %>
-                    <%= f.input :username %>
-                    <%= f.input :password %>
-                    <%= f.input :mobile %>
-                    <%= f.button :submit %>
-                   <% end %>
-            </div>
-
-            <div class="tab-content category-products">
-                <div class="tab-pane active fade in" id="profile">Profile tab content</div>
-                <div class="tab-pane" id="order">Order tab content</div>
-                <div class="tab-pane" id="products">
-                	<div class="span9 product-list">
-				<div class="all-products">
-			        <%@user_items.each do |item|%>
-			              <p><%=item.title%></p>
-			              <p><%=item.design_notes%></p>
-			              <p><%=item.created_at%></p>
-                          <p><img src="<%=item.image.url%>"/></p>
-                          <p><img src="<%=item.image1.url%>"/></p>
-
-			        <% end %>
+					<div class="tab-content">
+						<div class="tab-pane active fade in" id="profile">
+							<%= simple_form_for @user, :url => save_user_path do |f| %>
+							<%= f.input :email %><span class='error user_email_check hide-element'>Enter the Valid Email</span>
+							<%= f.input :first_name %>
+							<%= f.input :last_name %>
+							<%= f.input :mobile %>
+							<%= f.button :submit, "Update",:class => "btn btn-info" %>
+							<% end %>
+						</div>
+						<div class="tab-pane" id="change_pass">
+							<%= simple_form_for @user, :url => change_password_path do |f| %>
+							<%= f.input :password %>
+							<%= f.input :password_confirmation,:label=> "Confirm Password" %>
+							<%= f.button :submit, "Change Password",:class => "btn btn-info" %>
+							<% end %>
+						</div>
+						<div class="tab-pane" id="billing">
+							<%= simple_form_for @billing, :url => profile_billing_path() do |f| %>
+							<%= f.input :first_name %>
+							<%= f.input :last_name %>
+							<%= f.input :address1 %>
+							<%= f.input :address2 %>
+							<%= f.input :city %>
+							<%= f.input :state %>
+							<%= f.input :country %>
+							<%= f.input :postal_code %>
+							<%= f.button :submit, "Update",:class => "btn btn-info"  %>
+							<% end %>
+						</div>
+						<div class="tab-pane" id="shipping">
+							<%= simple_form_for @shipping, :url => profile_shipping_path() do |f| %>
+							<%= f.input :first_name %>
+							<%= f.input :last_name %>
+							<%= f.input :address1 %>
+							<%= f.input :address2 %>
+							<%= f.input :city %>
+							<%= f.input :state %>
+							<%= f.input :country %>
+							<%= f.input :postal_code %>
+							<%= f.button :submit, "Update",:class => "btn btn-info"  %>
+							<% end %>
+						</div>
+						<div class="tab-pane" id="design">
+							<div class="product-list">
+								<div class="all-products">
+									<%@user_items.each do |item|%>
+									<div class="product">
+										<div class="full-details hide">
+											<div class="close-full">X</div>
+											<div class="left">
+												<div class="title">
+													<%=item.title%>
+												</div>
+												<div class="images">
+													<img class="image" src="<%=item.image.url%>"/>
+													<img class="image1" src="<%=item.image1.url%>"/>
+												</div>
+											</div>
+											<div class="right">
+												<div class="title">Notes :</div>
+												<div class="design_notes">
+													<%=item.design_notes%>
+												</div>
+											</div>
+											<div class="date-time">
+												<div class="title">Date & Time</div>
+												<%= raw item.created_at.strftime("<span>Designed</span> on %m/%d/%Y <span>at</span> %I:%M%p")%>
+												<%= raw item.updated_at.strftime("<span>Last Update</span> on %m/%d/%Y <span>at</span> %I:%M%p")%>
+											</div>
+										</div>
+										<div class="less-details">
+											<div class="title">
+												<%=item.title%>
+											</div>
+											<div class="images">
+												<img class="image" src="<%=item.image.url%>"/>
+											</div>
+										</div>
+									</div>
+									<% end %>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane" id="order"></div>
+					</div>
 				</div>
 			</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
+		</div>
+	</section>
 
-
-<script type="text/javascript">
-	$(document).ready(function(){
-		$(document).on("click",".show-full",function(){
-			$(".close-full").each(function(){
-				$(this).trigger("click")
+	<div class="current_email hide"><%= current_user.email %></div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".user_email_check").insertAfter("#user_email")		
+			$(document).on("click",".less-details",function(){
+				$(".all-products").prepend($(this).closest(".product"));
+				$(".close-full").each(function(){
+					$(this).trigger("click")
+				});
+				$(this).hide();
+				$(this).siblings().show(500);
+				return false;
 			});
-			$(".all-products").prepend($(this).closest(".product-list-item"));
-			$(this).closest(".product-list-item").find(".thumb").hide(200);
-			$(this).closest(".product-list-item").find(".full-details").show();
-			$(this).closest(".product-list-item").find(".close-full").removeClass("hide");
-			$(window).scrollTop(70);
-			return false;
-		});
 
-		$(document).on("click",".close-full",function(){
-			$(this).closest(".product-list-item").find(".thumb").show();
-			$(this).closest(".product-list-item").find(".close-full").addClass("hide");
-			$(this).closest(".product-list-item").find(".full-details").hide(200);
-			return false;
-		});
+			$(document).on("click",".close-full",function(){
+				$(this).closest(".full-details").hide(500);
+				$(this).closest(".product").find(".less-details").show(500);
+				return false;
+			});
 
-		$(document).on("click",".full-details .images img",function(){
-			$(this).closest(".full-details").siblings(".left-side").find(img).attr("src",$(this).attr("src"));
-			
+			$(document).on("click","#change_pass input[type=submit]",function(){
+				if($("#change_pass form").valid())
+					return true
+				else
+					return false
+			});
+			$(document).on("click","#profile input[type=submit]",function(){
+				var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
+				email = pattern.test($("#user_email").val());
+				if($("#user_email").val() != $(".current_email").html()){
+					if(email)
+					{
+						$.ajax({
+							type: "get",
+							url: '/email_avail.json',
+							async: false,
+							data: {"email" : $("#user_email").val()},
+							success: function (data) {
+								console.log(data.msg)
+								if(data.msg != ""){
+									$(".user_email_check").text(data.msg).show();
+									can_return = false
+								}
+								else{
+									$(".user_email_check").hide();
+									can_return = true
+								}
+							}
+						});
+						return can_return
+					}
+					else{
+						$(".user_email_check").text("Enter the valid Email").show();
+						$(".user_email_check").show();
+						return false
+					}
+				}
+			});
+			$("#change_pass form").validate({
+				errorElement: "span",
+				highlight: function (element, errorClass) {
+					$(element).removeClass('error');
+				},
+				rules: {
+					"user[password]": {
+						'required' : true,
+						minlength: 8
+					},
+					"user[password_confirmation]": {
+						'required' : true,
+						'equalTo' : "#user_password"
+					}
+				},
+				messages: {
+					"user[password]": {
+						'required' : "Enter the Password",
+						'minlength' : "Enter atleast 8 characters"
+					},
+					"user[password_confirmation]": {
+						'required' : "Enter the Confirm Password",
+						'equalTo' : "Password did not match"
+					}
+				}    
+			});
 		});
-	});
 </script>

@@ -50,9 +50,11 @@ class HomeController < ApplicationController
 	 end
 
 	 def save_user
-
-       current_user.update_attributes(params[:user])   
-       #sign_in(current_user, :bypass => true)
+       current_user.update_attributes(:email => params[:user][:email],:first_name => params[:user][:first_name],:last_name => params[:user][:last_name],:mobile => params[:user][:mobile])   
+       redirect_to user_setting_path()
+	 end
+	 def change_password
+       current_user.update_attributes(:password => params[:user][:password],:password_confirmation => params[:user][:password_confirmation])   
        if(params[:user][:password].present?)
             redirect_to new_user_session_path, :notice => "Please login with changed password"
        else
@@ -61,6 +63,18 @@ class HomeController < ApplicationController
 	 end
 
 
+	def email_avail
+		if User.exists?(:email=>params[:email])
+			msg = "Email not available"
+		else
+			msg = ""
+		end
+		respond_to do |format|
+			format.json {render :json => {:msg => msg}}
+			format.js
+			format.html
+		end
+	end
 	def user_settings
 		@user = current_user
 		@billing = @user.billing_address.present? ? @user.billing_address : @user.build_billing_address

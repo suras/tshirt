@@ -39,6 +39,8 @@ Tshirt::Application.routes.draw do
   match "profile_billing", :to => "home#create_billing", :as => "profile_billing"
   match "profile_shipping", :to => "home#create_shipping", :as => "profile_shipping"
   match "save_user", :to => "home#save_user", :as => "save_user"
+  match "change_password", :to => "home#change_password", :as => "change_password"
+  match "email_avail", :to => "home#email_avail", :as => "email_avail"
 
 
   # The priority is based upon order of creation:

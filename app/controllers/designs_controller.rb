@@ -1,6 +1,7 @@
 class DesignsController < ApplicationController
   before_filter :authenticate_user!
   def index
+    session[:image_id] = nil
     if(params[:product_id].present?)
       @product = Product.find(params[:product_id])
       @default_image = @product.try(:image).try(:url)
