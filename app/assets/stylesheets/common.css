@@ -210,12 +210,15 @@ nav a{
 .address span{
 	display: block;
 }
+.address a{
+	color: #fff;
+}
 .follow-us{
 	
 }
 .follow-us a{
 	width: 32px;
-	background-image: url(/assets/social-icons.png);
+	background-image: url(/assets/social-icons-new.png);
 	height: 32px;
 	display: inline-block;
 	margin: 0px 5px;

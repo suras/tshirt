@@ -55,7 +55,7 @@
 								<a href="" class="clip-art current" data-show="clip-arts">
 									<%= t(:clip_arts)%>
 								</a>
-								<a href="" data-title="Upload My Own Image" data-popup="upload-image-popup" class="open-popup upload-image" data-show="upload-image">
+								<a href="" data-title="<%= t(:upload_own)%>" data-popup="upload-image-popup" class="open-popup upload-image" data-show="upload-image">
 									<%=t(:upload_images) %>
 								</a>
 								<a href="" class="my-images" data-show="my-images" >
@@ -181,7 +181,7 @@
 							<textarea name="text-design-notes" class="text-design-notes" id="text-design-notes"></textarea>
 							<div class="text-center">
 								<button class="btn"><%=t(:continue_designing) %></button>
-								<button id="save-notes" class="btn save open-popup" data-popup="save-design" data-title="Save Design" data-show="save-design"><%= t(:add_and_save_design)%></button>
+								<button id="save-notes" class="btn save open-popup" data-popup="save-design" data-title="<%= t(:save_design)%>" data-show="save-design"><%= t(:add_and_save_design)%></button>
 							</div>
 						</div>
 						<div class="single-panel edit-product">
@@ -336,7 +336,7 @@
 		<input type="text" class="ref-code" name="ref-code" id="ref-code">
 		<%=raw t(:discount_enter)%>
 	</div>
-	<span class="re-calculate">Calculate Price</span>
+	<span class="re-calculate"><%=raw t(:calculate_price)%></span>
 	<!-- <img src="/assets/checkout/re-calculate.png" class="re-calculate"> -->
 	<div class="notice-success">
 		<div class="sub-title"><%= t(:final_review)%></div>
@@ -346,8 +346,9 @@
 
 	</div>
 	<div class="popup-btns">
-		<img id="continue" src="/assets/save-design/continue-designing.png">
-		<a href="/checkout"><img id="checkout" src="/assets/save-design/checkout.png"></a>
+
+		<a id="continue" class="btn btn-info"><%= t(:continue_designing)%></a>
+		<a class="btn btn-info" href="/checkout"><%= t(:checkout)%></a>
 	</div>
 </div>
 

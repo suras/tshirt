@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+	before_filter :authenticate_user! , :only => [:user_settings]
 	def index
 		@sliders = Slider.where(:status => true)
 	end
@@ -39,28 +40,32 @@ class HomeController < ApplicationController
 
 	def legal_terms
 	end
-   
-	 def create_billing
-      current_user.create_billing_address(params[:billing_address])   
-      redirect_to user_setting_path()
-	 end
-	  def create_shipping
-      current_user.create_shipping_address(params[:shipping_address])   
-      redirect_to user_setting_path()
-	 end
 
-	 def save_user
-       current_user.update_attributes(:email => params[:user][:email],:first_name => params[:user][:first_name],:last_name => params[:user][:last_name],:mobile => params[:user][:mobile])   
-       redirect_to user_setting_path()
-	 end
-	 def change_password
-       current_user.update_attributes(:password => params[:user][:password],:password_confirmation => params[:user][:password_confirmation])   
-       if(params[:user][:password].present?)
-            redirect_to new_user_session_path, :notice => "Please login with changed password"
-       else
-       redirect_to user_setting_path()
-       end
-	 end
+	def create_billing
+		current_user.create_billing_address(params[:billing_address])   
+		redirect_to user_setting_path()
+	end
+	def create_shipping
+		current_user.create_shipping_address(params[:shipping_address])   
+		redirect_to user_setting_path()
+	end
+
+	def save_user
+		current_user.update_attributes(:email => params[:user][:email],:first_name => params[:user][:first_name],:last_name => params[:user][:last_name],:mobile => params[:user][:mobile])   
+		redirect_to user_setting_path()
+	end
+	def delete_user_product
+		@user_items = UserItem.find_by_id(params[:id]).delete()
+		redirect_to user_setting_path()
+	end
+	def change_password
+		current_user.update_attributes(:password => params[:user][:password],:password_confirmation => params[:user][:password_confirmation])   
+		if(params[:user][:password].present?)
+			redirect_to new_user_session_path, :notice => "Please login with changed password"
+		else
+			redirect_to user_setting_path()
+		end
+	end
 
 
 	def email_avail

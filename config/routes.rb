@@ -36,11 +36,12 @@ Tshirt::Application.routes.draw do
   get "/user_settings", :to => "home#user_settings", :as => "user_setting"
 
   get "get_design", :to => "orders#get_design"
-  match "profile_billing", :to => "home#create_billing", :as => "profile_billing"
-  match "profile_shipping", :to => "home#create_shipping", :as => "profile_shipping"
-  match "save_user", :to => "home#save_user", :as => "save_user"
-  match "change_password", :to => "home#change_password", :as => "change_password"
-  match "email_avail", :to => "home#email_avail", :as => "email_avail"
+  match "/profile_billing", :to => "home#create_billing", :as => "profile_billing"
+  match "/profile_shipping", :to => "home#create_shipping", :as => "profile_shipping"
+  match "/save_user", :to => "home#save_user", :as => "save_user"
+  match "/change_password", :to => "home#change_password", :as => "change_password"
+  match "/email_avail", :to => "home#email_avail", :as => "email_avail"
+  match "/delete_user_product/:id", :to => "home#delete_user_product", :as => "delete_user_product"
 
 
   # The priority is based upon order of creation:

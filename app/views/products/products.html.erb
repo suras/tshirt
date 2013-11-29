@@ -35,7 +35,7 @@
 				</ul>
 			</div>
 			<div class="span9 product-list">
-				<div class="result-no"><%=@products.count%> <%= t(:result_found) %></div>
+				<div class="result-no"><%=@products.count%> <%= t(:product_found) %></div>
 				<div class="all-products">
 					<% @products.each do |product| %>
 					<div class="product-list-item">
@@ -46,7 +46,7 @@
 								<img src="<%=product.try(:image).try(:url)%>">
 								<div class="name"><%=product.name%></div>
 							</div>
-							<a href="/designs/<%=product.id%>" class="choose-btn" title="">Choose</a>
+							<a href="/designs/<%=product.id%>" class="choose-btn" title=""><%= t(:choose_btn)%></a>
 						</div>
 						<div class="full-details hide	">
 							<div class="left-side">
